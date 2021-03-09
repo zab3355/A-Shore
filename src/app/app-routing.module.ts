@@ -18,7 +18,7 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent},
 ];
   @NgModule({
-    imports: [RouterModule.forRoot(routes, { useHash: true, relativeLinkResolution: 'legacy', scrollPositionRestoration: 'enabled'  })],
+    imports: [RouterModule.forRoot(routes, { scrollPositionRestoration: 'enabled'  })],
     exports: [RouterModule]
   })
 export class AppRoutingModule { }
