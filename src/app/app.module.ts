@@ -14,6 +14,9 @@ import { HomeComponent } from './pages/home/home.component';
 import { SignupComponent } from './pages/signup/signup.component';
 import { TestComponent } from './pages/test/test.component';
 
+import { NetworkService } from './services/network.service';
+import { ConstantsService } from './services/constants.service';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,7 +34,7 @@ import { TestComponent } from './pages/test/test.component';
     HttpClientModule,
     ToastrModule.forRoot(),
   ],
-  providers: [],
+  providers: [NetworkService, ConstantsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

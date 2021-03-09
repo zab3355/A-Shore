@@ -15,10 +15,10 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignupComponent },
   { path: 'home', component: HomeComponent},
-  { path: 'home', component: HomeComponent},
+  { path: 'test', component: TestComponent},
 ];
   @NgModule({
-    imports: [RouterModule.forRoot(routes, { scrollPositionRestoration: 'enabled'  })],
+    imports: [RouterModule.forRoot(routes, { useHash: true, relativeLinkResolution: 'legacy', scrollPositionRestoration: 'enabled'  })],
     exports: [RouterModule]
   })
 export class AppRoutingModule { }
