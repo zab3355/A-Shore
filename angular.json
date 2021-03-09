@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "A-Shore"
+    }
+  },
+  "defaultProject": "A-Shore",
+  "cli": {
+    "analytics": false
+  }
 }
