@@ -1,0 +1,60 @@
+.login-image {
+  height: 100vh;
+  width: 100%;
+  margin-bottom: -6px;
+  display: inline-block;
+  background-size: cover;
+  background-color: teal;
+  background-image: url('/assets/img/Login-BG.jpg');
+}
+
+.welcome {
+  color: white;
+  position: fixed;
+  bottom: 50px;
+  left: 50px;
+  width: 650px;
+}
+
+.welcome-text {
+  font-size: 38px;
+  font-weight: bold;
+}
+
+.instr-text {
+  font-size: 20px;
+  font-weight: lighter;
+}
+
+
+// responsive stuff (want to hide this stuff when 850px or below)
+
+@media screen and (max-width: 850px){
+
+  .login-image {
+    height: 0px;
+    width: 0px;
+    margin-bottom: 0px;
+    display: none;
+  }
+
+  .welcome {
+    color: white;
+    position: fixed;
+    bottom: 50px;
+    left: 50px;
+    width: 650px;
+  }
+
+  .welcome-text {
+    font-size: 38px;
+    font-weight: bold;
+    display: none;
+  }
+
+  .instr-text {
+    font-size: 20px;
+    font-weight: lighter;
+  }
+
+}
