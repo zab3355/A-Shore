@@ -3,12 +3,13 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "node ./server/index.js",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "heroku-postbuild": "ng build --prod"
+    "heroku-postbuild": "ng build --prod",
+    "nodemon": "nodemon --watch ./server ./server/index.js"
   },
   "private": true,
   "dependencies": {
@@ -22,11 +23,25 @@
     "@angular/platform-browser": "~10.1.0",
     "@angular/platform-browser-dynamic": "~10.1.0",
     "@angular/router": "~10.1.0",
+    "typescript": "~4.0.2",
+    "axios": "^0.21.1",
+    "body-parser": "^1.19.0",
+    "compression": "^1.7.4",
+    "connect-redis": "^5.1.0",
     "express": "^4.17.1",
+    "express-session": "^1.17.1",
+    "mongoose": "^5.11.19",
+    "mongoose-double": "^0.0.1",
+    "mongoose-type-email": "^1.1.2",
+    "nodemon": "^2.0.7",
+    "password-generator": "^2.3.2",
     "path": "^0.12.7",
+    "redis": "^3.0.2",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
-    "typescript": "~4.0.2",
+    "url": "^0.11.0",
+    "where": "^0.4.1",
+    "xml-parse": "^0.4.0",
     "zone.js": "~0.10.2"
   },
   "devDependencies": {
