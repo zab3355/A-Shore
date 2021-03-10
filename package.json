@@ -8,7 +8,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "heroku-postbuild": "ng build --prod",
+    "heroku-postbuild": "ng build --prod --build-optimizer=false --aot=false",
     "nodemon": "nodemon --watch ./server ./server/index.js"
   },
   "private": true,
@@ -32,6 +32,7 @@
     "mongoose": "^5.11.19",
     "mongoose-double": "^0.0.1",
     "mongoose-type-email": "^1.1.2",
+    "ngx-toastr": "^13.2.0",
     "nodemon": "^2.0.7",
     "password-generator": "^2.3.2",
     "path": "^0.12.7",
