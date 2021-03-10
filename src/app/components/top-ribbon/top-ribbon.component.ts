@@ -12,8 +12,6 @@ export class TopRibbonComponent {
     lname: String = '';
 
     constructor(private router:Router) {
-        this.fname = "Drew";
-        this.lname = "Bissen";
     }
 
     editSettings(){
