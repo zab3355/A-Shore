@@ -9,7 +9,7 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
 
-    "postinstall": "ng build --aot -prod",
+    "postinstall": "ng build --aot",
     "nodemon": "nodemon --watch ./server ./server/index.js"
   },
   "private": true,
