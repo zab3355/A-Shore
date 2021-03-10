@@ -16,6 +16,7 @@ import { TestComponent } from './pages/test/test.component';
 
 import { NetworkService } from './services/network.service';
 import { ConstantsService } from './services/constants.service';
+import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { ConstantsService } from './services/constants.service';
     SignupComponent,
     TestComponent,
     TopRibbonComponent,
-    LoginSideSectionComponent
+    LoginSideSectionComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,

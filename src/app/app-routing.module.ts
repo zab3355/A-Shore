@@ -4,6 +4,8 @@ import { HomeComponent } from './pages/home/home.component';
 import { LoginComponent } from './pages/login/login.component';
 import { SignupComponent } from './pages/signup/signup.component';
 import { TestComponent } from './pages/test/test.component';
+import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
+
 //For secure login, we can use this later if we have time
 //import { AuthGuard } from './services/auth.guard';
 
@@ -16,9 +18,11 @@ const routes: Routes = [
   { path: 'signup', component: SignupComponent },
   { path: 'home', component: HomeComponent},
   { path: 'test', component: TestComponent},
+  {path: '**', component: PageNotFoundComponent}
+  
 ];
   @NgModule({
-    imports: [RouterModule.forRoot(routes, { scrollPositionRestoration: 'enabled'  })],
+    imports: [RouterModule.forRoot(routes, { useHash: true, relativeLinkResolution: 'legacy', scrollPositionRestoration: 'enabled'  })],
     exports: [RouterModule]
   })
 export class AppRoutingModule { }
