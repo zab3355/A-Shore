@@ -17,6 +17,7 @@ import { TestComponent } from './pages/test/test.component';
 import { NetworkService } from './services/network.service';
 import { ConstantsService } from './services/constants.service';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
+import { MapComponent } from './pages/map/map.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.com
     TestComponent,
     TopRibbonComponent,
     LoginSideSectionComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    MapComponent
   ],
   imports: [
     BrowserModule,
