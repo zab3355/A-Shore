@@ -14,11 +14,10 @@ export class LoginComponent implements OnInit {
   constructor(private router: Router, private route: ActivatedRoute, private toastr: ToastrService) { }
   failed = false;
 
-  email: string = '';
-  password: string = '';
+  code: string = '';
 
-  emailValid = true;
-  emailTaken = true;
+  codeValid = true;
+  codeTaken = true;
 
   ngOnInit() {
     this.route.queryParams.subscribe(params => {
@@ -31,14 +30,18 @@ export class LoginComponent implements OnInit {
   }
 
 
-  login() {
+  generateCode() {
+  
+  }
+
+  enterCode() {
   
   }
 
 
   isEmailValid() {
-    this.emailValid = true;
-    this.emailTaken = true;
+    this.codeValid = true;
+    this.codeTaken = true;
 
   } 
 

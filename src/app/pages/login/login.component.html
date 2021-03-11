@@ -1,35 +1,18 @@
 <div class="login-page">
     <div class="box">
-      <div class="input-section">
-        <div class="login align-center">
-          <a href="/login"><img class="logo" src="assets/img/Logo-TheShore.png"></a>
           <div>
-            <h1 class="header-welcome">Welcome to the Shore</h1>
-            <h3 class="header-text">Login to begin!</h3>
+            <h1 class="header-welcome">The Shore</h1>
           </div>
-  
-          <div class="form-header failed" *ngIf="failed">
-            <h3><i data-feather="x-circle" class="icon-text"></i>Login failed.</h3>
-            <span class="error-details">Please check your credentails and try again</span>
+          
+          <div class="button-container">
+          <div type="submit" class="login-btn">
+            <button (click)="generateCode()">generate code</button>
           </div>
-  
-          <form action="#" (ngSubmit)="login()">
-            <div class="form-group">
-              <input type="email" class="form-control" name="email" id="emailEnter" [(ngModel)]="email" placeholder="Email">
-            </div>
-  
-            <div class="form-group">
-              <input type="password" class="form-control" name="password" id="passwordEnter" [(ngModel)]="password" placeholder="Password" (keyup.enter)="login()">
-            </div>
-  
+
             <div type="submit" class="login-btn">
-              <button (click)="login()">Login</button>
+              <button (click)="enterCode()">enter code</button>
             </div>
-          </form>
-          <div class="register font-weight-light">Don't have an account?
-            <a [routerLink]="['/signup']">Sign Up!</a>
-          </div>
-      </div>
+            </div>
     </div>
   </div>
   
