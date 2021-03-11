@@ -1,0 +1,161 @@
+.logo {
+    width: 30%;
+    margin-top: 40px;
+    margin-bottom: 30px;
+  }
+  
+  .home-page {
+    background-image: url("/assets/img/TheShore_BKG.png");
+    background-size: cover;
+    display: block;
+    overflow: hidden;
+    height: 100vh;
+  }
+  
+  .header-welcome {
+      width: 943px;
+      height: 240px;
+      left: 467px;
+      top: 321px;
+      
+      font-family: Fredoka One;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 144px;
+      line-height: 174px;
+      display: flex;
+      align-items: center;
+      text-align: center;
+      letter-spacing: 0.1em;
+      
+      color: #FFFFFF;
+    text-shadow: 0px 10px 10px rgba(55, 99, 255, 0.1);
+  }
+  
+  .header-text {
+    color: #7e8ba3;
+  }
+  
+  .login-btn {
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    margin-right:100px;
+    margin-left: 100px;
+    
+  }
+  
+  .button-container {
+      display: inline-flex;
+  }
+  
+  .login-btn>button {
+      width: 218.29px;
+      background-color: transparent;
+      height: 100px;
+      border: 5px solid #ffffff;
+      left: 616.27px;
+      top: 647px;
+      font-family: "Nunito", sans-serif;
+      font-style: normal;
+      font-weight: 800;
+      font-size: 28px;
+      line-height: 49px;
+      align-items: center;
+      text-align: center;
+      color: #FFFFFF;
+  
+  }
+  
+  .login-btn>button:hover {
+    border-color: #b8c8e7;
+    cursor: pointer;
+    color: #b9c4d1;
+  }
+  
+  .login-btn>button:focus {
+    outline: none;
+    box-shadow: 2px 2px 8px 0 rgba(0, 0, 0, 0.4) inset;
+  }
+  
+  .form-header {
+    color: #d60000;
+    margin: 20px;
+  }
+  
+  
+  .icon-text {
+    height: 20px;
+    width: 20px;
+    margin-right: 10px;
+  }
+  
+  
+  
+  .form-control:focus {
+    outline: none;
+    box-shadow: 2px 2px 8px 0 rgba(0, 0, 0, 0.4) inset;
+  }
+  
+  
+  .box {
+    text-align: center;
+    padding: 2rem 2rem;
+    margin-left: 25em;
+    margin-right: 25em;
+    margin-bottom: 2em;
+    padding-bottom: 3em;
+    margin-top: 7%;
+  }
+  
+  input {
+    border: 1px solid #242c37;
+    border-radius: 999px;
+    background-color: #E8F0FE;
+    text-align: center; 
+    -webkit-box-flex: 1;
+    flex: 1;
+    padding: 1em;
+    border: 0;
+    color: #8f8f8f;
+    font-size: 1rem;
+  }
+  
+  // responsive stuff - Hide Section when 850px or Below
+  
+  @media screen and (max-width: 850px){
+    
+    div, .box {
+      display: contents;
+      text-align: center;
+      
+  
+    .logo {
+      width: 50%;    
+    }
+  
+    .header-welcome {
+      font-size: 28px;
+      padding-right: 10px;
+    }
+  
+    .forgot-pass {
+      margin-top: 20px;
+    }
+  
+    .form-control {
+      margin: 15px 55px;
+    }
+  
+    button {
+      margin-top: 20px;
+    }
+      
+      // grid-template-columns: 3fr 1fr;
+    }
+  
+  
+  
+  
+  }
+  
