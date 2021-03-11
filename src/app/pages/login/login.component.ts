@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
+
 import { ToastrService } from 'ngx-toastr';
+import * as Feather from 'feather-icons';
 
 @Component({
   selector: 'app-login',
@@ -9,9 +11,35 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private router: Router, private toastr: ToastrService) { }
+  constructor(private router: Router, private route: ActivatedRoute, private toastr: ToastrService) { }
+  failed = false;
 
-  ngOnInit(): void {
+  email: string = '';
+  password: string = '';
+
+  emailValid = true;
+  emailTaken = true;
+
+  ngOnInit() {
+    this.route.queryParams.subscribe(params => {
+      //  this.router.navigateByUrl('/signup')
+    });
   }
+
+  ngAfterViewChecked() {
+    Feather.replace();
+  }
+
+
+  login() {
+  
+  }
+
+
+  isEmailValid() {
+    this.emailValid = true;
+    this.emailTaken = true;
+
+  } 
 
 }

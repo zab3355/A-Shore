@@ -29,6 +29,7 @@
     "connect-redis": "^5.1.0",
     "express": "^4.17.1",
     "express-session": "^1.17.1",
+    "feather-icons": "^4.28.0",
     "mongoose": "^5.11.19",
     "mongoose-double": "^0.0.1",
     "mongoose-type-email": "^1.1.2",
