@@ -10,9 +10,41 @@ const getAllMessages = (req, res) => Messages.MessagesModel.getAllMessages((err,
         console.log(err)
       return res.status(404).json({ error: 'No Messages Found' });
     }
-  
+
     return res.json({data: docs});
 });
+
+const getMessage = (req, res) => {
+  if (!req.query.id) {
+    return res.status(400).json({ error: 'id is required' });
+  }
+  return Messages.MessagesModel.getMessage(req.query.id, (err,doc) => {
+    if (err || !doc) {
+      return res.status(404).json({ error: `Could Not Find Message with id ${req.query.id}` });
+    }
+    return res.json({ data: doc });
+  });
+};
+
+const addComment = (req, res) => {
+  if (!req.body.id) {
+    return res.status(400).json({ error: 'id is required' });
+  };
+  if (!req.body.commentText) {
+    return res.status(400).json({ error: 'Comment Text is required' });
+  }
+  const comment = {text: req.body.commentText, postedBy: req.body.commentId }
+  return Messages.MessagesModel.findOneAndUpdate(
+    {_id: req.body.id},
+    { $push: {comments: comment} },
+    (err, success) => {
+      if (err) {
+        return res.status(400).json({error: 'Could Not Add Comement'})
+      }
+      return res.json({data: success})
+    }
+  )
+};
 
 const addMessage = (req, res) => {
     const { data } = req.body;
@@ -28,14 +60,14 @@ const addMessage = (req, res) => {
     return newMessage.save()
         .then(() => {res.json({success:'Message Successfully Created'})})
         .catch((err) => {res.status(400).json({error: err.message})})
-        
+
 }
 
 const populateMessages = async (req,res) => {
     console.log('here')
 
     const results = await axios.get("https://zenquotes.io/api/quotes");
-    
+
     console.log(results.data.length);
     for (let i = 0; i < results.data.length; i++) {
         let r = results.data[i];
@@ -64,5 +96,7 @@ const populateMessages = async (req,res) => {
 module.exports = {
     getAllMessages,
     addMessage,
-    populateMessages
+    populateMessages,
+    getMessage,
+    addComment
 }
