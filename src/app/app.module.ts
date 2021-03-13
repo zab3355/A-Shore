@@ -6,6 +6,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { ToastrModule } from 'ngx-toastr';
 import { AppComponent } from './app.component';
+import { TopRibbonComponent } from './components/top-ribbon/top-ribbon.component';
+import { LoginSideSectionComponent } from './components/login-side-section/login-side-section.component';
 
 import { LoginComponent } from './pages/login/login.component';
 import { HomeComponent } from './pages/home/home.component';
@@ -23,7 +25,9 @@ import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.com
     HomeComponent,
     SignupComponent,
     TestComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    TopRibbonComponent,
+    LoginSideSectionComponent
   ],
   imports: [
     BrowserModule,
