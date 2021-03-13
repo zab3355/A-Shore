@@ -25,7 +25,7 @@ export class NetworkService {
 
   /**
    * @description GET Request - Returns a response json object if status code is 200. Else returns a message
-   * @param url Request URL
+   * @paFram url Request URL
    */
   httpGet(url: string) {
     return this.http.get(url, { headers: this.getRequestHeader() })

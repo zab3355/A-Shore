@@ -10,8 +10,22 @@ import { ToastrService } from 'ngx-toastr';
 export class HomeComponent implements OnInit {
 
   constructor(private router: Router, private toastr: ToastrService) { }
+ 
+  page = 1;
 
   ngOnInit(): void {
   }
 
+  next() {
+    this.page++;
+  }
+
+  toEnterCode() {
+    this.page++;
+    this.page++;
+  }
+
+  login() {
+    
+  }
 }
