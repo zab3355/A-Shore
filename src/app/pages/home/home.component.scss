@@ -186,7 +186,11 @@ html{
     font-size: 24px;
     color: #FFFFFF; 
   }
-  
+
+  ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: #FFFFFF;
+    opacity: 1; /* Firefox */
+  }
   .icon-text {
     height: 20px;
     width: 20px;
