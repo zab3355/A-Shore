@@ -1,10 +1,6 @@
 <div class="home-page">
-  <div *ngIf="page == 1" class="home-start" (click)="next()">
-         
-  </div>
+  <div *ngIf="page == 1" class="home-start" (click)="next()"></div>
     <div class="box">
-
-
         <div *ngIf="page == 2">
             <h1 class="header-welcome">The Shore</h1>
             <div class="login-btn">
@@ -14,21 +10,23 @@
 
         <div *ngIf="page == 3">
                <h1 class="header-welcome">The Shore</h1>
-            <div type="submit" class="code-btn">
-              <button (click)="next()">generate code</button>
-            </div>
+               <div class="code-btn-head">
+                <div type="submit" class="code-btn">
+                  <button (click)="next()">generate code</button>
+                </div>
   
               <div type="submit" class="code-btn">
                 <button (click)="toEnterCode()">enter code</button>
               </div>
+            </div>
         </div>
 
         <div>
-            <h1 *ngIf="page == 4" class="header-welcome-high">The Shore</h1>
+            <h1 *ngIf="page == 4" class="header-welcome-highup">The Shore</h1>
         </div>
 
         <div>
-          <h1 *ngIf="page == 5" class="header-welcome-high">The Shore</h1>
+          <h1 *ngIf="page == 5" class="header-welcome-highup">The Shore</h1>
       </div>
           
   </div>
@@ -40,7 +38,7 @@
     <input class="code-style" type="text" maxlength="1" placeholder="-" (keyup)="onDigitInput($event)" />
     <input class="code-style" type="text" maxlength="1" placeholder="-" (keyup)="onDigitInput($event)" />
     <input class="code-style" type="text" maxlength="1" placeholder="-" (keyup)="onDigitInput($event)" />
-    <div type="submit" class="code-btn">
+    <div type="submit" class="code-btn-go">
       <button (click)="login()">let's go</button>
     </div>
   </form>
@@ -54,7 +52,7 @@
     <input class="code-style" type="text" maxlength="1" (keyup)="onDigitInput($event)"/>
     <input class="code-style" type="text" maxlength="1" (keyup)="onDigitInput($event)"/>
     <input class="code-style" type="text" maxlength="1" (keyup)="onDigitInput($event)"/>
-    <div type="submit" class="code-btn">
+    <div type="submit" class="code-btn-go">
       <button (click)="login()">let's go</button>
     </div>
 </form>

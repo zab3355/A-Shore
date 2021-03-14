@@ -1,10 +1,9 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './pages/home/home.component';
-import { LoginComponent } from './pages/login/login.component';
-import { SignupComponent } from './pages/signup/signup.component';
 import { TestComponent } from './pages/test/test.component';
 import { ShoreComponent } from './pages/shore/shore.component';
+import { TutorialComponent } from './pages/tutorial/tutorial.component';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 
 //For secure login, we can use this later if we have time
@@ -15,11 +14,10 @@ const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
 
   //if creating a new component put your routes here
-  { path: 'login', component: LoginComponent },
-  { path: 'signup', component: SignupComponent },
   { path: 'home', component: HomeComponent},
   { path: 'test', component: TestComponent},
-  { path: 'shore', component: TestComponent},
+  { path: 'shore', component: ShoreComponent},
+  { path: 'tutorial', component: TutorialComponent},
   {path: '**', component: PageNotFoundComponent}
   
 ];
