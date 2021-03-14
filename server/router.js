@@ -10,7 +10,9 @@ const router = (app) => {
     // app.get('/logout', mid.requiresLogin, controllers.Account.logout);
     app.get('/api/passwords', controllers.Test.getPasswords);
     app.get('/api/getMessages',controllers.Messages.getAllMessages);
+    app.get('/api/getMessage',controllers.Messages.getMessage);
     app.get('/api/populate', controllers.Messages.populateMessages);
+    app.post('/api/addComment', controllers.Messages.addComment);
 
     app.get('/api/populateLocations',controllers.Location.populateLocations);
     app.get('/api/getLocations', controllers.Location.getAllLocations);

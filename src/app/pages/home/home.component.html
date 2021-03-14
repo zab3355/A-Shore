@@ -1,15 +1,63 @@
 <div class="home-page">
+  <div *ngIf="page == 1" class="home-start" (click)="next()">
+         
+  </div>
     <div class="box">
-        <div>
+
+
+        <div *ngIf="page == 2">
             <h1 class="header-welcome">The Shore</h1>
-        </div>
-          
-        <div class="button-container">
             <div class="login-btn">
-              <button [routerLink]="['/login']">enter</button>
+              <button (click)="next()">enter</button>
             </div>
         </div>
+
+        <div *ngIf="page == 3">
+               <h1 class="header-welcome">The Shore</h1>
+            <div type="submit" class="code-btn">
+              <button (click)="next()">generate code</button>
+            </div>
+  
+              <div type="submit" class="code-btn">
+                <button (click)="toEnterCode()">enter code</button>
+              </div>
+        </div>
+
+        <div>
+            <h1 *ngIf="page == 4" class="header-welcome-high">The Shore</h1>
+        </div>
+
+        <div>
+          <h1 *ngIf="page == 5" class="header-welcome-high">The Shore</h1>
+      </div>
+          
   </div>
+  <form class="enter-num" *ngIf="page == 4">
+    <h5 class="code-text">Please enter your unique 6-digit log-in code.</h5>
+    <input class="code-style" type="text" maxlength="1" placeholder="-" (keyup)="onDigitInput($event)" />
+    <input class="code-style" type="text" maxlength="1" placeholder="-" (keyup)="onDigitInput($event)" />
+    <input class="code-style" type="text" maxlength="1" placeholder="-" (keyup)="onDigitInput($event)" />
+    <input class="code-style" type="text" maxlength="1" placeholder="-" (keyup)="onDigitInput($event)" />
+    <input class="code-style" type="text" maxlength="1" placeholder="-" (keyup)="onDigitInput($event)" />
+    <input class="code-style" type="text" maxlength="1" placeholder="-" (keyup)="onDigitInput($event)" />
+    <div type="submit" class="code-btn">
+      <button (click)="login()">let's go</button>
+    </div>
+  </form>
+
+  <form class="enter-num" *ngIf="page == 5">
+    <h5 class="code-text">This is your unique 6-digit log-in code.</h5>
+    <h5 class="code-text">Please write this down or save for future use.</h5>
+    <input class="code-style" type="text" maxlength="1" (keyup)="onDigitInput($event)" />
+    <input class="code-style" type="text" maxlength="1" (keyup)="onDigitInput($event)"/>
+    <input class="code-style" type="text" maxlength="1" (keyup)="onDigitInput($event)" />
+    <input class="code-style" type="text" maxlength="1" (keyup)="onDigitInput($event)"/>
+    <input class="code-style" type="text" maxlength="1" (keyup)="onDigitInput($event)"/>
+    <input class="code-style" type="text" maxlength="1" (keyup)="onDigitInput($event)"/>
+    <div type="submit" class="code-btn">
+      <button (click)="login()">let's go</button>
+    </div>
+</form>
  </div>
   
   

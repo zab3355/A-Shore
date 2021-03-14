@@ -2,8 +2,8 @@ import { Injectable, isDevMode } from '@angular/core';
 //import { Http, RequestOptions, Headers, Response } from '@angular/http'; // yucky deprecated stuff
 import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http'; // yummy not-deprecated stuff
 import { Observable, Subject, throwError } from 'rxjs';
-//import 'rxjs/add/operator/map';
-//import 'rxjs/add/operator/catch';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/catch';
 import { ConstantsService } from './constants.service';
 
 @Injectable()
@@ -25,11 +25,11 @@ export class NetworkService {
 
   /**
    * @description GET Request - Returns a response json object if status code is 200. Else returns a message
-   * @param url Request URL
+   * @paFram url Request URL
    */
   httpGet(url: string) {
     return this.http.get(url, { headers: this.getRequestHeader() })
-      /*.map((response: HttpResponse<any>) => {
+      .map((response: HttpResponse<any>) => {
         // Response without any issues.. return as it is
         return response as any;
       })
@@ -52,7 +52,7 @@ export class NetworkService {
           }
           return throwError('Something went wrong. Kindly contact Admin.');
         }
-      });*/
+      });
   }
 
   /**
@@ -61,7 +61,7 @@ export class NetworkService {
    */
   httpPost(url: string, request_body: any) {
     return this.http.post(url, request_body, { headers: this.getRequestHeader() })
-      /*.map((response: HttpResponse<any>) => {
+      .map((response: HttpResponse<any>) => {
         // Response without any issues.. return as it is
         return response as any;
       })
@@ -85,7 +85,7 @@ export class NetworkService {
           }
           return throwError('Something went wrong. Kindly contact Admin.');
         }
-      });*/
+      });
   }
 
   /**
@@ -94,7 +94,7 @@ export class NetworkService {
    */
   httpPut(url: string, request_body: any) {
     return this.http.put(url, request_body, { headers: this.getRequestHeader() })
-      /*.map((response: HttpResponse<any>) => {
+      .map((response: HttpResponse<any>) => {
         // Response without any issues.. return as it is
         return response as any;
       })
@@ -118,7 +118,7 @@ export class NetworkService {
           }
           return throwError('Something went wrong. Kindly contact Admin.');
         }
-      });*/
+      });
   }
 
   /**
@@ -127,7 +127,7 @@ export class NetworkService {
    */
   httpDelete(url: string, request_body: any) {
     return this.http.request('delete', url, { headers: this.getRequestHeader(), body: request_body })
-     /* .map((response: HttpResponse<any>) => {
+      .map((response: HttpResponse<any>) => {
         // Response without any issues.. return as it is
         return response as any;
       })
@@ -151,7 +151,7 @@ export class NetworkService {
           }
           return throwError('Something went wrong. Kindly contact Admin.');
         }
-      });*/
+      });
   }
 
   /**
@@ -160,7 +160,7 @@ export class NetworkService {
     */
   httpHeaderlessGet(url) {
     return this.http.get(url)
-     /* .map((response: HttpResponse<any>) => {
+      .map((response: HttpResponse<any>) => {
         // Response without any issues.. return as it is
         return response as any;
       })
@@ -183,6 +183,6 @@ export class NetworkService {
           }
           return throwError('Something went wrong. Kindly contact Admin.');
         }
-      });*/
+      });
   }
 }

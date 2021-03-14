@@ -4,7 +4,6 @@ import { environment } from '../../environments/environment';
 //#region Constants
 const JWT = 'jwt';
 const LOGINTOKEN = 'LoginToken';
-const CANDIDATEID = 'CandidateID';
 //#endregion
 
 @Injectable({
@@ -46,20 +45,6 @@ export class ConstantsService {
             return token;
         } else {
             return '';
-        }
-    }
-
-    static setCandidateID(candidateID) {
-        sessionStorage.setItem(CANDIDATEID, candidateID);
-    }
-
-    static getCandidateID() {
-        const id = ((sessionStorage.getItem(CANDIDATEID) as unknown) as number);
-        if (id) {
-            return id;
-        } 
-        else {
-            return -1;
         }
     }
 
