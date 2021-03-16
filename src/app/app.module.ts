@@ -9,9 +9,8 @@ import { AppComponent } from './app.component';
 import { TopRibbonComponent } from './components/top-ribbon/top-ribbon.component';
 import { LoginSideSectionComponent } from './components/login-side-section/login-side-section.component';
 
-import { LoginComponent } from './pages/login/login.component';
+import { TutorialComponent } from './pages/tutorial/tutorial.component';
 import { HomeComponent } from './pages/home/home.component';
-import { SignupComponent } from './pages/signup/signup.component';
 import { TestComponent } from './pages/test/test.component';
 import { ShoreComponent } from './pages/shore/shore.component';
 
@@ -24,16 +23,15 @@ import { MapComponent } from './pages/map/map.component';
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent,
     HomeComponent,
-    SignupComponent,
     TestComponent,
     PageNotFoundComponent,
     TopRibbonComponent,
     LoginSideSectionComponent,
     PageNotFoundComponent,
-    MapComponent
-    ShoreComponent
+    MapComponent,
+    ShoreComponent,
+    TutorialComponent
   ],
   imports: [
     BrowserModule,
