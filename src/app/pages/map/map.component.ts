@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 let map: google.maps.Map;
+/// <reference types="google.maps" />
 
 @Component({
   selector: 'app-map',

@@ -4,6 +4,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { TestComponent } from './pages/test/test.component';
 import { ShoreComponent } from './pages/shore/shore.component';
 import { TutorialComponent } from './pages/tutorial/tutorial.component';
+import { MapComponent} from './pages/map/map.component';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 
 //For secure login, we can use this later if we have time
@@ -18,6 +19,7 @@ const routes: Routes = [
   { path: 'test', component: TestComponent},
   { path: 'shore', component: ShoreComponent},
   { path: 'tutorial', component: TutorialComponent},
+  { path: 'map', component: MapComponent},
   {path: '**', component: PageNotFoundComponent}
   
 ];
