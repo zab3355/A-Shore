@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 
-/// <reference types="google.maps" />
-
 @Component({
   selector: 'app-map',
   templateUrl: './map.component.html',
