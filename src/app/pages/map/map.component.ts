@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { google } from "google-maps"
 
 @Component({
   selector: 'app-map',
@@ -7,26 +8,6 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MapComponent implements OnInit {
 
-  
-
-  constructor() { 
-    
-  }
-
-  ngOnInit(): void {
-  }
-
-  addMarker(location: google.maps.LatLngLiteral, map: google.maps.Map) {
-    // Add the marker at the clicked location, and add the next-available label
-    // from the array of alphabetical characters.
-    new google.maps.Marker({
-      position: location,
-      label: String(this.labelIndex++),
-      animation: google.maps.Animation.DROP,
-      map: map,
-    });
-  }
-  
   mapRestrictions = {
     north: 90,
     south: -90,
@@ -36,9 +17,29 @@ export class MapComponent implements OnInit {
   labelIndex = 1;
 
   interactiveCoordinates = [];
+  map: google.maps.Map;
+
+  constructor() { 
+    
+  }
+
+  ngOnInit(): void {
+    this.initMap();
+  }
+
+  addMarker(location: google.maps.LatLngLiteral, map: google.maps.Map) {
+    new google.maps.Marker({
+      position: location,
+      label: String(this.labelIndex++),
+      animation: google.maps.Animation.DROP,
+      map: map,
+    });
+  }
+  
+
 
    initMap(): void {
-    let map = new google.maps.Map(document.getElementById("map") as HTMLElement, {
+    this.map = new google.maps.Map(document.getElementById("map") as HTMLElement, {
     center: { lat: 10, lng: -20.744857 },
     restriction: {
       latLngBounds: this.mapRestrictions,
@@ -46,7 +47,7 @@ export class MapComponent implements OnInit {
     },
     zoom: 3,
   });
-    this.getLocations(map);
+    this.getLocations(this.map);
   }
   
   getLocations(map: google.maps.Map){
