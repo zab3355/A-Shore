@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { google } from "google-maps"
+//import { MapsAPILoader } from "@agm/core";
+import { google } from "google-maps";
+
+declare const google: any
 
 @Component({
   selector: 'app-map',
@@ -19,9 +22,14 @@ export class MapComponent implements OnInit {
   interactiveCoordinates = [];
   map: google.maps.Map;
 
-  constructor() { 
-    
+  constructor(){
+
   }
+/*   constructor(private mapsAPILoader: MapsAPILoader) {
+    this.mapsAPILoader.load().then(() => {
+      this.initMap();
+    });
+  } */
 
   ngOnInit(): void {
     this.initMap();
