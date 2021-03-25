@@ -13,12 +13,14 @@ html{
     margin-top: 40px;
     margin-bottom: 30px;
   }
+
   .login-signup-page {
-    background: linear-gradient(180deg, #8082EC 0%, #859FF5 47.39%, #FFDBFF 107.04%);
+    background-image: url("/assets/img/signupBlank.png");
     background-size: cover;
     overflow: hidden;
     height: 100vh;
   }
+
 
   .home-page {
     background-image: url("/assets/img/TheShore_BKG.png");
@@ -137,7 +139,7 @@ html{
   width: 218.29px;
   background-color: transparent;
   height: 100px;
-  border: 5px solid #FFFFFF;
+  border: none;
   border-radius: 5px;
   left: 616.27px;
   top: 647px;
@@ -148,17 +150,57 @@ html{
   line-height: 49px;
   align-items: center;
   text-align: center;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 5px;
   color: #FFFFFF;
 }
 .code-btn-go>button:hover {
-border-color: #b8c8e7;
 cursor: pointer;
-color: #b9c4d1;
+background: #FFFFFF; 
+color: #859FF5;
+border-radius: 5px;
 }
 
 .code-btn-go>button:focus {
 outline: none;
 box-shadow: 2px 2px 8px 0 rgba(0, 0, 0, 0.4) inset;
+}
+
+.code-btn-rand {
+  margin-top: -70px;
+  margin-left: 1235px;
+}
+
+.code-btn-rand>button {
+  width: 180px;
+  background-color: transparent;
+  height: 60px;
+  border: none;
+  border-radius: 5px;
+  left: 616.27px;
+  top: 647px;
+  font-family: "Nunito", sans-serif;
+  font-style: normal;
+  font-weight: 800;
+  font-size: 18px;
+  line-height: 49px;
+  align-items: center;
+  text-align: center;
+  background: #FFFFFF;
+  color: #859FF5;
+  border-radius: 5px;
+}
+
+.code-btn-rand>button:hover {
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.3);
+  color: #FFFFFF;
+  border-radius: 5px;
+}
+
+.code-btn-rand>button:focus {
+  outline: none;
+  box-shadow: 2px 2px 8px 0 rgba(0, 0, 0, 0.4) inset;
 }
 
 
@@ -201,6 +243,67 @@ box-shadow: 2px 2px 8px 0 rgba(0, 0, 0, 0.4) inset;
     margin: 20px;
   }
   
+  .back-btn {
+    margin-top: 40px;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    margin-left: 40px;
+  }
+
+  .back-btn:hover {
+    margin-top: 40px;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    margin-left: 40px;
+  }
+  @-webkit-keyframes pulse-grow-on-hover {
+    to {
+      -webkit-transform: scale(1.1);
+      transform: scale(1.1);
+    }
+  }
+  @keyframes pulse-grow-on-hover {
+    to {
+      -webkit-transform: scale(1.1);
+      transform: scale(1.1);
+    }
+  }
+  .pulse-grow-on-hover {
+    display: inline-block;
+    vertical-align: middle;
+    -webkit-transform: perspective(1px) translateZ(0);
+    transform: perspective(1px) translateZ(0);
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  }
+  .pulse-grow-on-hover:hover, .pulse-grow-on-hover:focus, .pulse-grow-on-hover:active {
+    -webkit-animation-name: pulse-grow-on-hover;
+    animation-name: pulse-grow-on-hover;
+    -webkit-animation-duration: 0.3s;
+    animation-duration: 0.3s;
+    -webkit-animation-timing-function: linear;
+    animation-timing-function: linear;
+    -webkit-animation-iteration-count: infinite;
+    animation-iteration-count: infinite;
+    -webkit-animation-direction: alternate;
+    animation-direction: alternate;
+  }
+
+  .username-input {
+    border: 0;
+    height: 40px;
+    outline: 0;
+    background: transparent;
+    border-bottom: 4px solid #FFFFFF;
+    color: #FFFFFF;
+    width:985px;
+    font-family: Nunito;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 28px;
+  }
+  
   .enter-num {
     text-align: center;
     border: 0;
@@ -211,21 +314,60 @@ box-shadow: 2px 2px 8px 0 rgba(0, 0, 0, 0.4) inset;
     border:none;
     margin: 20px;
     text-align: center;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 5px;
     color: #FFFFFF;
     font-family: Nunito;
     font-style: normal;
     font-weight: 800;
     font-size: 96px;
+    width: 150px;
+    height: 200px;
+    left: 618px;
+    top: 540px;
   }
 
   .code-text{
     font-family: Nunito;
     font-style: normal;
     font-weight: 800;
-    font-size: 24px;
-    color: #FFFFFF; 
+    font-size: 36px;
+    line-height: 49px;
+    align-items: center;
+    color: #FFFFFF;
   }
 
+  .user-text{
+    font-family: Nunito;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 36px;
+    line-height: 49px;
+    align-items: center;
+    color: #FFFFFF;
+    padding-right: 930px;
+  }
+
+  .form-group {
+    display: block;
+    margin: 10px 0px;
+  
+    label {
+      display: block;
+      font-family: Nunito;
+      font-style: normal;
+      font-weight: bold;
+      font-size: 24px;
+      color:#FFFFFF;
+      line-height: 33px;
+  
+      &.radio-label {
+        display: inline-block;
+      }
+    }
+  
+  }
+  
   ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
     color: #FFFFFF;
     opacity: 1; /* Firefox */
@@ -236,6 +378,43 @@ box-shadow: 2px 2px 8px 0 rgba(0, 0, 0, 0.4) inset;
     width: 20px;
     margin-right: 10px;
   }
+  .form-control {
+    margin: 20px 40px;
+    width: 50px;
+    height: 25px;
+    width: 40px;
+    left: 0px;
+    top: 0px;
+    background: #A4B1DF;
+    border-radius: 5px;
+  }
+
+  /* Create a custom radio button */
+.form-control {
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  border: 10px solid white;
+  background-color: #eee;
+  border-radius: 50%;
+}
+
+/* On mouse-over, add a grey background color */
+.form-control:hover {
+  background-color: #ccc;
+}
+
+/* When the radio button is checked, add a blue background */
+.form-control:checked {
+  background-color: #2196F3;
+}
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.form-control:after {
+  content: "";
+  display: none;
+}
   
   .form-control:focus {
     outline: none;
@@ -251,15 +430,6 @@ box-shadow: 2px 2px 8px 0 rgba(0, 0, 0, 0.4) inset;
     text-align: center;
   }
   
-  input {
-    width: 150px;
-    height: 200px;
-    left: 618px;
-    top: 540px;
-    
-    background: #A4B1DF;
-    border-radius: 5px;
-  }
   
   @media screen and (max-width: 1250px) {
   .box{
@@ -287,10 +457,6 @@ box-shadow: 2px 2px 8px 0 rgba(0, 0, 0, 0.4) inset;
 
     .forgot-pass {
       margin-top: 20px;
-    }
-  
-    .form-control {
-      margin: 15px 55px;
     }
   
     button {

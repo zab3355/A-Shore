@@ -15,6 +15,8 @@ import { MapViewComponent } from './pages/map-view/map-view.component';
 import { HomeComponent } from './pages/home/home.component';
 import { TestComponent } from './pages/test/test.component';
 import { ShoreComponent } from './pages/shore/shore.component';
+import { LoginComponent } from './pages/login/login.component';
+import { SignupComponent } from './pages/signup/signup.component';
 
 import { NetworkService } from './services/network.service';
 import { ConstantsService } from './services/constants.service';
@@ -25,12 +27,14 @@ import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.com
     AppComponent,
     HomeComponent,
     TestComponent,
+    LoginComponent,
+    SignupComponent,
     PageNotFoundComponent,
     TopRibbonComponent,
     LoginSideSectionComponent,
     ShoreComponent,
     TutorialComponent,
-    MapViewComponent
+    MapViewComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,389 @@
+html{
+    height: 100%;
+    width: 100%;
+   }
+   
+   body{
+    width: 100%;
+    height: 100%;
+   }  
+  
+  .logo {
+      width: 30%;
+      margin-top: 40px;
+      margin-bottom: 30px;
+    }
+
+    .login-signup-page {
+      background-image: url("/assets/img/signupBlank.png");
+      background-size: cover;
+      overflow: hidden;
+      height: 100vh;
+    }
+
+  
+    .home-page {
+      background-image: url("/assets/img/TheShore_BKG.png");
+      background-size: cover;
+      overflow: hidden;
+      height: 100vh;
+    }
+  
+    .home-start {
+      background-image: url("/assets/img/Beginning.png");
+      background-size: cover;
+      display: block;
+      overflow: hidden;
+      height: 100vh;
+      transition: opacity 1s ease-in-out;
+      -webkit-transition: opacity 1s ease-in-out;
+      -moz-transition:opacity 1s ease-in-out;
+    }
+    
+    .home-start ~ .animated {
+      opacity: 0;
+    }
+    .home-start ~ .animated {
+       opacity: 1;
+    }
+  
+    .header-welcome {
+        width: 100%;
+        height: auto;
+        font-family: Fredoka One;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 144px;
+        line-height: 174px;
+        align-items: center;
+        text-align: center;
+        letter-spacing: 0.1em;
+        color: #FFFFFF;
+        text-shadow: 0px 10px 10px rgba(55, 99, 255, 0.1);
+    }
+    .header-welcome-highup {
+      width: 100%;
+      /* height: 0px; */
+      margin-top: -125px;
+      margin-bottom: 30px;
+      font-family: Fredoka One;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 144px;
+      line-height: 174px;
+      align-items: center;
+      text-align: center;
+      letter-spacing: 0.1em;
+      color: #FFFFFF;
+      text-shadow: 0px 10px 10px rgba(55, 99, 255, 0.1);
+  
+    }
+    
+    .header-text {
+      color: #7e8ba3;
+    }
+    
+    .login-btn {
+      text-align: center;
+      margin-top: 10px;
+      margin-bottom: 20px;
+      margin-right:100px;
+      margin-left: 70px;      
+    }
+  
+    .code-btn {
+      display: inline-flex;
+      margin-top: 10px;
+      margin-bottom: 20px;
+      margin-right:100px;
+      margin-left:100px;
+    }
+  
+    .code-btn-go {
+      margin-top: 20px;
+      margin-bottom: 20px;
+      margin-right:100px;
+      margin-left:100px;
+    }
+  
+    .code-btn>button {
+      width: 218.29px;
+      background-color: transparent;
+      height: 100px;
+      border: 5px solid #FFFFFF;
+      border-radius: 5px;
+      left: 616.27px;
+      top: 647px;
+      font-family: "Nunito", sans-serif;
+      font-style: normal;
+      font-weight: 800;
+      font-size: 28px;
+      line-height: 49px;
+      align-items: center;
+      text-align: center;
+      color: #FFFFFF;
+  }
+  .code-btn>button:hover {
+    border-color: #b8c8e7;
+    cursor: pointer;
+    color: #b9c4d1;
+  }
+  
+  .code-btn>button:focus {
+    outline: none;
+    box-shadow: 2px 2px 8px 0 rgba(0, 0, 0, 0.4) inset;
+  }
+  
+  
+  .code-btn-go>button {
+    width: 218.29px;
+    background-color: transparent;
+    height: 100px;
+    border: none;
+    border-radius: 5px;
+    left: 616.27px;
+    top: 647px;
+    font-family: "Nunito", sans-serif;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 28px;
+    line-height: 49px;
+    align-items: center;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 5px;
+    color: #FFFFFF;
+  }
+  .code-btn-go>button:hover {
+  cursor: pointer;
+  background: #FFFFFF; 
+  color: #859FF5;
+  border-radius: 5px;
+  }
+  
+  .code-btn-go>button:focus {
+  outline: none;
+  box-shadow: 2px 2px 8px 0 rgba(0, 0, 0, 0.4) inset;
+  }
+  
+  
+    .button-container {
+        display: inline-flex;
+    }
+    
+    .login-btn>button {
+        width: 218.29px;
+        background-color: transparent;
+        height: 100px;
+        border: 5px solid #FFFFFF;
+        border-radius: 5px;
+        left: 616.27px;
+        top: 647px;
+        font-family: "Nunito", sans-serif;
+        font-style: normal;
+        font-weight: 800;
+        font-size: 28px;
+        line-height: 49px;
+        align-items: center;
+        text-align: center;
+        color: #FFFFFF;
+  
+    }
+    
+    .login-btn>button:hover {
+      border-color: #b8c8e7;
+      cursor: pointer;
+      color: #b9c4d1;
+    }
+    
+    .login-btn>button:focus {
+      outline: none;
+      box-shadow: 2px 2px 8px 0 rgba(0, 0, 0, 0.4) inset;
+    }
+    
+    .form-header {
+      color: #d60000;
+      margin: 20px;
+    }
+    
+    .back-btn {
+      margin-top: 40px;
+      width: 40px;
+      height: 40px;
+      cursor: pointer;
+      margin-left: 40px;
+    }
+
+    .back-btn:hover {
+      margin-top: 40px;
+      width: 40px;
+      height: 40px;
+      cursor: pointer;
+      margin-left: 40px;
+    }
+    @-webkit-keyframes pulse-grow-on-hover {
+      to {
+        -webkit-transform: scale(1.1);
+        transform: scale(1.1);
+      }
+    }
+    @keyframes pulse-grow-on-hover {
+      to {
+        -webkit-transform: scale(1.1);
+        transform: scale(1.1);
+      }
+    }
+    .pulse-grow-on-hover {
+      display: inline-block;
+      vertical-align: middle;
+      -webkit-transform: perspective(1px) translateZ(0);
+      transform: perspective(1px) translateZ(0);
+      box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+    }
+    .pulse-grow-on-hover:hover, .pulse-grow-on-hover:focus, .pulse-grow-on-hover:active {
+      -webkit-animation-name: pulse-grow-on-hover;
+      animation-name: pulse-grow-on-hover;
+      -webkit-animation-duration: 0.3s;
+      animation-duration: 0.3s;
+      -webkit-animation-timing-function: linear;
+      animation-timing-function: linear;
+      -webkit-animation-iteration-count: infinite;
+      animation-iteration-count: infinite;
+      -webkit-animation-direction: alternate;
+      animation-direction: alternate;
+    }
+
+    .username-input {
+      border: 0;
+      height: 40px;
+      outline: 0;
+      background: transparent;
+      border-bottom: 4px solid #FFFFFF;
+      color: #FFFFFF;
+      width: 1085px;
+      font-family: Nunito;
+      font-style: normal;
+      font-weight: 900;
+      font-size: 28px;
+    }
+    
+    .enter-num {
+      text-align: center;
+      border: 0;
+  
+    }
+  
+    .code-style{
+      border:none;
+      margin: 20px;
+      text-align: center;
+      background: rgba(255, 255, 255, 0.3);
+      border-radius: 5px;
+      color: #FFFFFF;
+      font-family: Nunito;
+      font-style: normal;
+      font-weight: 800;
+      font-size: 96px;
+    }
+  
+    .code-text{
+      font-family: Nunito;
+      font-style: normal;
+      font-weight: 800;
+      font-size: 36px;
+      line-height: 49px;
+      align-items: center;
+      padding-right: 930px;
+      color: #FFFFFF;
+       
+    }
+  
+    ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+      color: #FFFFFF;
+      opacity: 1; /* Firefox */
+    }
+  
+    .icon-text {
+      height: 20px;
+      width: 20px;
+      margin-right: 10px;
+    }
+    
+    .form-control:focus {
+      outline: none;
+      box-shadow: 2px 2px 8px 0 rgba(0, 0, 0, 0.4) inset;
+    }
+    
+    .box {
+      position: relative;
+      margin-top: 210px;
+    }
+  
+    .code-btn-head {
+      text-align: center;
+    }
+    
+    input {
+      width: 150px;
+      height: 200px;
+      left: 618px;
+      top: 540px;
+      
+      background: #A4B1DF;
+      border-radius: 5px;
+    }
+    
+    @media screen and (max-width: 1250px) {
+    .box{
+      padding-left: 215px;
+    }
+    }
+    // responsive stuff - Hide Section when 850px or Below
+    
+    @media screen and (max-width: 850px){
+      
+      div, .box {
+        display: contents;
+        text-align: center;
+        
+    
+      .logo {
+        width: 50%;    
+      }
+    
+      .header-welcome {
+        padding-top: 150px;
+        font-size: 60px;
+        padding-right: 10px;
+      }
+  
+      .forgot-pass {
+        margin-top: 20px;
+      }
+    
+      .form-control {
+        margin: 15px 55px;
+      }
+    
+      button {
+        margin-top: 20px;
+      }
+  
+      .home-page {
+        background-image: url("/assets/img/TheShore_BKG.png") no-repeat center center fixed;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+        height: 100%;
+        overflow: hidden;
+      }
+        
+        // grid-template-columns: 3fr 1fr;
+      }
+    
+    
+    
+    
+    }
+    
