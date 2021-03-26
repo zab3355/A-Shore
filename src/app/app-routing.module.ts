@@ -4,9 +4,8 @@ import { HomeComponent } from './pages/home/home.component';
 import { TestComponent } from './pages/test/test.component';
 import { ShoreComponent } from './pages/shore/shore.component';
 import { TutorialComponent } from './pages/tutorial/tutorial.component';
-import { MapViewComponent } from './pages/map-view/map-view.component';
+import { MapComponent} from './pages/map/map.component';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
-
 
 //For secure login, we can use this later if we have time
 //import { AuthGuard } from './services/auth.guard';
@@ -20,7 +19,7 @@ const routes: Routes = [
   { path: 'test', component: TestComponent},
   { path: 'shore', component: ShoreComponent},
   { path: 'tutorial', component: TutorialComponent},
-  { path: 'map-view', component: MapViewComponent},
+  { path: 'map', component: MapComponent},
   {path: '**', component: PageNotFoundComponent}
   
 ];
