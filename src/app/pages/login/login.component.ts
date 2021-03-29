@@ -52,6 +52,6 @@ export class LoginComponent implements OnInit {
   
    //Insert service call here for login
     login() {
-  
+      this.toastr.error('This functionality is still under development. Try again later.', '', { timeOut: 3000, positionClass: 'toast-bottom-right' });
     }
   }

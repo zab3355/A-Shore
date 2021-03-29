@@ -8,7 +8,7 @@
 
     <div class="enter-num" *ngIf="page == 1">
         <h3 class="user-text">Username</h3>
-        <input type="text" class="username-input" name="username" [(ngModel)]="username" placeholder="">{{r}} 
+        <input type="text" class="username-input" name="username" [(ngModel)]="username" placeholder=""> 
         <div class="code-btn-rand">
             <button (click)="createRandomName()">create random</button>
         </div>
@@ -17,19 +17,22 @@
 
       <div class="form-group" *ngIf="page == 1">
         <ng-container>
+          <ui>
+            <li>
           <div class="radio-btn">
-            <input type="radio" class="form-control" value="dont-value" name="dont-type" checked="checked">
+            <input type="radio" class="form-control-check" value="dont-value" name="dont-type" checked="checked">
             <label for="Dont" class="radio-label">Don't Share my Location</label>
           </div>
           <div class="radio-btn">
-            <input type="radio" class="form-control" value="current-value" name="current-type">
+            <input type="radio" class="form-control-check" value="current-value" name="current-type">
             <label for="Current" class="radio-label">Use my Current Location</label>
           </div>
           <div class="radio-btn">
-            <input type="radio" class="form-control" value="60-day" name="notice-type">
+            <input type="radio" class="form-control-check" value="60-day" name="notice-type">
             <label for="Manually" class="radio-label">Manually Enter my Location</label>
           </div>
-
+        </li>
+      </ui>
         </ng-container>
       </div>
 

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 
@@ -11,6 +11,8 @@ export class SignupComponent implements OnInit {
 
   constructor(private router: Router, private toastr: ToastrService) { }
  
+  username:string = '';
+
   page = 1;
 
   ngOnInit(): void {
@@ -49,11 +51,16 @@ export class SignupComponent implements OnInit {
  //create random name button, working method...
  createRandomName() {
   let r = Math.random().toString(36).substring(7);
-  return r;
+  this.username = r;
+  console.log(r);
+
+  //return r;
+
  }
 
  //Insert service call here for signup
   signup() {
+    this.toastr.error('This functionality is still under development. Try again later.', '', { timeOut: 3000, positionClass: 'toast-bottom-right' });
     //TODO: Create account
 
     //TODO: Route to the main Shore page if valid

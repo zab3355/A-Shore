@@ -3,7 +3,7 @@
   position: fixed;
   top: 0;
   left: 0;
-  background-color: #333948;
+ // background-color: #333948;
   display: grid;
   grid-template-columns: 250px 58fr 0fr 70px;
   padding-right: 20px;
@@ -31,8 +31,12 @@
 // styling for the name text
 .name {
   display: inline-block;
-  font-size: 1.25em;
-  font-weight: bold;
+  font-family: Nunito;
+  font-style: normal;
+  font-weight: 800;
+  font-size: 18px;
+  line-height: 25px;
+  color: #FFFFFF;
 }
 
 // styling for the notification section (contains the bell icon)
