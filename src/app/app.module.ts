@@ -22,6 +22,7 @@ import { SignupComponent } from './pages/signup/signup.component';
 import { NetworkService } from './services/network.service';
 import { ConstantsService } from './services/constants.service';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
+import { BottleViewModalComponent } from './modals/bottle-view-modal/bottle-view-modal.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.com
     ShoreComponent,
     TutorialComponent,
     MapViewComponent,
+    BottleViewModalComponent,
   ],
   imports: [
     BrowserModule,
