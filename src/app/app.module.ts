@@ -6,6 +6,7 @@ import { GoogleMapsModule } from '@angular/google-maps'
 
 import { AppRoutingModule } from './app-routing.module';
 import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
 import { TopRibbonComponent } from './components/top-ribbon/top-ribbon.component';
 import { LoginSideSectionComponent } from './components/login-side-section/login-side-section.component';
@@ -43,6 +44,7 @@ import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.com
     GoogleMapsModule,
     HttpClientModule,
     ToastrModule.forRoot(),
+    BrowserAnimationsModule,
   ],
   providers: [NetworkService, ConstantsService],
   bootstrap: [AppComponent]

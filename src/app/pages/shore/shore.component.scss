@@ -12,6 +12,7 @@ body{
     background-size: cover;
     overflow: hidden;
     height: 100vh;
+    z-index: 0;
 }
 
 .enter-num {
@@ -20,6 +21,12 @@ body{
 
   }
 
+  .square{
+    background-color: red;
+    width:200px;
+    height: 200px;
+    z-index: 1;
+  }
   .code-style{
     border:none;
     margin: 20px;
