@@ -8,7 +8,8 @@ import { ShoreComponent } from './pages/shore/shore.component';
 import { TutorialComponent } from './pages/tutorial/tutorial.component';
 import { MapViewComponent } from './pages/map-view/map-view.component';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
-
+import { BottleViewComponent } from './pages/bottle-view/bottle-view.component';
+import { BottleCreateComponent } from './pages/bottle-create/bottle-create.component';
 
 //For secure login, we can use this later if we have time
 //import { AuthGuard } from './services/auth.guard';
@@ -23,6 +24,8 @@ const routes: Routes = [
   { path: 'signup', component: SignupComponent},
   { path: 'test', component: TestComponent},
   { path: 'shore', component: ShoreComponent},
+  { path: 'bottle-create', component: BottleCreateComponent},
+  { path: 'bottle-view', component: BottleViewComponent},
   { path: 'tutorial', component: TutorialComponent},
   { path: 'map-view', component: MapViewComponent},
   {path: '**', component: PageNotFoundComponent}

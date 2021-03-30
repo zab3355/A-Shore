@@ -23,6 +23,8 @@ import { NetworkService } from './services/network.service';
 import { ConstantsService } from './services/constants.service';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 import { BottleViewModalComponent } from './modals/bottle-view-modal/bottle-view-modal.component';
+import { BottleViewComponent } from './pages/bottle-view/bottle-view.component';
+import { BottleCreateComponent } from './pages/bottle-create/bottle-create.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +40,8 @@ import { BottleViewModalComponent } from './modals/bottle-view-modal/bottle-view
     TutorialComponent,
     MapViewComponent,
     BottleViewModalComponent,
+    BottleViewComponent,
+    BottleCreateComponent,
   ],
   imports: [
     BrowserModule,

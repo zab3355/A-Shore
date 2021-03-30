@@ -23,6 +23,7 @@ body{
 
   .bottle {
     animation: MoveUpDown 1s linear infinite;
+    cursor: pointer;
   }
 
   @keyframes MoveUpDown {
@@ -32,6 +33,46 @@ body{
     50% {
       transform: translateY(-10px);
     }
+  }
+
+  .createBottle {
+
+  }
+
+  .createBottleText{
+    background: linear-gradient(180deg, #FDD692 0%, #F0B783 48.39%, #FC8E94 119.12%);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.05);
+    border-radius: 5px;
+    
+    border: none;
+    font-family: Nunito;
+    font-style: bold;
+    font-weight: 900;
+    font-size: 24px;
+    line-height: 33px;
+    align-items: center;
+    text-align: center;
+
+    color: #9E4141;
+
+    width: 200px;
+    height: 70px;
+
+  }
+  .triangle-right {
+    border-top: 25px solid transparent;
+    border-left: 50px solid #555;
+    border-bottom: 25px solid transparent;
+    display: inline-block;
+  }
+
+  .triangle-left {
+    width: 0;
+    height: 0;
+    border-top: 25px solid transparent;
+    border-right: 50px solid #555;
+    border-bottom: 25px solid transparent;
+    display: inline-block;
   }
 
   .square{
