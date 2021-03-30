@@ -70,6 +70,32 @@ export class MapViewComponent implements OnInit {
     })
   }
 
+  serverAddMarker() {
+    //TODO: call the database to fill markers[]
+
+    //loops through markers and sets a marker on the point
+    for(var i=0; i < this.markers.length; i++)
+    {
+      new google.maps.Marker({
+        position: this.markers[i],
+        label: String(i),
+        animation: google.maps.Animation.DROP,
+        map: this.map,
+      });
+    }
+
+    //connects the data points
+    let drawPath = new google.maps.Polyline({
+      path: this.markers,
+      geodesic: true,
+      strokeColor: "#FF0000",
+      strokeOpacity: 1.0,
+      strokeWeight: 2,
+    });
+
+    drawPath.setMap(this.map);
+  }
+
   openInfo(marker: MapMarker, content) {
     this.infoContent = content
     this.info.open(marker)
