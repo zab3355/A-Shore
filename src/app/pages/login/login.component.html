@@ -1,0 +1,29 @@
+<div class="login-signup-page">
+    <img class="back-btn pulse-grow-on-hover" routerLinkActive="active" [routerLink]="['/home']" src="assets/img/arrowbackward.png">
+    <div class="box">
+        <div>
+            <h1 *ngIf="page == 1" class="header-welcome-highup">LOG IN</h1>
+        </div>
+    </div>
+
+    <a ></a>
+
+    <form action="#" (ngSubmit)="login()" class="enter-num" *ngIf="page == 1">
+        <div class="form-group">
+            <h3 class="code-text">Username</h3>
+            <input type="text" class="username-input" name="username" [(ngModel)]="username" placeholder="">
+          </div>
+
+        <h3 class="code-text">Log-In Code</h3>
+        <input class="code-style" type="text" maxlength="1" placeholder="-" (keyup)="onDigitInput($event)" />
+        <input class="code-style" type="text" maxlength="1" placeholder="-" (keyup)="onDigitInput($event)" />
+        <input class="code-style" type="text" maxlength="1" placeholder="-" (keyup)="onDigitInput($event)" />
+        <input class="code-style" type="text" maxlength="1" placeholder="-" (keyup)="onDigitInput($event)" />
+        <input class="code-style" type="text" maxlength="1" placeholder="-" (keyup)="onDigitInput($event)" />
+        <input class="code-style" type="text" maxlength="1" placeholder="-" (keyup)="onDigitInput($event)" />
+        
+        <div type="submit" class="code-btn-go">
+            <button (click)="login()">login</button>
+        </div>
+    </form>
+</div>

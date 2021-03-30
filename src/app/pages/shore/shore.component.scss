@@ -8,10 +8,11 @@ body{
     height: 100%;
    }  
 .shore-page {
-    background-image: url("/assets/img/TheShore_BKG.png");
+    background-image: url("/assets/img/userShoreBG.jpg");
     background-size: cover;
     overflow: hidden;
     height: 100vh;
+    z-index: 0;
 }
 
 .enter-num {
@@ -20,6 +21,25 @@ body{
 
   }
 
+  .bottle {
+    animation: MoveUpDown 1s linear infinite;
+  }
+
+  @keyframes MoveUpDown {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+
+  .square{
+    background-color: red;
+    width:200px;
+    height: 200px;
+    z-index: 1;
+  }
   .code-style{
     border:none;
     margin: 20px;
@@ -33,8 +53,9 @@ body{
 
   .code-text{
     font-family: Nunito;
-    font-style: normal;
+    font-style: bold;
     font-weight: 800;
-    font-size: 24px;
+    font-size: 30px;
     color: #FFFFFF; 
+    margin-top:200px;
   }

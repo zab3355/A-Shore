@@ -1,0 +1,59 @@
+<div class="login-signup-page">
+    <img class="back-btn pulse-grow-on-hover" routerLinkActive="active" [routerLink]="['/home']" src="assets/img/arrowbackward.png">
+    <div class="box">
+        <div>
+            <h1 class="header-welcome-highup">SIGN UP</h1>
+        </div>
+    </div>
+
+    <div class="enter-num" *ngIf="page == 1">
+        <h3 class="user-text">Username</h3>
+        <input type="text" class="username-input" name="username" [(ngModel)]="username" placeholder=""> 
+        <div class="code-btn-rand">
+            <button (click)="createRandomName()">create random</button>
+        </div>
+
+      <h3 class="user-text" *ngIf="page == 1">Location</h3>
+
+      <div class="form-group" *ngIf="page == 1">
+        <ng-container>
+          <ui>
+            <li>
+          <div class="radio-btn">
+            <input type="radio" class="form-control-check" value="dont-value" name="dont-type" checked="checked">
+            <label for="Dont" class="radio-label">Don't Share my Location</label>
+          </div>
+          <div class="radio-btn">
+            <input type="radio" class="form-control-check" value="current-value" name="current-type">
+            <label for="Current" class="radio-label">Use my Current Location</label>
+          </div>
+          <div class="radio-btn">
+            <input type="radio" class="form-control-check" value="60-day" name="notice-type">
+            <label for="Manually" class="radio-label">Manually Enter my Location</label>
+          </div>
+        </li>
+      </ui>
+        </ng-container>
+      </div>
+
+      <div type="submit" class="code-btn-go" *ngIf="page == 1">
+        <button (click)="next()">next</button>
+    </div>
+</div>
+
+    <form class="enter-num" *ngIf="page == 2">
+        <h5 class="code-text">This is your unique 6-digit log-in code.</h5>
+        <h5 class="code-text">Please write this down or save for future use.</h5>
+        <input class="code-style" type="text" maxlength="1" (keyup)="onDigitInput($event)" />
+        <input class="code-style" type="text" maxlength="1" (keyup)="onDigitInput($event)"/>
+        <input class="code-style" type="text" maxlength="1" (keyup)="onDigitInput($event)" />
+        <input class="code-style" type="text" maxlength="1" (keyup)="onDigitInput($event)"/>
+        <input class="code-style" type="text" maxlength="1" (keyup)="onDigitInput($event)"/>
+        <input class="code-style" type="text" maxlength="1" (keyup)="onDigitInput($event)"/>
+        
+        <div type="submit" class="code-btn-go">
+            <button (click)="signup()">done</button>
+        </div>
+    </form>
+</div>
+
