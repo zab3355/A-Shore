@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { MapInfoWindow, MapMarker, GoogleMap } from '@angular/google-maps'
+import { read } from 'node:fs';
 
 @Component({
   selector: 'app-map-view',
@@ -72,19 +73,27 @@ export class MapViewComponent implements OnInit {
 
   serverAddMarker() {
     //TODO: call the database to fill markers[]
-
+      var markerData = []
     //loops through markers and sets a marker on the point
-    for(var i=0; i < this.markers.length; i++)
-    {
-      new google.maps.Marker({
-        position: this.markers[i],
-        label: String(i),
-        animation: google.maps.Animation.DROP,
-        map: this.map,
-      });
+
+      for(var i =0; i < markerData.length; i++)
+      {this.markers.push({
+        //change all instances of markers below this line to what ever we set the array name of the data from the database
+        position: {
+          lat: markerData[i].lat,
+          lng: markerData[i].lng,
+        },
+        label: {
+            color: 'red',
+            text: String(i),
+        },
+        title: String(i),
+        options: { animation: google.maps.Animation.DROP},
+      })
     }
 
     //connects the data points
+    /*
     let drawPath = new google.maps.Polyline({
       path: this.markers,
       geodesic: true,
@@ -94,6 +103,7 @@ export class MapViewComponent implements OnInit {
     });
 
     drawPath.setMap(this.map);
+    */
   }
 
   openInfo(marker: MapMarker, content) {
