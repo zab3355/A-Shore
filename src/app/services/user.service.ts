@@ -11,7 +11,7 @@ export class UserService {
     this.api_url = ConstantsService.getApiUrl();
   }
 
-  login(username, loginCode) {
+  login(username, code) {
     const url = this.api_url + '/login';
     const body = {
       username: username,
