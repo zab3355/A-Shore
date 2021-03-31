@@ -11,11 +11,11 @@ export class UserService {
     this.api_url = ConstantsService.getApiUrl();
   }
 
-  login(username, code) {
+  login(username, loginCode) {
     const url = this.api_url + '/login';
     const body = {
       username: username,
-      code: code
+      loginCode: loginCode
     }
     return this.networkService.httpPost(url, body);
   }
@@ -25,7 +25,7 @@ export class UserService {
     const url = this.api_url + '/signup';
     const body = {
       username: userInfo.username,
-      code: userInfo.code,
+      loginCode: userInfo.loginCode,
       lat: userInfo.lat,
       lng: userInfo.lng
     }

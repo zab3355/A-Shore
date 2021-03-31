@@ -18,7 +18,7 @@ export class LoginComponent implements OnInit {
 
   // ngModel values
     username: string = '';
-    code: string = '';
+    loginCode: string = '';
 
     usernameTaken = true;
   
@@ -43,10 +43,10 @@ export class LoginComponent implements OnInit {
     //For code input 
     onDigitInput(event){
       let element;
-      if (event.code !== 'Backspace')
+      if (event.loginCode !== 'Backspace')
            element = event.srcElement.nextElementSibling;
    
-       if (event.code === 'Backspace')
+       if (event.loginCode === 'Backspace')
            element = event.srcElement.previousElementSibling;
    
        if(element == null)
@@ -57,15 +57,15 @@ export class LoginComponent implements OnInit {
   
    //Insert service call here for login
    login() {
-    this.userService.login(this.username, this.code).subscribe(response => {
+    this.userService.login(this.username, this.loginCode).subscribe(response => {
       console.log(response);
       const user = {
         username: response.username,
-        code: response.code
+        loginCode: response.loginCode
       };
      // ConstantsService.setUserInfo(user);
     }, (error) => {
-      this.code = '';
+      this.loginCode = '';
       this.toastr.error('Incorrect Login', '', { timeOut: 3000, positionClass: 'toast-bottom-right' });
     });
   }
