@@ -15,7 +15,7 @@ export class UserService {
     const url = this.api_url + '/login';
     const body = {
       username: username,
-      loginCode: loginCode
+      code: code
     }
     return this.networkService.httpPost(url, body);
   }
@@ -25,7 +25,7 @@ export class UserService {
     const url = this.api_url + '/signup';
     const body = {
       username: userInfo.username,
-      loginCode: userInfo.loginCode,
+      code: userInfo.code,
       lat: userInfo.lat,
       lng: userInfo.lng
     }
