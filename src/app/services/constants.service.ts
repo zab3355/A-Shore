@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
 
 //#region Constants
-const JWT = 'jwt';
+const TOKEN = 'token';
 const LOGINTOKEN = 'LoginToken';
 //#endregion
 
@@ -17,24 +17,22 @@ export class ConstantsService {
     }
     //#endregion
 
-    //#region JWT Calls
-    static getJWT() {
-        const token = sessionStorage.getItem(JWT);
-        if (token) {
-            return token;
-        } else {
-            return '';
-        }
+// Token for calls (Get/Set/Clear)
+  static getToken() {
+    const token = sessionStorage.getItem(TOKEN);
+    if (token) {
+      return token;
+    } else {
+      return '';
     }
-    //#endregion
+  }
+  static saveToken(token: string) {
+    sessionStorage.setItem(TOKEN, token);
+  }
+  static deleteToken() {
+    sessionStorage.removeItem(TOKEN);
+  }
 
-    static setLoginToken(jwt) {
-        sessionStorage.setItem(LOGINTOKEN, jwt);
-    }
-
-    static deleteToken() {
-        sessionStorage.removeItem(JWT);
-    }
     static logout() {
         sessionStorage.clear();
     }

@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ConstantsService } from 'src/app/services/constants.service';
+import { UserService } from 'src/app/services/user.service';
+
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
   
@@ -9,13 +12,15 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class LoginComponent implements OnInit {
   
-    constructor(private router: Router, private toastr: ToastrService) { }
+    constructor(private router: Router, private toastr: ToastrService, private userService: UserService) { }
    
     page = 1;
 
   // ngModel values
     username: string = '';
     code: string = '';
+
+    usernameTaken = true;
   
     ngOnInit(): void {
     }
@@ -51,7 +56,31 @@ export class LoginComponent implements OnInit {
    }
   
    //Insert service call here for login
-    login() {
-      this.toastr.error('This functionality is still under development. Try again later.', '', { timeOut: 3000, positionClass: 'toast-bottom-right' });
-    }
+   login() {
+    this.userService.login(this.username, this.code).subscribe(response => {
+      console.log(response);
+      const user = {
+        username: response.username,
+        code: response.code
+      };
+     // ConstantsService.setUserInfo(user);
+    }, (error) => {
+      this.code = '';
+      this.toastr.error('Incorrect Login', '', { timeOut: 3000, positionClass: 'toast-bottom-right' });
+    });
   }
+
+  isUsernameValid() {
+    this.usernameTaken = true;
+
+    if (this.userService.isUsernameTaken(this.username)) {
+      document.getElementById("usernameEnter").classList.remove("error");
+        this.usernameTaken = true;
+        return true;
+      }
+      else {
+        this.usernameTaken = false;
+        return false;
+      }
+    }
+}

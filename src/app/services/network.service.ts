@@ -13,15 +13,12 @@ export class NetworkService {
   constructor(private http: HttpClient) { }
 
   // Sets header for requests
-  getRequestHeader() {
-    if (ConstantsService.getJWT()) {
-      return new HttpHeaders({
-        'dash_jwt': ConstantsService.getJWT()
-      });
-    } else {
-      return new HttpHeaders({})
+    getRequestHeader() {
+        return new HttpHeaders({
+            'x-access-token': ConstantsService.getToken()
+        });
+
     }
-  }
 
   /**
    * @description GET Request - Returns a response json object if status code is 200. Else returns a message
