@@ -13,6 +13,7 @@ const router = (app) => {
     app.get('/api/getMessage',controllers.Messages.getMessage);
     app.get('/api/populate', controllers.Messages.populateMessages);
     app.post('/api/addComment', controllers.Messages.addComment);
+    app.post('/api/addViewer', controllers.Messages.addViewedBy);
 
     app.get('/api/populateLocations',controllers.Location.populateLocations);
     app.get('/api/getLocations', controllers.Location.getAllLocations);
@@ -22,6 +23,7 @@ const router = (app) => {
     app.post('/api/login',  controllers.Users.login);
     //app.post('/changePassword', mid.requiresSecure, mid.requiresLogout, controllers.Account.changePassword);
     app.post('/api/signup',  controllers.Users.signup);
+    app.post('/api/addRelativeLocationUser',  controllers.Users.addRelativeLocationUser);
     app.get('/api/getUsers',controllers.Users.getAllUsers);
 
 

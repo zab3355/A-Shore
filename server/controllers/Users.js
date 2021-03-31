@@ -1,4 +1,5 @@
 const axios = require('axios').default;
+const where = require('where');
 
 const models = require('../models');
 
@@ -62,12 +63,12 @@ const signup = (request, response) => {
     // ?
     const req = request;
     const res = response;
-  
+
     // casting for security
     req.body.username = `${req.body.username}`;
     req.body.lat = `${req.body.lat}`;
     req.body.lng = `${req.body.lng}`;
-  
+
     // validate
     if (!req.body.username) {
       return res.status(400).json({ error: 'Username is required' });
@@ -101,7 +102,38 @@ const signup = (request, response) => {
       //add no loc
       return addUser(data, req, res);
     }
-    
+
+};
+
+const addRelativeLocationUser = (req, res) => {
+  if (!req.body.username) {
+    return res.status(400).json({ error: 'Username is required' });
+  }
+  // if (!req.body.city) {
+  //   return res.status(400).json({ error: 'City is required' });
+  // }
+  if (!req.body.display_name) {
+    return res.status(400).json({ error: 'State is required' });
+  }
+  if (!req.body.country) {
+    return res.status(400).json({ error: 'Country is required' });
+  }
+  const geocoder = new where.Geocoder;
+
+  geocoder.toPoint({
+    //city: req.body.city,
+    display_name: req.body.display_name,
+    country_code: req.body.country
+  }).then((points) => {
+    req.body.lat = points[0].lat;
+    req.body.lng = points[0].lon;
+    return signup(req, res);
+    //return res.json({data: points})
+  }).catch((err) => {
+    console.log(err)
+    return res.status(500).json({error: 'Invalid Location. Please try again later'})
+  })
+
 };
 
 const addUser  = (data, req, res) => {
@@ -126,5 +158,6 @@ module.exports = {
   login,
   logout,
   signup,
-  getAllUsers
+  getAllUsers,
+  addRelativeLocationUser
 };

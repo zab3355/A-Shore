@@ -23,11 +23,17 @@ const MessagesSchema = new mongoose.Schema({
             type: Date,
             default: Date.now,
         },
-    }]
-    
+    }],
+    viewedBy: [{
+        user: {
+          type: mongoose.Schema.Types.ObjectId,
+          ref: 'Users'
+        }
+    }],
+
 });
 //getting all the messages
-MessagesSchema.statics.getAllMessages = (cb) => 
+MessagesSchema.statics.getAllMessages = (cb) =>
 MessagesModel.find({}).populate("postedBy").populate("comments.postedBy").lean().exec(cb)
 
 MessagesSchema.statics.getMessage = (id, cb) => {

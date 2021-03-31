@@ -46,6 +46,26 @@ const addComment = (req, res) => {
   )
 };
 
+const addViewedBy = (req, res) => {
+  if (!req.body.id) {
+    return res.status(400).json({ error: 'id is required' });
+  };
+  if (!req.body.viewerId) {
+    return res.status(400).json({ error: 'Viewer id is required' });
+  }
+  const view = {user: req.body.viewerId }
+  return Messages.MessagesModel.findOneAndUpdate(
+    {_id: req.body.id},
+    { $push: {viewedBy: view} },
+    (err, success) => {
+      if (err) {
+        return res.status(400).json({error: 'Could Not Add Viewer'})
+      }
+      return res.json({data: success})
+    }
+  )
+};
+
 const addMessage = (req, res) => {
     const { data } = req.body;
 
@@ -98,5 +118,6 @@ module.exports = {
     addMessage,
     populateMessages,
     getMessage,
-    addComment
+    addComment,
+    addViewedBy
 }
