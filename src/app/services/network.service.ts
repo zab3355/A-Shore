@@ -12,10 +12,10 @@ export class NetworkService {
 
   constructor(private http: HttpClient) { }
 
-  // Sets header for requests
+  // Sets header for requests (we dont need a token)
     getRequestHeader() {
         return new HttpHeaders({
-            'x-access-token': ConstantsService.getToken()
+          //  'x-access-token': ConstantsService.getToken()
         });
 
     }
