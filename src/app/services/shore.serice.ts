@@ -14,6 +14,12 @@ export class ShoreService {
         this.api_url = ConstantsService.getApiUrl();
     } 
 
+
+    getMessages() {
+        const url = `${this.api_url}/getMessages`;
+        return this.networkService.httpGet(url);
+    }
+
     //Put endpoints below this line
 
 
