@@ -1,4 +1,5 @@
 const express = require('express');
+const cors = require('cors'); 
 const path = require('path');
 const mongoose = require('mongoose');
 const compression = require('compression');
@@ -10,6 +11,7 @@ const RedisStore = require('connect-redis')(session);
 const url = require('url');
 //https://daveceddia.com/deploy-react-express-app-heroku/
 const app = express();
+app.use(cors());
 
 const dbURL = process.env.MONGODB_URI || 'mongodb://localhost/theShore'
 
@@ -56,6 +58,7 @@ app.use(bodyParser.urlencoded({
   extended: true,
 }));
 
+
 app.use(session({
     key: 'sessionid',
     store: new RedisStore({
@@ -69,6 +72,18 @@ app.use(session({
       httpOnly: true,
     },
 }));
+
+//Handling pre-flight requests
+app.use(function(req, res, next){
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
+  
+    if(req.method === 'OPTIONS'){
+        res.status(204).send();
+    }else{
+        next();
+    }
+  })
 
 // Put all API endpoints under '/api'
 router(app);

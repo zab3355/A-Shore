@@ -1,6 +1,7 @@
 import { Injectable, EventEmitter } from '@angular/core';
 import { NetworkService } from './network.service';
 import { ConstantsService } from './constants.service';
+import { HttpParams } from '@angular/common/http'; // yummy not-deprecated stuff
 
 @Injectable({
   providedIn: 'root'
@@ -13,57 +14,18 @@ export class UserService {
 
   login(username, code) {
     const url = this.api_url + '/login';
-    const body = {
-      username: username,
-      code: code
-    }
-    return this.networkService.httpPost(url, body);
+    const payload = new HttpParams()
+    .set('username', username)
+    .set('code', code);
+    return this.networkService.httpPost(url, payload);
   }
 
 
-  signup(userInfo) {
+  signup(username) {
     const url = this.api_url + '/signup';
-    const body = {
-      username: userInfo.username,
-      code: userInfo.code,
-      lat: userInfo.lat,
-      lng: userInfo.lng
-    }
-    return this.networkService.httpPost(url, body);
+    const payload = new HttpParams()
+    .set('username', username)
+    
+    return this.networkService.httpPost(url, payload);
   }
-
-
-  isUsernameTaken(username) {
-    const url = `${this.api_url}/check-username?username=${username}`;
-
-    this.networkService.httpGet(url).subscribe(response => {
-      if (response.username) {
-        return [true, "Username already registered to an account."]; // username taken
-      }
-      else {
-        return [false, ""];
-      }
-    });
-
-    return [false, ""];
-  }
-
-  isUsernameValid(username) {
-    if (username) {
-
-      if (username.length < 5) {
-        return [false, "Username must be five or more characters long."]; // length is too short
-      }
-      if (username.length > 128) {
-        return [false, "username cannot be more than 128 characters long."]; // length is too long
-      }
-    }
-    else {
-      return [false, "A valid username is required."];
-    }
-  }
-
-
-
-
 }

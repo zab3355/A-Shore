@@ -1,6 +1,6 @@
 import { Injectable, isDevMode } from '@angular/core';
 //import { Http, RequestOptions, Headers, Response } from '@angular/http'; // yucky deprecated stuff
-import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http'; // yummy not-deprecated stuff
+import { HttpClient, HttpHeaders, HttpResponse, HttpParams } from '@angular/common/http'; // yummy not-deprecated stuff
 import { Observable, Subject, throwError } from 'rxjs';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
@@ -12,14 +12,19 @@ export class NetworkService {
 
   constructor(private http: HttpClient) { }
 
-
+  // Sets header for requests
+    getRequestHeader() {
+      return new HttpHeaders({
+        'Content-Type': 'application/x-www-form-urlencoded'
+      })
+    }
 
   /**
    * @description GET Request - Returns a response json object if status code is 200. Else returns a message
    * @paFram url Request URL
    */
   httpGet(url: string) {
-    return this.http.get(url)
+    return this.http.get(url, { headers: this.getRequestHeader() })
       .map((response: HttpResponse<any>) => {
         // Response without any issues.. return as it is
         return response as any;
@@ -36,7 +41,7 @@ export class NetworkService {
           if (isDevMode()) {
             console.error({
               request_url: url,
-             // request_headers: this.getRequestHeader(),
+              request_headers: this.getRequestHeader(),
               request_method: 'GET',
               error: error_json
             });
@@ -51,7 +56,7 @@ export class NetworkService {
    * @param url Request URL
    */
   httpPost(url: string, request_body: any) {
-    return this.http.post(url, request_body)
+    return this.http.post(url, request_body, { headers: this.getRequestHeader() })
       .map((response: HttpResponse<any>) => {
         // Response without any issues.. return as it is
         return response as any;
@@ -68,7 +73,7 @@ export class NetworkService {
           if (isDevMode()) {
             console.error({
               request_url: url,
-             // request_headers: this.getRequestHeader(),
+              request_headers: this.getRequestHeader(),
               request_method: 'POST',
               request_body: request_body,
               error: error_json
@@ -84,7 +89,7 @@ export class NetworkService {
    * @param url Request URL
    */
   httpPut(url: string, request_body: any) {
-    return this.http.put(url, request_body)
+    return this.http.put(url, request_body, { headers: this.getRequestHeader() })
       .map((response: HttpResponse<any>) => {
         // Response without any issues.. return as it is
         return response as any;
@@ -101,7 +106,7 @@ export class NetworkService {
           if (isDevMode()) {
             console.error({
               request_url: url,
-             // request_headers: this.getRequestHeader(),
+              request_headers: this.getRequestHeader(),
               request_method: 'PUT',
               request_body: request_body,
               error: error_json
@@ -117,7 +122,7 @@ export class NetworkService {
    * @param url Request URL
    */
   httpDelete(url: string, request_body: any) {
-    return this.http.request('delete', url, { body: request_body })
+    return this.http.request('delete', url, { headers: this.getRequestHeader(), body: request_body })
       .map((response: HttpResponse<any>) => {
         // Response without any issues.. return as it is
         return response as any;
@@ -134,7 +139,7 @@ export class NetworkService {
           if (isDevMode()) {
             console.error({
               request_url: url,
-             // request_headers: this.getRequestHeader(),
+              request_headers: this.getRequestHeader(),
               request_method: 'DELETE',
               request_body: request_body,
               error: error_json
@@ -167,7 +172,7 @@ export class NetworkService {
           if (isDevMode()) {
             console.error({
               request_url: url,
-             // request_headers: this.getRequestHeader(),
+              request_headers: this.getRequestHeader(),
               request_method: 'GET',
               error: error_json
             });
