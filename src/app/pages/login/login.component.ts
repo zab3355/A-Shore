@@ -18,11 +18,20 @@ export class LoginComponent implements OnInit {
 
   // ngModel values
     username: string = '';
-    code: string = '';
-
+    code = {
+      input1: '',
+      input2: '',
+      input3: '',
+      input4: '',
+      input5: '',
+      input6: ''
+    }
+    
+    codeTotal: string = '';
     usernameTaken = true;
   
     ngOnInit(): void {
+      this.codeTotal = this.code.input1 + this.code.input2 + this.code.input3 + this.code.input4 + this.code.input5 + this.code.input6;
     }
   
     //Go to next page
@@ -57,15 +66,16 @@ export class LoginComponent implements OnInit {
   
    //Insert service call here for login
    login() {
-    this.userService.login(this.username, this.code).subscribe(response => {
+    this.codeTotal = this.code.input1 + this.code.input2 + this.code.input3 + this.code.input4 + this.code.input5 + this.code.input6;
+    this.userService.login(this.username, this.codeTotal).subscribe(response => {
       console.log(response);
       const user = {
         username: response.username,
-        code: response.code
+        codeTotal: response.codeTotal
       };
+      this.router.navigateByUrl('/shore');
      // ConstantsService.setUserInfo(user);
     }, (error) => {
-      this.code = '';
       this.toastr.error('Incorrect Login', '', { timeOut: 3000, positionClass: 'toast-bottom-right' });
     });
   }
@@ -73,7 +83,7 @@ export class LoginComponent implements OnInit {
   isUsernameValid() {
     this.usernameTaken = true;
 
-    if (this.userService.isUsernameTaken(this.username)) {
+   /* if (this.userService.isUsernameTaken(this.username)) {
       document.getElementById("usernameEnter").classList.remove("error");
         this.usernameTaken = true;
         return true;
@@ -81,6 +91,6 @@ export class LoginComponent implements OnInit {
       else {
         this.usernameTaken = false;
         return false;
-      }
+      }*/
     }
 }

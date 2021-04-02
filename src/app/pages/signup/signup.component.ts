@@ -12,9 +12,13 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class SignupComponent implements OnInit {
 
-  constructor(private router: Router, private toastr: ToastrService) { }
+  constructor(private router: Router, private toastr: ToastrService, private userService: UserService) { }
  
   username:string = '';
+  code: string = '';
+
+  submitted = false;
+  
 
   page = 1;
 
@@ -63,7 +67,22 @@ export class SignupComponent implements OnInit {
 
  //Insert service call here for signup
   signup() {
-    this.toastr.error('This functionality is still under development. Try again later.', '', { timeOut: 3000, positionClass: 'toast-bottom-right' });
+    this.page++;
+    this.userService.signup(this.username).subscribe(res => {
+      console.log(res);
+      if(res.success) {
+        this.code = res.message;
+        console.log(res.message);
+        this.submitted = true;
+        this.toastr.success('Signup successful. Copy this code for later.');
+      }
+      else {
+        console.log(res);
+        this.toastr.error('This functionality is still under development. Try again later.', '', { timeOut: 3000, positionClass: 'toast-bottom-right' });
+      }
+
+    });
+
     //TODO: Create account
 
     //TODO: Route to the main Shore page if valid

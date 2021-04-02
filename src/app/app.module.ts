@@ -21,6 +21,7 @@ import { SignupComponent } from './pages/signup/signup.component';
 
 import { NetworkService } from './services/network.service';
 import { ConstantsService } from './services/constants.service';
+import { AuthGuard } from './services/auth.guard';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 import { BottleViewModalComponent } from './modals/bottle-view-modal/bottle-view-modal.component';
 import { BottleViewComponent } from './pages/bottle-view/bottle-view.component';
@@ -52,7 +53,7 @@ import { BottleCreateComponent } from './pages/bottle-create/bottle-create.compo
     ToastrModule.forRoot(),
     BrowserAnimationsModule,
   ],
-  providers: [NetworkService, ConstantsService],
+  providers: [NetworkService, ConstantsService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

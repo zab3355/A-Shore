@@ -21,15 +21,15 @@
             <li>
           <div class="radio-btn">
             <input type="radio" class="form-control-check"  name="dont-type" checked="checked">
-            <label for="Dont" class="radio-label">Don't Share my Location</label>
+            <label  class="radio-label">Don't Share my Location</label>
           </div>
           <div class="radio-btn">
             <input type="radio" class="form-control-check" name="current-type">
-            <label for="Current" class="radio-label">Use my Current Location</label>
+            <label class="radio-label">Use my Current Location</label>
           </div>
           <div class="radio-btn">
             <input type="radio" class="form-control-check" name="notice-type">
-            <label for="Manually" class="radio-label">Manually Enter my Location</label>
+            <label  class="radio-label">Manually Enter my Location</label>
           </div>
         </li>
       </ui>
@@ -37,14 +37,14 @@
       </div>
 
       <div type="submit" class="code-btn-go" *ngIf="page == 1">
-        <button (click)="next()">next</button>
+        <button (click)="signup()">next</button>
     </div>
 </div>
 
     <form class="enter-num" *ngIf="page == 2">
         <h5 class="code-text">This is your unique 6-digit log-in code.</h5>
         <h5 class="code-text">Please write this down or save for future use.</h5>
-        <input class="code-style" type="text" maxlength="1" (keyup)="onDigitInput($event)" />
+        <input class="code-style" type="text" maxlength="1" (keyup)="onDigitInput($event)" placeholder="{{code[0]}}"/>
         <input class="code-style" type="text" maxlength="1" (keyup)="onDigitInput($event)"/>
         <input class="code-style" type="text" maxlength="1" (keyup)="onDigitInput($event)" />
         <input class="code-style" type="text" maxlength="1" (keyup)="onDigitInput($event)"/>
@@ -52,7 +52,7 @@
         <input class="code-style" type="text" maxlength="1" (keyup)="onDigitInput($event)"/>
         
         <div type="submit" class="code-btn-go">
-            <button (click)="signup()">done</button>
+            <button [routerLink]="['/login']" >done</button>
         </div>
     </form>
 </div>
