@@ -44,12 +44,12 @@
     <form class="enter-num" *ngIf="page == 2">
         <h5 class="code-text">This is your unique 6-digit log-in code.</h5>
         <h5 class="code-text">Please write this down or save for future use.</h5>
-        <input class="code-style" type="text" maxlength="1" (keyup)="onDigitInput($event)" placeholder="{{code[0]}}"/>
-        <input class="code-style" type="text" maxlength="1" (keyup)="onDigitInput($event)"/>
-        <input class="code-style" type="text" maxlength="1" (keyup)="onDigitInput($event)" />
-        <input class="code-style" type="text" maxlength="1" (keyup)="onDigitInput($event)"/>
-        <input class="code-style" type="text" maxlength="1" (keyup)="onDigitInput($event)"/>
-        <input class="code-style" type="text" maxlength="1" (keyup)="onDigitInput($event)"/>
+        <h1 class="code-style">{{code[0]}}</h1>
+        <h1 class="code-style">{{code[1]}}</h1>
+        <h1 class="code-style">{{code[2]}}</h1>
+        <h1 class="code-style">{{code[3]}}</h1>
+        <h1 class="code-style">{{code[4]}}</h1>
+        <h1 class="code-style">{{code[5]}}</h1>
         
         <div type="submit" class="code-btn-go">
             <button [routerLink]="['/login']" >done</button>

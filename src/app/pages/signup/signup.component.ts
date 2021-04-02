@@ -67,12 +67,12 @@ export class SignupComponent implements OnInit {
 
  //Insert service call here for signup
   signup() {
-    this.page++;
     this.userService.signup(this.username).subscribe(res => {
       console.log(res);
-      if(res.success) {
-        this.code = res.message;
-        console.log(res.message);
+      if(res) {
+        this.code = res.loginCode;
+        console.log(res.loginCode);
+        this.page++;
         this.submitted = true;
         this.toastr.success('Signup successful. Copy this code for later.');
       }

@@ -73,6 +73,7 @@ export class LoginComponent implements OnInit {
         username: response.username,
         codeTotal: response.codeTotal
       };
+      ConstantsService.saveToken(response.token);
       this.router.navigateByUrl('/shore');
      // ConstantsService.setUserInfo(user);
     }, (error) => {
