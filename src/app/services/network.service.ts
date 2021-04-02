@@ -4,7 +4,6 @@ import { HttpClient, HttpHeaders, HttpResponse, HttpParams } from '@angular/comm
 import { Observable, Subject, throwError } from 'rxjs';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
-import { ConstantsService } from './constants.service';
 
 @Injectable()
 
