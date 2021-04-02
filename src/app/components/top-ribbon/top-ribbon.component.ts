@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ConstantsService } from 'src/app/services/constants.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
     selector: 'app-top-ribbon',
@@ -8,10 +10,9 @@ import { Router } from '@angular/router';
   })
 export class TopRibbonComponent {
 
-    fname: String = '';
-    lname: String = '';
+    username: String = '';
 
-    constructor(private router:Router) {
+    constructor(private router:Router, private constantsService: ConstantsService, private userService: UserService) {
     }
 
     editSettings(){
