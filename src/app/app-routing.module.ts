@@ -24,7 +24,7 @@ const routes: Routes = [
   { path: 'shore', component: ShoreComponent},
   { path: 'bottle-create', component: BottleCreateComponent},
   { path: 'bottle-view', component: BottleViewComponent},
-  { path: 'tutorial', component: TutorialComponent, canActivate: [AuthGuard]},
+  { path: 'tutorial', component: TutorialComponent},
   { path: 'map-view', component: MapViewComponent},
   {path: '**', component: PageNotFoundComponent}
   
