@@ -3,15 +3,9 @@
     <form class="enter-num">
         <h5 class="code-text">Click on any bottle to view.</h5>
         <div class="bottle" (click)="viewBottle()"><a><img src="assets/img/bottles.png"></a></div>
-        <div class="createBottle" (click)="createBottle()">
-            <button class="createBottleText">create a bottle</button>
-            <div class="triangle-right"></div>
-        </div>
-        <div class="createBottle" (click)="settingsEvent()">
-            <div class="triangle-left"></div>
-            <button class="createBottleText">settings</button>
-
-        </div>
+            <div class="signpostStyle"><a><img src="assets/img/signpost.png"></a></div>
+            <button (click)="createBottle()" class="arrow">create a bottle</button>
+            <button (click)="settingsEvent()" class="arrowbackward">settings</button>
     </form>
     <canvas #canvas width="1920" height="1080"></canvas>
 </div>

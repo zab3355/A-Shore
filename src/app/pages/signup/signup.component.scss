@@ -312,15 +312,15 @@ box-shadow: 2px 2px 8px 0 rgba(0, 0, 0, 0.4) inset;
 
   .code-style{
     font-family: Nunito;
-font-style: normal;
-font-weight: 800;
-font-size: 96px;
-line-height: 131px;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 96px;
+    line-height: 131px;
     line-height: 49px;
     align-items: center;
     color: #FFFFFF;
-text-align: center;
-display: inline-block;
+    text-align: center;
+    display: inline-block;
   }
 
   .code-text{
@@ -492,15 +492,20 @@ ul li .check::before {
 }
 
 .form-control-check:checked ~ .check {
-  border: 5px solid #0DFF92;
+  border: 10px solid #FFFFFF;
+  font-size: 26px;
+  font-weight: bolder;
 }
 
 .form-control-check:checked ~ .check::before{
-  background: #0DFF92;
+  background: #FFFFFF;
+  font-size: 1
 }
 
 .form-control-check:checked ~ label{
-  color: #0DFF92;
+  color: #FFFFFF;
+  font-size: 26px;
+  font-weight: bolder;
 }
 
   

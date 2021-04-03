@@ -35,8 +35,118 @@ body{
     }
   }
 
-  .createBottle {
+  .signpostStyle {
+    float: left;
+    position: absolute;
+  }
 
+  .arrow {
+    background: #facd8e;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.05);
+    cursor: pointer;
+    float: left;
+    display: inline-block;
+    height: 60px;
+    margin-left: 140px;
+    margin-right: 64px;
+    margin-top: 20px;
+    position: relative;
+    line-height: 2.5em;
+    padding-left: 1em;
+    padding-right: 2em;
+    border: none;
+
+    font-family: Nunito;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 24px;
+    line-height: 33px;
+    align-items: center;
+    text-align: center;
+
+    color: #9E4141; 
+     &:after {
+      // triangle hover color
+      border-left: 35px solid #facd8e;;
+    }
+  }
+  
+  .arrow:after {
+    // the triangle
+    content: "";
+    position: absolute;
+    border-bottom: 30px solid transparent;
+    border-top: 30px solid transparent;
+    height: 0px;
+    width: 0px;
+    margin-right: -35px;
+    right: 0;
+    margin-top: -14px;
+  }
+  
+  .arrow:hover, .arrow:active {
+    background: #facd8e;
+    border: 5px solid white;
+    &:after {
+      // triangle hover
+      border-left: 35px solid #facd8e;;
+    }
+  }
+
+  .arrowbackward {
+    background: #facd8e;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.05);
+    cursor: pointer;
+    float: left;
+    display: inline-block;
+    height: 60px;
+    margin-left: -285px;
+    margin-right: 64px;
+    margin-top: 100px;
+    position: relative;
+    padding-left: 1em;
+    padding-right: 2em;
+    border: none;
+
+    font-family: Nunito;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 24px;
+    line-height: 33px;
+    align-items: center;
+    text-align: center;
+
+    color: #9E4141; 
+
+     &:after {
+      // triangle hover color
+      border-right: 35px solid #facd8e;;
+    }
+  }
+  
+  .arrowbackward:after {
+    // the triangle
+    content: "";
+    position: absolute;
+    border-bottom: 30px solid transparent;
+    border-top: 30px solid transparent;
+    height: 0px;
+    width: 0px;
+    margin-top: -14px;
+    margin-right: 155px;
+    right: 0; 
+  }
+  
+  .arrowbackward:hover, .arrowbackward:active {
+    background: #facd8e;
+    border: 5px solid white;
+    &:after {
+      // triangle hover
+ 
+      -moz-border-image: -moz-linear-gradient(180deg, #FDD692 0%, #F0B783 48.39%, #FC8E94 119.12%);
+
+      border-right: 35px solid #facd8e;
+    }
   }
 
   .createBottleText{
@@ -59,28 +169,7 @@ body{
     height: 70px;
 
   }
-  .triangle-right {
-    border-top: 25px solid transparent;
-    border-left: 50px solid #555;
-    border-bottom: 25px solid transparent;
-    display: inline-block;
-  }
 
-  .triangle-left {
-    width: 0;
-    height: 0;
-    border-top: 25px solid transparent;
-    border-right: 50px solid #555;
-    border-bottom: 25px solid transparent;
-    display: inline-block;
-  }
-
-  .square{
-    background-color: red;
-    width:200px;
-    height: 200px;
-    z-index: 1;
-  }
   .code-style{
     border:none;
     margin: 20px;

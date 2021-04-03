@@ -18,20 +18,18 @@
       <div class="form-group" *ngIf="page == 1">
         <ng-container>
           <ui>
-            <li>
           <div class="radio-btn">
-            <input type="radio" class="form-control-check"  name="dont-type" checked="checked">
-            <label  class="radio-label">Don't Share my Location</label>
+            <input id="dontShare" type="radio" class="form-control-check" value="dontShare" name="location" ngModel required>
+            <label class="radio-label" for="dontShare">Don't Share my Location</label>
           </div>
           <div class="radio-btn">
-            <input type="radio" class="form-control-check" name="current-type">
-            <label class="radio-label">Use my Current Location</label>
+            <input id="useCurr" type="radio" class="form-control-check" value="useCurr" name="location" ngModel required>
+            <label class="radio-label" for="useCurr">Use my Current Location</label>
           </div>
           <div class="radio-btn">
-            <input type="radio" class="form-control-check" name="notice-type">
-            <label  class="radio-label">Manually Enter my Location</label>
+            <input id="manualEnter" type="radio" class="form-control-check" value="manualEnter" name="location" ngModel required>
+            <label  class="radio-label" for="manualEnter">Manually Enter my Location</label>
           </div>
-        </li>
       </ui>
         </ng-container>
       </div>

@@ -1,10 +1,11 @@
 <div class="bottle-view-page">
     <img class="back-btn pulse-grow-on-hover" routerLinkActive="active" [routerLink]="['/shore']" src="assets/img/arrowbackward.png">
     <img class="map-btn pulse-grow-on-hover" routerLinkActive="active" [routerLink]="['/map-view']" src="assets/img/mapicon.png">
-    <div class="box">
+        <a class="box-page"><img src="assets/img/bottleviewpage.png"></a>
+        <div class="content-box">
         <h2 class="title-message" name="title" [(ngModel)]="title">Title</h2>
         <p class="paragraph-message" name="paragraph" [(ngModel)]="paragraph">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut eniqua.</p>
-    </div>
+</div>
 </div>
 
 <ng-template #modalHolder></ng-template>

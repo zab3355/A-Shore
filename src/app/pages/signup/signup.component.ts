@@ -16,6 +16,11 @@ export class SignupComponent implements OnInit {
  
   username:string = '';
   code: string = '';
+  checkboxFields = {
+    dontShare: '',
+    useLoc: '',
+    autoShare: ''
+  }
 
   submitted = false;
   
