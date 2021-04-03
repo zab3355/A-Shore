@@ -18,9 +18,12 @@ export class BottleViewComponent implements OnInit {
   title = '';
   paragraph = '';
   ngOnInit() {
+    let pickRand = Math.floor((Math.random() * 50) + 1);
     this.shoreService.getMessages().subscribe(res => {
       if (res) {
         console.log(res.data);
+        this.title = res.data.content[pickRand];
+        this.paragraph = res.data[pickRand];
       }
     });
   }
