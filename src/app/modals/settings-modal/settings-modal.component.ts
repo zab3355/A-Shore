@@ -15,12 +15,14 @@ export class SettingsModalComponent implements OnInit {
 
   modalTitle: string = "";
   modalBody: string = "";
-  isTimelineForm: boolean;
+
+  old_username: any = "";
+  new_username: any = "";
 
 
   ngOnInit(): void {
   }
-  
+
   closeModal() {
     this.close.emit(false);
   }

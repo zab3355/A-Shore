@@ -1,10 +1,13 @@
 <div class="bottle-view-page">
     <img class="back-btn pulse-grow-on-hover" routerLinkActive="active" [routerLink]="['/shore']" src="assets/img/arrowbackward.png">
     <img class="map-btn pulse-grow-on-hover" routerLinkActive="active" [routerLink]="['/map-view']" src="assets/img/mapicon.png">
-    <div class="box">
-        <input type="text" class="title-message" name="title" [(ngModel)]="title" placeholder="Bottle Title">
-        <textarea class="paragraph-message" name="paragraph" [(ngModel)]="paragraph" placeholder="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."></textarea>
-    </div>
+        <a class="box-page"><img src="assets/img/bottleviewpage.png"></a>
+        <div class="content-box">
+            <input type="text" class="title-message" name="title" [(ngModel)]="title" placeholder="Bottle Title">
+            <textarea class="paragraph-message" name="paragraph" [(ngModel)]="paragraph" placeholder="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."></textarea>
+            <div *ngIf="paragraph == null"><a class="ok-message"><img src="assets/img/OK.png"></a></div>
+            <div *ngIf="paragraph != null"><a class="ok-message"><img src="assets/img/OKcolored.png"></a></div>
+        </div>
 </div>
 
 <ng-template #modalHolder></ng-template>
