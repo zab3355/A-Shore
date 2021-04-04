@@ -42,6 +42,62 @@ body{
 
   }
 
+  .reply-button {
+    position: absolute;
+    z-index: 999;
+    cursor: pointer;
+    margin-top: 900px;
+    width: 486px;
+height: 46.34px;
+border: none;
+background: #716A6A;
+border-radius: 50px;
+
+font-family: Nunito;
+font-style: normal;
+font-weight: 800;
+font-size: 18px;
+line-height: 33px;
+
+  color: #FFFFFF;
+  }
+
+  .eye-page {
+    position: absolute;
+    z-index: 999;
+    margin-top: 900px;
+    margin-left: 100px;
+    cursor: pointer;
+  }
+
+  .eye-page-text {
+    position: absolute;
+    z-index: 999;
+    margin-top: 900px;
+    margin-left: 180px;
+    font-family: Nunito;
+    font-weight: bold;
+    cursor: pointer;
+  }
+
+  .comment-page {
+    position: absolute;
+    z-index: 999;
+    margin-top: 900px;
+    margin-left: 300px;
+    cursor: pointer;
+  }
+
+  .comment-page-text {
+    position: absolute;
+    z-index: 999;
+    margin-top: 900px;
+    margin-left: 380px;
+    font-family: Nunito;
+    font-weight: bold;
+    cursor: pointer;
+  }
+
   .title-message {
     font-family: Nunito;
     font-style: normal;

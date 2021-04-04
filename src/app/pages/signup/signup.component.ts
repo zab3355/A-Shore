@@ -79,7 +79,7 @@ export class SignupComponent implements OnInit {
         console.log(res.loginCode);
         this.page++;
         this.submitted = true;
-        this.toastr.success('Signup successful. Copy this code for later.');
+        this.toastr.success('Signup successful. Copy this code for later.',  '', { timeOut: 3000, positionClass: 'toast-bottom-right' });
       }
       else {
         console.log(res);

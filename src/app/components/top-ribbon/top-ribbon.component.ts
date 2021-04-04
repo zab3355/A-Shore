@@ -10,8 +10,10 @@ import { UserService } from 'src/app/services/user.service';
   })
 export class TopRibbonComponent {
 
-    username: String = '';
-
+  user = {
+    id: '',
+    username: ''
+  }
     constructor(private router:Router, private constantsService: ConstantsService, private userService: UserService) {
     }
 

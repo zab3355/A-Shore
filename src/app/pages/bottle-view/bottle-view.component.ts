@@ -15,17 +15,58 @@ export class BottleViewComponent implements OnInit {
   
   @ViewChild('modalHolder', { read: ViewContainerRef, static: false }) modalHolder;
 
+
+  page = 1;
+
+  message_id: number;
+
+  messageObj;
+
   title = '';
   paragraph = '';
+  comments = {
+    text: '',
+    createdDate: '',
+    postedBy: ''
+  }
+
+  commentText ='';
+
+  commentText1 ='';
+  commentText2 ='';
+  commentText3 ='';
+
   ngOnInit() {
     let pickRand = Math.floor((Math.random() * 50) + 1);
-    this.shoreService.getMessages().subscribe(res => {
-      if (res) {
-        console.log(res.data);
-        this.title = res.data.content[pickRand];
-        this.paragraph = res.data[pickRand];
-      }
-    });
+     this.message_id= pickRand;
+     this.shoreService.getMessages().subscribe(res => {
+       console.log(res.data);
+       console.log(res.data[pickRand].content);
+
+      this.comments = res.data[pickRand].comments;
+      console.log(this.comments);
+    
+      this.paragraph = res.data[pickRand].content;
+     })
+
+  }
+
+  //Go to next page
+  next() {
+    this.page++;
+  }
+
+  //Go to previous page
+  prev() {
+    this.page--;
+  }
+
+  seeViewers() {
+    this.page == 3;
+  }
+
+  viewComments() {
+    this.page++;
   }
   
 }

@@ -3,7 +3,9 @@ import { environment } from '../../environments/environment';
 
 //#region Constants
 const TOKEN = 'token';
-const LOGINTOKEN = 'LoginToken';
+const LOGINTOKEN = 'account';
+const USERNAME = 'username';
+const ID = 'id';
 //#endregion
 
 @Injectable({
@@ -46,7 +48,26 @@ export class ConstantsService {
         }
     }
 
+    static setUserInfo(user){
+      sessionStorage.setItem(USERNAME, user.username);
+      sessionStorage.setItem(ID, user.User_ID);
+    }
+
+    static getUsername() {
+      return sessionStorage.getItem(USERNAME);
+    }
+    static getID() {
+      return sessionStorage.getItem(ID);
+    }
+
+    static setFTLToken(token) {
+      sessionStorage.setItem(LOGINTOKEN, token);
+    }
+    static getFTLToken() {
+      return sessionStorage.getItem(LOGINTOKEN)
+    }
+
     loggedIn() {
-        return !!sessionStorage.getItem('LoginToken');
+        return !!sessionStorage.getItem('account');
     }
 }

@@ -20,6 +20,11 @@ export class ShoreService {
         return this.networkService.httpGet(url);
     }
 
+    getMessage(id){
+        const url = `${this.api_url}/getMessage?id=${id}`;
+        return this.networkService.httpGet(url);
+    }
+
     //Put endpoints below this line
 
 

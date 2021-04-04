@@ -32,7 +32,11 @@
 
 .modal-title {
   width: 100%;
-  background-color: #354053;
+  background-color: #ffbcb4;
+  font-family: Nunito;
+font-style: normal;
+font-weight: 800;
+text-shadow: 3px 2px #95a1ed;
   border-radius: 10px 10px 0px 0px;
   text-align: left;
   font: normal normal 600 28px Montserrat;
@@ -61,6 +65,7 @@
   animation-name: popup;
   animation-duration: 0.3s;
   border-radius: 10px;
+  border: none;
   z-index: 21;
   width: 785px;
   -moz-box-shadow: 0 0 5px #707070;
@@ -110,8 +115,9 @@
 
 .submit-button {
   margin-top: 47px;
-  background-color: #354053;
+  background-color: #ffbcb4;
   border-radius: 5px;
+  border: none;
   width: 100%;
   color: #ffffff;
   text-transform: uppercase;
@@ -123,13 +129,17 @@
   font: normal normal bold 18px/24px Roboto;
 }
 
+.submit-button:hover {
+  background-color: #95a1ed;
+}
+
 .cancel-button {
   margin-top: 12px;
   border: 1px solid #FB2222;
-  background-color: #ffffff;
+  background-color: #e0796d;
   border-radius: 5px;
   width: 100%;
-  color: #FB2222;
+  color: #FFFFFF;
   text-transform: uppercase;
   cursor: pointer;
   padding-top: 10px;
@@ -137,4 +147,7 @@
   font-size: 18px;
   letter-spacing: 1.26px;
   font: normal normal bold 18px/24px Roboto;
+}
+.cancel-button:hover  {
+  background-color: #FB2222;
 }
