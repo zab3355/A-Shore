@@ -25,11 +25,7 @@ export class MapComponent implements OnInit {
   constructor(){
 
   }
-/*   constructor(private mapsAPILoader: MapsAPILoader) {
-    this.mapsAPILoader.load().then(() => {
-      this.initMap();
-    });
-  } */
+
 
   ngOnInit(): void {
     this.initMap();

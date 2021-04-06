@@ -25,6 +25,7 @@ export class MapViewComponent implements OnInit {
     minZoom: 8,
   }
   markers = []
+  drawPath = []
   infoContent = ''
 
   ngOnInit() {
@@ -92,18 +93,12 @@ export class MapViewComponent implements OnInit {
       })
     }
 
-    //connects the data points
-    /*
-    let drawPath = new google.maps.Polyline({
-      path: this.markers,
-      geodesic: true,
-      strokeColor: "#FF0000",
-      strokeOpacity: 1.0,
-      strokeWeight: 2,
-    });
-
-    drawPath.setMap(this.map);
-    */
+    markerData.forEach(element =>{
+      this.drawPath.push({
+        lat: element.lat,
+        lng: element.lng
+      })
+    })
   }
 
   openInfo(marker: MapMarker, content) {
