@@ -26,7 +26,7 @@ export class BottleCreateComponent implements OnInit {
   }
 
   createBottle(){
-
+    console.log("create bottle!");
   }
 
   settingsEvent() {

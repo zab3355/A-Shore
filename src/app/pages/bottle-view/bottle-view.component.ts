@@ -11,7 +11,9 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./bottle-view.component.scss']
 })
 export class BottleViewComponent implements OnInit {
-  constructor(private router: Router, private toastr: ToastrService,  private resolver: ComponentFactoryResolver, private shoreService: ShoreService) { }
+  constructor(private router: Router, private toastr: ToastrService,  private resolver: ComponentFactoryResolver, private shoreService: ShoreService) { 
+    this.loadMessages();
+  }
   
   @ViewChild('modalHolder', { read: ViewContainerRef, static: false }) modalHolder;
 
@@ -19,7 +21,7 @@ export class BottleViewComponent implements OnInit {
   page = 1;
 
   message_id: number;
-
+  pickRand;
   messageObj;
 
   title = '';
@@ -27,9 +29,12 @@ export class BottleViewComponent implements OnInit {
   comments = {
     text: '',
     createdDate: '',
-    postedBy: ''
-  }
+    postedBy: '',
 
+  }
+  viewedBy = {
+
+  }
   commentText ='';
 
   commentText1 ='';
@@ -37,6 +42,11 @@ export class BottleViewComponent implements OnInit {
   commentText3 ='';
 
   ngOnInit() {
+
+
+  }
+
+  loadMessages() {
     let pickRand = Math.floor((Math.random() * 50) + 1);
      this.message_id= pickRand;
      this.shoreService.getMessages().subscribe(res => {
@@ -45,10 +55,14 @@ export class BottleViewComponent implements OnInit {
 
       this.comments = res.data[pickRand].comments;
       console.log(this.comments);
-    
+      
+      this.viewedBy = res.data[pickRand].viewedBy;
+      console.log(this.viewedBy);
+
+      this.message_id = res.data[pickRand]._id;
+      console.log(this.message_id);
       this.paragraph = res.data[pickRand].content;
      })
-
   }
 
   //Go to next page
@@ -67,6 +81,17 @@ export class BottleViewComponent implements OnInit {
 
   viewComments() {
     this.page++;
+  }
+
+  addComment() {
+    console.log(this.message_id);
+    this.shoreService.addComment(this.message_id, this.commentText).subscribe(response => {
+      console.log(response);
+      this.page--;
+    }, (error) => {
+        this.toastr.error('An error occured in your reply, please check your reply or try again later.', '', { timeOut: 3000, positionClass: 'toast-bottom-right' });
+      });
+
   }
   
 }

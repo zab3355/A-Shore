@@ -42,24 +42,55 @@ body{
 
   }
 
+  .border-comment{
+    position: absolute;
+    z-index: 999;
+    border: 5px solid #8a8783;
+    border-radius: 25px;
+    width: 500px;
+    margin-top: 150px;
+    opacity: .8;
+    height: auto;
+  }
+
   .reply-button {
     position: absolute;
     z-index: 999;
     cursor: pointer;
     margin-top: 900px;
     width: 486px;
-height: 46.34px;
-border: none;
-background: #716A6A;
-border-radius: 50px;
+    height: 46.34px;
+    border: none;
+    background: #716A6A;
+    border-radius: 50px;
 
-font-family: Nunito;
-font-style: normal;
-font-weight: 800;
-font-size: 18px;
-line-height: 33px;
+    font-family: Nunito;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 18px;
+    line-height: 33px;
 
-  color: #FFFFFF;
+    color: #FFFFFF;
+  }
+
+  .reply-button-null {
+    position: absolute;
+    z-index: 999;
+    cursor: pointer;
+    margin-top: 900px;
+    width: 486px;
+    height: 46.34px;
+    border: none;
+    background: #D7CEBE;
+    border-radius: 50px;
+
+    font-family: Nunito;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 18px;
+    line-height: 33px;
+
+    color: #FFFFFF;
   }
 
   .eye-page {
@@ -126,8 +157,43 @@ line-height: 33px;
     z-index: 999;
     text-align: center;
     overflow-wrap: break-word;
+    outline: none;
     width: 36%;
     margin-top: 150px;
+  }
+
+  .reply-message {
+    font-family: Nunito;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 49px;
+    color: #695B4C;    
+    border: none;
+    position: absolute;
+    z-index: 999;
+    text-align: center;
+    overflow-wrap: break-word;
+    width: 33%;
+    margin-top: 150px;
+    margin-left: 10px;
+    height: 700px;
+    overflow: hidden;
+    background-color: transparent;
+    border-radius: 25px;
+    border: 3px solid#D7CEBE; 
+  }
+
+  .comment-createdDate {
+    text-align: right;
+    font-weight: bold;
+  }
+
+  .comment-text {
+
+  }
+  .comment-postedBy {
+    font-weight: bolder;
   }
 
   .map-btn {

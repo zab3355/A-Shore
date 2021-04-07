@@ -55,6 +55,8 @@ body{
   z-index: 999;
   text-align: center;
   margin-top: 80px;
+  background: transparent;
+  outline: none;
 }
 
 
@@ -62,19 +64,21 @@ body{
   font-family: Nunito;
   font-style: normal;
   font-weight: 600;
+  outline: none;
   font-size: 18px;
   line-height: 49px;
   color: #695B4C;    
   border: none;
   position: absolute;
   z-index: 999;
+  background-color: transparent;
   text-align: center;
   overflow-wrap: break-word;
   width: 36%;
   margin-top: 150px;
   height: 500px;
   overflow: hidden;
-  border-radius: 5px;
+  border-radius: 25px;
   border: 3px solid#D7CEBE; 
 }
 
@@ -83,8 +87,16 @@ body{
   z-index: 999;
   margin-top: 800px;
   margin-left: 200px;
-
 }
+
+.ok-message-content {
+  position: absolute;
+  z-index: 999;
+  margin-top: 800px;
+  margin-left: 200px;
+  cursor: pointer;
+}
+
 
 .map-btn {
   margin-top: 40px;

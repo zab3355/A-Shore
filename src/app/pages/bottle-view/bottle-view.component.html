@@ -6,16 +6,28 @@
             <h2 class="title-message" name="title" [(ngModel)]="title">{{title}}</h2>
             <p class="paragraph-message" name="paragraph" [(ngModel)]="paragraph">{{paragraph}}</p>
             <a class="eye-page" (click)="seeViewers()"><img src="assets/img/seeicon.png"></a>
-            <p class="eye-page-text"  (click)="seeViewers()">0</p>
-        
+            <p class="eye-page-text" (click)="seeViewers()">{{viewedBy.length}}</p>
+
             <a class="comment-page" (click)="viewComments()"><img src="assets/img/commenticon.png"></a>
             <p class="comment-page-text" [(ngModel)]="comments" (click)="viewComments()">{{comments.length}}</p>
         </div>
 
         <div *ngIf="page == 2" class="content-box">
             <h2 class="title-message" name="title">Comments</h2>
-            <p class="paragraph-message" name="comments" [(ngModel)]="comments">{{comments.text}}</p>
-            <button class="reply-button">reply</button>
+            <div *ngFor="let comment of comments" class="border-comment">
+                <p class="comment-createdDate" name="comments" >{{comment.createdDate| date: 'shortDate'}}</p>
+                <p class="comment-postedBy" name="comments" >{{comment.postedBy}}</p>
+                <p class="comment-text" name="comments" >{{comment.text}}</p>
+            </div>
+            <button (click)="next()" class="reply-button">reply</button>
+        </div>
+
+        
+        <div *ngIf="page == 3" class="content-box">
+            <h2 class="title-message" name="title">Reply</h2>
+            <textarea class="reply-message" name="reply" [(ngModel)]="commentText"></textarea>
+            <button *ngIf="!commentText" type="submit" class="reply-button-null">submit</button>
+            <button *ngIf="commentText" type="submit" (click)="addComment()" class="reply-button">submit</button>
         </div>
 </div>
 

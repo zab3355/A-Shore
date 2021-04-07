@@ -60,13 +60,6 @@ export class ConstantsService {
       return sessionStorage.getItem(ID);
     }
 
-    static setFTLToken(token) {
-      sessionStorage.setItem(LOGINTOKEN, token);
-    }
-    static getFTLToken() {
-      return sessionStorage.getItem(LOGINTOKEN)
-    }
-
     loggedIn() {
         return !!sessionStorage.getItem('account');
     }
