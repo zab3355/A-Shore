@@ -1,4 +1,6 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
+import { FormGroup, FormControl, Validators} from '@angular/forms';
+
 import { ConstantsService } from 'src/app/services/constants.service';
 import { UserService } from 'src/app/services/user.service';
 
@@ -16,6 +18,10 @@ export class SignupComponent implements OnInit {
  
   username:string = '';
   code: string = '';
+
+  city:string = '';
+  country:string = '';
+
   checkboxFields = {
     dontShare: '',
     useLoc: '',
@@ -24,8 +30,11 @@ export class SignupComponent implements OnInit {
 
   submitted = false;
   
-
   page = 1;
+
+  form = new FormGroup({
+    location: new FormControl('', Validators.required)
+  });
 
   ngOnInit(): void {
   }
@@ -67,30 +76,65 @@ export class SignupComponent implements OnInit {
   console.log(r);
 
   //return r;
-
  }
 
- //Insert service call here for signup
+ changeLocation(e){
+  console.log(e.target.value);
+ }
+
   signup() {
-    this.userService.signup(this.username).subscribe(res => {
-      console.log(res);
-      if(res) {
-        this.code = res.loginCode;
-        console.log(res.loginCode);
-        this.page++;
-        this.submitted = true;
-        this.toastr.success('Signup successful. Copy this code for later.',  '', { timeOut: 3000, positionClass: 'toast-bottom-right' });
-      }
-      else {
+    if(this.username != '' || this.form.value != null){
+    if(this.form.value == "dontShare"){
+      this.userService.signup(this.username).subscribe(res => {
         console.log(res);
-        this.toastr.error('This functionality is still under development. Try again later.', '', { timeOut: 3000, positionClass: 'toast-bottom-right' });
+        if(res) {
+          console.log(res);
+          this.code = res.loginCode;
+          this.page++;
+          this.submitted = true;
+          this.toastr.success('Signup successful. Copy this code for later.',  '', { timeOut: 3000, positionClass: 'toast-bottom-right' });
+        }
+        else {
+          console.log(res);
+          this.toastr.error('Cannot signup. Please check your credentials and try again.', '', { timeOut: 3000, positionClass: 'toast-bottom-right' });
+        }
+  
+      });
+    } else if(this.form.value == "useCurr") {
+      //temp values
+      this.city = "Henrietta";
+      this.country = "US";
+      this.userService.addRelativeLocationUser(this.username, this.city, this.country).subscribe(res => {
+        console.log(res);
+        if(res) {
+          console.log(res);
+          this.code = res.loginCode;
+          this.page++;
+          this.submitted = true;
+          this.toastr.success('Signup successful. Copy this code for later.',  '', { timeOut: 3000, positionClass: 'toast-bottom-right' });
+        } else {
+            console.log(res);
+            this.toastr.error('Cannot signup. Please check your credentials and try again.', '', { timeOut: 3000, positionClass: 'toast-bottom-right' });
+        }
+      });
+    } else if(this.form.value == "manualEnter") {
+        this.userService.addRelativeLocationUser(this.username, this.city, this.country).subscribe(res => {
+          console.log(res);
+          if(res) {
+            console.log(res);
+            this.code = res.loginCode;
+            this.page++;
+            this.submitted = true;
+            this.toastr.success('Signup successful. Copy this code for later.',  '', { timeOut: 3000, positionClass: 'toast-bottom-right' });
+          } else {
+              console.log(res);
+              this.toastr.error('Cannot signup. Please check your credentials and try again.', '', { timeOut: 3000, positionClass: 'toast-bottom-right' });
+          }
+        });
       }
-
-    });
-
-    //TODO: Create account
-
-    //TODO: Route to the main Shore page if valid
-    
+    } else {
+      this.toastr.error('You must fill out a username and whether you would like your location shared to continue.', '', { timeOut: 3000, positionClass: 'toast-bottom-right' });
+    }
   }
+    
 }

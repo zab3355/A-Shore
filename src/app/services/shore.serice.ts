@@ -32,52 +32,15 @@ export class ShoreService {
         .set('commentText', commentText);
 
         return this.networkService.httpPost(url, payload);
-      }
-
-    //Put endpoints below this line
-
-
-
-    //Don't delete this... Pls use this structure when connecting an endpoint
-
-    //GET Call Example
-    /*getClientCase(case_id) {
-        const url = `${this.api_url}/client/case?case_id=${case_id}`;
-        return this.networkService.httpGet(url);
     }
-    */
 
-    //POST Call Example
-    /*createActionsForCase(case_id, action_items) {
-        const url = `${this.api_url}${ConstantsService.getRouteFromRole()}/case/add-actions`;
-        const post_body = {
-            case_id: case_id,
-            action_items: action_items
-        }
-        return this.networkService.httpPost(url, post_body);
-    }
-    */
+    addViewer(id, viewerId){
+        const url = this.api_url + '/addViewer';
+        const payload = new HttpParams()
+        .set('id', id)
+        .set('viewerId', viewerId);
 
-    //PUT Call Example
-    /*    giveTitle(case_id, case_title) {
-        const url = `${this.api_url}${ConstantsService.getRouteFromRole()}/case/title`;
-        const put_body = {
-            case_id: case_id,
-            case_title: case_title
-        }
-        return this.networkService.httpPut(url, put_body);
+        return this.networkService.httpPost(url, payload);
     }
-    */
-
-    //DELETE Call Example 
-    /*
-    deleteActionItem(action_item_id) {
-        const url = `${this.api_url}${ConstantsService.getRouteFromRole()}/case/delete/action`;
-        const delete_body = {
-            action_item_id: action_item_id
-        }
-        return this.networkService.httpDelete(url, delete_body);
-    }
-    */
    
 }

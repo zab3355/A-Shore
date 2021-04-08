@@ -28,4 +28,14 @@ export class UserService {
     
     return this.networkService.httpPost(url, payload);
   }
+
+  addRelativeLocationUser(username, display_name, country){
+    const url = this.api_url + '/addRelativeLocationUser';
+    const payload = new HttpParams()
+    .set('username', username)
+    .set('display_name', display_name)
+    .set('country', country);
+    
+    return this.networkService.httpPost(url, payload);
+  }
 }

@@ -100,7 +100,7 @@ html{
   }
 
   .code-btn-go {
-    margin-top: 20px;
+    margin-top: 70px;
     margin-bottom: 20px;
     margin-right:100px;
     margin-left:100px;
@@ -303,6 +303,22 @@ box-shadow: 2px 2px 8px 0 rgba(0, 0, 0, 0.4) inset;
     font-weight: 900;
     font-size: 28px;
   }
+
+  .location-input {
+    border: 0;
+    height: 40px;
+    outline: 0;
+    background: transparent;
+    border-bottom: 4px solid #FFFFFF;
+    color: #FFFFFF;
+    width:200px;
+    font-family: Nunito;
+    margin-left: 20px;
+    margin-right: 20px;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 24px;
+  }
   
   .enter-num {
     text-align: center;
@@ -345,8 +361,8 @@ box-shadow: 2px 2px 8px 0 rgba(0, 0, 0, 0.4) inset;
   }
 
   .form-group {
-    display: block;
-    margin: 10px 0px;
+    display: inline-block;
+    margin-right: 170px;
   
     label {
       display: block;
@@ -366,6 +382,8 @@ box-shadow: 2px 2px 8px 0 rgba(0, 0, 0, 0.4) inset;
 
   .radio-btn {
     margin-bottom: 20px;
+    text-align: left;
+
   }
   
   ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
