@@ -18,7 +18,7 @@ export class MapViewComponent implements OnInit {
   center: google.maps.LatLngLiteral
   options: google.maps.MapOptions = {
     zoomControl: false,
-    scrollwheel: false,
+    scrollwheel: true,
     disableDoubleClickZoom: true,
     mapTypeId: 'hybrid',
     maxZoom: 15,
@@ -61,13 +61,14 @@ export class MapViewComponent implements OnInit {
         lng: this.center.lng + ((Math.random() - 0.5) * 2) / 10,
       },
       label: {
-        color: 'red',
+        color: '#859FF5',
         text: 'Marker label ' + (this.markers.length + 1),
       },
       title: 'Marker title ' + (this.markers.length + 1),
       info: 'Marker info ' + (this.markers.length + 1),
       options: {
         animation: google.maps.Animation.BOUNCE,
+        draggable: false,
       },
     })
   }
