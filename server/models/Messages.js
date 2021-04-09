@@ -14,6 +14,10 @@ const MessagesSchema = new mongoose.Schema({
         ref: 'Users'
     },
     comments: [{
+        // _id: {
+        //   type: mongoose.Schema.Types.ObjectId,
+        //   auto: true
+        // },
         text: String,
         postedBy: {
             type: mongoose.Schema.Types.ObjectId,
@@ -23,6 +27,10 @@ const MessagesSchema = new mongoose.Schema({
             type: Date,
             default: Date.now,
         },
+        numberOfLikes: {
+            type: Number,
+            default: 0,
+        }
     }],
     viewedBy: [{
         user: {

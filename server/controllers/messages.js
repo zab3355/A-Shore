@@ -66,6 +66,32 @@ const addViewedBy = (req, res) => {
   )
 };
 
+const addLikeToComment = (req, res) => {
+  console.log("here")
+  if (!req.body.id) {
+    return res.status(400).json({ error: 'Messageid is required' });
+  };
+  if (!req.body.commentId) {
+    return res.status(400).json({ error: 'Comment id is required' });
+  }
+ // const view = {user: req.body.viewerId }
+  return Messages.MessagesModel.findOneAndUpdate(
+    {
+      '_id': req.body.id,
+      'comments._id':req.body.commentId
+    },
+    {$inc: {'comments.$.numberOfLikes': 1} },
+    (err, success) => {
+      console.log(success)
+      console.log(err)
+      if (err) {
+        return res.status(400).json("Could Not Add Like")
+      }
+      return res.json({success: success})
+    }
+  )
+};
+
 const addMessage = (req, res) => {
     const { data } = req.body;
 
@@ -119,5 +145,6 @@ module.exports = {
     populateMessages,
     getMessage,
     addComment,
-    addViewedBy
+    addViewedBy,
+    addLikeToComment
 }
