@@ -21,14 +21,6 @@ export class ShoreComponent implements OnInit {
   
   viewBottle(){
     this.router.navigateByUrl('/bottle-view');
-    /*const modal = this.modalHolder.createComponent(this.resolver.resolveComponentFactory(BottleViewModalComponent));
-    modal.instance.close.subscribe((response) => {
-      if (response) {
-       // this.data;
-    //    this.data.push(["John Harrison Staff", "The best staff in the world", new Date(2019, 1, 22), true, "Cool Landlord", "Uncool Tenants", "Weird"]);
-      }
-      this.modalHolder.clear();
-    })*/
   }
 
   createBottle(){
@@ -39,8 +31,7 @@ export class ShoreComponent implements OnInit {
     const modal = this.modalHolder.createComponent(this.resolver.resolveComponentFactory(SettingsModalComponent));
     modal.instance.close.subscribe((response) => {
       if (response) {
-       // this.data;
-    //    this.data.push(["John Harrison Staff", "The best staff in the world", new Date(2019, 1, 22), true, "Cool Landlord", "Uncool Tenants", "Weird"]);
+        console.log(response);
       }
       this.modalHolder.clear();
     })

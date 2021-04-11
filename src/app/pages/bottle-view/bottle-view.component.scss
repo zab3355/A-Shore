@@ -52,6 +52,7 @@ body{
     opacity: .8;
     height: auto;
   }
+  
 
   .reply-button {
     position: absolute;
@@ -101,6 +102,11 @@ body{
     cursor: pointer;
   }
 
+  .eye-page:hover {
+    filter: contrast(0%);
+  }
+
+
   .eye-page-text {
     position: absolute;
     z-index: 999;
@@ -111,6 +117,10 @@ body{
     cursor: pointer;
   }
 
+  .eye-page-text:hover {
+    filter: contrast(0%);
+  }
+
   .comment-page {
     position: absolute;
     z-index: 999;
@@ -118,6 +128,11 @@ body{
     margin-left: 300px;
     cursor: pointer;
   }
+
+  .comment-page:hover {
+    filter: contrast(0%);
+  }
+
 
   .comment-page-text {
     position: absolute;
@@ -127,6 +142,10 @@ body{
     font-family: Nunito;
     font-weight: bold;
     cursor: pointer;
+  }
+
+  .comment-page-text:hover {
+    filter: contrast(0%);
   }
 
   .title-message {
@@ -168,6 +187,7 @@ body{
     font-weight: 600;
     font-size: 18px;
     line-height: 49px;
+    outline: none;
     color: #695B4C;    
     border: none;
     position: absolute;
@@ -189,9 +209,29 @@ body{
     font-weight: bold;
   }
 
-  .comment-text {
+  .comment-heart {
+    float:right;
+    margin-right: 20px;
+    margin-top: 7px;
+    cursor: pointer;
 
   }
+
+  .comment-heart-img {
+    float:right;
+    cursor: pointer;
+    margin-right: 10px;
+    margin-top: 10px;
+  }
+
+  .comment-heart:hover {
+    filter: contrast(0%);
+  }
+
+  .comment-heart-img:hover {
+    filter: contrast(0%);
+  }
+
   .comment-postedBy {
     font-weight: bolder;
   }

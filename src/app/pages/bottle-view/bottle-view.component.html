@@ -4,7 +4,7 @@
         <a class="box-page"><img src="assets/img/bottleviewpage.png"></a>
         <div *ngIf="page == 1" class="content-box">
             <h2 class="title-message" name="title" [(ngModel)]="title">{{title}}</h2>
-            <p class="paragraph-message" name="paragraph" [(ngModel)]="paragraph">{{paragraph}}</p>
+            <p class="paragraph-message" name="paragraph" [(ngModel)]="paragraph" >{{paragraph}}</p>
             <a class="eye-page" (click)="seeViewers()"><img src="assets/img/seeicon.png"></a>
             <p class="eye-page-text" (click)="seeViewers()">{{viewedBy.length}}</p>
 
@@ -14,8 +14,9 @@
 
         <div *ngIf="page == 2" class="content-box">
             <h2 class="title-message" name="title">Comments</h2>
-            <div *ngFor="let comment of comments" class="border-comment">
-                <p class="comment-createdDate" name="comments" >{{comment.createdDate| date: 'shortDate'}}</p>
+            <div *ngFor="let comment of comments; let i = index;" [attr.data-index]="i" class="border-comment" [ngClass]="{'active': selectedIdx == i}">
+               <!-- <p class="comment-createdDate" name="comments" >{{comment.createdDate| date: 'shortDate'}}</p>-->
+               <span class="comment-heart" name="comments">{{comment.numberOfLikes}}</span><a class="comment-heart-img" (click)="likeComment()"><img src="assets/img/heart.png"></a>
                 <p class="comment-postedBy" name="comments" >{{comment.postedBy}}</p>
                 <p class="comment-text" name="comments" >{{comment.text}}</p>
             </div>

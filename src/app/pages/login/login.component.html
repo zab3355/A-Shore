@@ -11,7 +11,7 @@
     <form action="#" (ngSubmit)="login()" class="enter-num" *ngIf="page == 1">
         <div class="form-group">
             <h3 class="code-text">Username</h3>
-            <input type="text" class="username-input" id="usernameEnter" name="username" [(ngModel)]="username" placeholder="">
+            <input [ccUsername]="username" type="text" class="username-input" id="usernameEnter" name="username" [(ngModel)]="username" placeholder="">
           </div>
 
         <h3 class="code-text">Log-In Code</h3>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewContainerRef,ComponentFactoryResolver } from '@angular/core';
 import { ConstantsService } from 'src/app/services/constants.service';
 import { UserService } from 'src/app/services/user.service';
 
@@ -12,7 +12,7 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class LoginComponent implements OnInit {
   
-    constructor(private router: Router, private toastr: ToastrService, private userService: UserService) { }
+    constructor(private router: Router, private toastr: ToastrService, private resolver: ComponentFactoryResolver, private userService: UserService) { }
    
     page = 1;
 
