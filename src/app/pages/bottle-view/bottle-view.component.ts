@@ -79,6 +79,9 @@ export class BottleViewComponent implements OnInit {
       this.viewedBy = res.data[this.messagePick].viewedBy;
       console.log(this.viewedBy);
       
+      this.title = res.data[this.messagePick].title;
+      console.log(this.title);
+
       this.paragraph = res.data[this.messagePick].content;
       console.log(this.paragraph);
 
