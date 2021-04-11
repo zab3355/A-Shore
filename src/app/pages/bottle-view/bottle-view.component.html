@@ -12,23 +12,27 @@
             <p class="comment-page-text" [(ngModel)]="comments" (click)="viewComments()">{{comments.length}}</p>
         </div>
 
-        <div *ngIf="page == 2" class="content-box">
-            <h2 class="title-message" name="title">Comments</h2>
-            <div *ngFor="let comment of comments; let i = index;" [attr.data-index]="i" class="border-comment" [ngClass]="{'active': selectedIdx == i}">
-               <!-- <p class="comment-createdDate" name="comments" >{{comment.createdDate| date: 'shortDate'}}</p>-->
-               <span class="comment-heart" name="comments">{{comment.numberOfLikes}}</span><a class="comment-heart-img" (click)="likeComment()"><img src="assets/img/heart.png"></a>
-                <p class="comment-postedBy" name="comments" >{{comment.postedBy}}</p>
-                <p class="comment-text" name="comments" >{{comment.text}}</p>
+        <div *ngIf="page == 2" class="content-box-comments">
+            <h2 class="title-comment-message" name="title">Comments</h2>
+            <div *ngFor="let comment of comments; let i = index;" [attr.data-index]="i" >
+              <ui class="border-comment"> 
+               <li><span class="comment-heart" name="comments">{{comment.numberOfLikes}}</span><a class="comment-heart-img" (click)="likeComment()"><img src="assets/img/heart.png"></a></li>
+               <li><p class="comment-createdDate" name="comments" >{{comment.createdDate| date: 'shortDate'}}</p></li>
+               <li><p class="comment-postedBy" name="comments" >{{comment.postedBy}}</p></li>
+                <li><p class="comment-text" name="comments" >{{comment.text}}</p>
+            </li>
+        </ui>
             </div>
             <button (click)="next()" class="reply-button">reply</button>
         </div>
 
         
         <div *ngIf="page == 3" class="content-box">
+            <a class="prev-button-more" (click)="prev()"><img src="assets/img/arrowReg.png"></a>
             <h2 class="title-message" name="title">Reply</h2>
             <textarea class="reply-message" name="reply" [(ngModel)]="commentText"></textarea>
             <button *ngIf="!commentText" type="submit" class="reply-button-null">submit</button>
-            <button *ngIf="commentText" type="submit" (click)="addComment()" class="reply-button">submit</button>
+            <button *ngIf="commentText" type="submit" (click)="addComment()" class="submit-button">submit</button>
         </div>
 </div>
 

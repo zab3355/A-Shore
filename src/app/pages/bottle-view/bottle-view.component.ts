@@ -48,12 +48,6 @@ export class BottleViewComponent implements OnInit {
     let pickRand = Math.floor((Math.random() * 50) + 1);
     this.messagePick = pickRand;
     console.log(this.message_id);
-    if(this.message_id != null) {
-    this.shoreService.addViewer(this.message_id, this.message_id).subscribe(res =>{
-      console.log(res.data);
-
-    });
-    }
   }
 
   loadMessages() {
@@ -71,11 +65,19 @@ export class BottleViewComponent implements OnInit {
 
       this.comments = res.data[this.messagePick].comments;
       console.log(this.comments);
-      
-      this.viewedBy = res.data[this.messagePick].viewedBy;
-      console.log(this.viewedBy);
 
       this.message_id = res.data[this.messagePick]._id;
+
+      //still needs work
+      if(this.message_id != null) {
+        this.shoreService.addViewer(this.message_id, this.message_id).subscribe(res =>{
+          console.log(res.data);
+    
+        });
+      }
+
+      this.viewedBy = res.data[this.messagePick].viewedBy;
+      console.log(this.viewedBy);
       
       this.paragraph = res.data[this.messagePick].content;
       console.log(this.paragraph);

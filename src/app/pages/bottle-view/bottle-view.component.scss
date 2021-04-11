@@ -28,6 +28,14 @@ body{
     justify-content: center;
   }
 
+  .content-box-comments {
+    width: 300px;
+    padding-left: 1200px;
+    overflow-wrap: break-word;
+    display: grid;
+    justify-content: center;
+  }
+
 .bottle-view-page {
     background-image: url("/assets/img/bottleview.jpg");
     background-size: cover;
@@ -43,18 +51,48 @@ body{
   }
 
   .border-comment{
-    position: absolute;
+    position: relative;
     z-index: 999;
     border: 5px solid #8a8783;
     border-radius: 25px;
     width: 500px;
-    margin-top: 150px;
+    margin-top: 50px;
+    list-style-type: none;
     opacity: .8;
+    display: block;
     height: auto;
   }
   
+  .prev-button-more {
+    position: absolute;
+    z-index: 999;
+    margin-top:20px;
+    cursor: pointer;
+    margin-right: 650px;
+
+  }
 
   .reply-button {
+    position: absolute;
+    z-index: 999;
+    cursor: pointer;
+    margin-top: 900px;
+    width: 486px;
+    height: 46.34px;
+    border: none;
+    background: #716A6A;
+    border-radius: 50px;
+
+    font-family: Nunito;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 18px;
+    line-height: 33px;
+    margin-left: -90px;
+    color: #FFFFFF;
+  }
+
+  .submit-button {
     position: absolute;
     z-index: 999;
     cursor: pointer;
@@ -164,6 +202,21 @@ body{
   }
   
 
+  .title-comment-message {
+    font-family: Nunito;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 36px;
+    font-weight: 800;
+    line-height: 49px;
+    color: #695B4C;
+    border: none;
+    z-index: 999;
+    text-align: center;
+    margin-top: 80px;
+  }
+  
+
   .paragraph-message {
     font-family: Nunito;
     font-style: normal;
@@ -194,7 +247,7 @@ body{
     z-index: 999;
     text-align: center;
     overflow-wrap: break-word;
-    width: 33%;
+    width: 30%;
     margin-top: 150px;
     margin-left: 10px;
     height: 700px;
@@ -207,6 +260,7 @@ body{
   .comment-createdDate {
     text-align: right;
     font-weight: bold;
+    margin-top: 40px;
   }
 
   .comment-heart {
