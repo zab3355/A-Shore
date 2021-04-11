@@ -105,18 +105,25 @@ const addTitles = (req, res) => {
 };
 
 const addMessage = (req, res) => {
-    const { data } = req.body;
+    const data  = req.body;
 
     if (!data.content) {
         return res.status(400).json({error: 'No content provided'})
     }
+    if (!data.postedBy) {
+      return res.status(400).json({error: 'No creator id provided'})
+    }
+    if (!data.title) {
+      return res.status(400).json({error: 'No title provided'})
+  }
     const messageData = {
         content: data.content,
-        userId: data.userId || null
+        postedBy: mongoose.Types.ObjectId(data.postedBy),
+        title: data.title || "Bottle Title"
     }
     const newMessage = new Messages.MessagesModel(messageData);
     return newMessage.save()
-        .then(() => {res.json({success:'Message Successfully Created'})})
+        .then(() => {res.json({success:'Message Successfully Created', 'message': newMessage})})
         .catch((err) => {res.status(400).json({error: err.message})})
 
 }
