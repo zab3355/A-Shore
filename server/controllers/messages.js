@@ -92,6 +92,18 @@ const addLikeToComment = (req, res) => {
   )
 };
 
+const addTitles = (req, res) => {
+  return Messages.MessagesModel.updateMany({},
+    {$set: {title: "An inspirational bottle title"}},
+    (err, result) => {
+      if (err) {
+        return res.json({'error': 'Could Not Add Titles'})
+      }
+      return res.json({'success': 'Titles Added'})
+    }
+  )
+};
+
 const addMessage = (req, res) => {
     const { data } = req.body;
 
@@ -108,6 +120,8 @@ const addMessage = (req, res) => {
         .catch((err) => {res.status(400).json({error: err.message})})
 
 }
+
+
 
 const populateMessages = async (req,res) => {
     console.log('here')
@@ -146,5 +160,6 @@ module.exports = {
     getMessage,
     addComment,
     addViewedBy,
-    addLikeToComment
+    addLikeToComment,
+    addTitles
 }

@@ -9,6 +9,10 @@ const MessagesSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    title: {
+      type: String,
+      default: "An inspirational bottle title."
+    },
     postedBy: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Users'

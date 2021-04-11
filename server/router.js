@@ -15,6 +15,7 @@ const router = (app) => {
     app.post('/api/addComment', controllers.Messages.addComment);
     app.post('/api/addViewer', controllers.Messages.addViewedBy);
     app.post('/api/addLikeToComment', controllers.Messages.addLikeToComment);
+    app.get('/api/addTitles', controllers.Messages.addTitles);
 
     app.get('/api/populateLocations',controllers.Location.populateLocations);
     app.get('/api/getLocations', controllers.Location.getAllLocations);
