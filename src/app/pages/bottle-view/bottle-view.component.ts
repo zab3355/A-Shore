@@ -21,6 +21,7 @@ export class BottleViewComponent implements OnInit {
   page = 1;
 
   message_id: number;
+  messagePick;
   pickRand;
   messageObj;
 
@@ -35,6 +36,8 @@ export class BottleViewComponent implements OnInit {
   viewedBy = {
 
   }
+
+  commentId = '';
   commentText ='';
 
   commentText1 ='';
@@ -42,26 +45,44 @@ export class BottleViewComponent implements OnInit {
   commentText3 ='';
 
   ngOnInit() {
-
-
+    let pickRand = Math.floor((Math.random() * 50) + 1);
+    this.messagePick = pickRand;
+    console.log(this.message_id);
   }
 
   loadMessages() {
-    let pickRand = Math.floor((Math.random() * 50) + 1);
-     this.message_id= pickRand;
+    console.log(this.messagePick);
+
      this.shoreService.getMessages().subscribe(res => {
        console.log(res.data);
-       console.log(res.data[pickRand].content);
+       
+       // If messages do not exist yet
+      if(res.data == undefined) {
+        this.shoreService.populateMessages().subscribe(res => {
+          console.log(res.data);
+        })
+      }
 
-      this.comments = res.data[pickRand].comments;
+      this.comments = res.data[this.messagePick].comments;
       console.log(this.comments);
-      
-      this.viewedBy = res.data[pickRand].viewedBy;
-      console.log(this.viewedBy);
 
-      this.message_id = res.data[pickRand]._id;
-      console.log(this.message_id);
-      this.paragraph = res.data[pickRand].content;
+      this.message_id = res.data[this.messagePick]._id;
+
+      //still needs work
+      if(this.message_id != null) {
+        this.shoreService.addViewer(this.message_id, this.message_id).subscribe(res =>{
+          console.log(res.data);
+    
+        });
+      }
+
+      this.viewedBy = res.data[this.messagePick].viewedBy;
+      console.log(this.viewedBy);
+      
+      this.paragraph = res.data[this.messagePick].content;
+      console.log(this.paragraph);
+
+      this.commentId = res.data[this.messagePick].comments[0]._id;
      })
   }
 
@@ -83,15 +104,27 @@ export class BottleViewComponent implements OnInit {
     this.page++;
   }
 
+  //Adding a comment
   addComment() {
     console.log(this.message_id);
     this.shoreService.addComment(this.message_id, this.commentText).subscribe(response => {
       console.log(response);
       this.page--;
+      this.loadMessages();
     }, (error) => {
         this.toastr.error('An error occured in your reply, please check your reply or try again later.', '', { timeOut: 3000, positionClass: 'toast-bottom-right' });
       });
 
+  }
+
+  //Liking a comment
+  likeComment() {
+    console.log(this.message_id);
+    console.log(this.commentId);
+    this.shoreService.addLikeToComment(this.message_id, this.commentId).subscribe(response => {
+      console.log(response);
+      this.loadMessages();
+    })
   }
   
 }

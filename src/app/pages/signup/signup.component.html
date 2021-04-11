@@ -19,20 +19,20 @@
         <ng-container>
           <ui>
           <div class="radio-btn">
-            <input id="dontShare" type="radio" class="form-control-check" value="dontShare" name="location" (change)="changeLocation($event)" ngModel required>
-            <label class="radio-label" for="dontShare">Don't Share my Location</label>
-          </div>
-          <div class="radio-btn">
-            <input id="useCurr" type="radio" class="form-control-check" value="useCurr" name="location" (change)="changeLocation($event)"  ngModel required>
-            <label class="radio-label" for="useCurr">Use my Current Location</label>
-          </div>
-          <div class="radio-btn">
-            <input id="manualEnter" type="radio" class="form-control-check" value="manualEnter" name="location" (change)="changeLocation($event)" ngModel required>
-            <label  class="radio-label" for="manualEnter">Manually Enter my Location:</label>
-            <input type="text" class="location-input" name="city" [(ngModel)]="city" placeholder="Enter City"> 
-            <input type="text" class="location-input" name="country" [(ngModel)]="country" placeholder="Enter Country"> 
-          </div>
-      </ui>
+              <input id="dontShare" type="radio" class="form-control-check" value="dontShare" name="location" (change)="changeLocation($event)" [(ngModel)]="dontShare">
+              <label class="radio-label" for="dontShare">Don't Share my Location</label>
+            </div>
+            <div class="radio-btn">
+              <input id="useCurr" type="radio" class="form-control-check" value="useCurr" name="location" (change)="changeLocation($event)"  [(ngModel)]="userCurr">
+              <label class="radio-label" for="useCurr">Use my Current Location</label>
+            </div>
+            <div class="radio-btn">
+              <input id="manualEnter" type="radio" class="form-control-check" value="manualEnter" name="location" (change)="changeLocation($event)" [(ngModel)]="manualEnter">
+              <label  class="radio-label" for="manualEnter">Manually Enter my Location:</label>
+              <input type="text" class="location-input" name="city" [(ngModel)]="city" placeholder="Enter City"> 
+              <input type="text" class="location-input" name="country" [(ngModel)]="country" placeholder="Enter Country"> 
+            </div>
+          </ui>
         </ng-container>
       </div>
 

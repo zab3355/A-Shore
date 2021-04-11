@@ -25,6 +25,15 @@ export class ShoreService {
         return this.networkService.httpGet(url);
     }
 
+    populateMessages() {
+        const url = `${this.api_url}/populate`;
+        return this.networkService.httpGet(url);
+    }
+
+    addMessage() {
+
+    }
+
     addComment(id, commentText) {
         const url = this.api_url + '/addComment';
         const payload = new HttpParams()
@@ -42,5 +51,14 @@ export class ShoreService {
 
         return this.networkService.httpPost(url, payload);
     }
-   
+
+    addLikeToComment(id, commentId) {
+        const url = this.api_url + '/addLikeToComment';
+        const payload = new HttpParams()
+        .set('id', id)
+        .set('commentId', commentId);
+
+        return this.networkService.httpPost(url, payload);
+    }
+
 }

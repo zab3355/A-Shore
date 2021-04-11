@@ -19,6 +19,7 @@ export class SignupComponent implements OnInit {
   username:string = '';
   code: string = '';
 
+  checkValue:string = '';
   city:string = '';
   country:string = '';
 
@@ -79,12 +80,12 @@ export class SignupComponent implements OnInit {
  }
 
  changeLocation(e){
-  console.log(e.target.value);
+  this.checkValue = e.target.value;
  }
 
   signup() {
-    if(this.username != '' || this.form.value != null){
-    if(this.form.value == "dontShare"){
+    if(this.username != '' || this.checkValue != null){
+    if(this.checkValue == "dontShare"){
       this.userService.signup(this.username).subscribe(res => {
         console.log(res);
         if(res) {
@@ -100,7 +101,7 @@ export class SignupComponent implements OnInit {
         }
   
       });
-    } else if(this.form.value == "useCurr") {
+    } else if(this.checkValue == "useCurr") {
       //temp values
       this.city = "Henrietta";
       this.country = "US";
@@ -117,7 +118,7 @@ export class SignupComponent implements OnInit {
             this.toastr.error('Cannot signup. Please check your credentials and try again.', '', { timeOut: 3000, positionClass: 'toast-bottom-right' });
         }
       });
-    } else if(this.form.value == "manualEnter") {
+    } else if(this.checkValue == "manualEnter") {
         this.userService.addRelativeLocationUser(this.username, this.city, this.country).subscribe(res => {
           console.log(res);
           if(res) {
