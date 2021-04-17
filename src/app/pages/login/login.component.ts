@@ -73,9 +73,11 @@ export class LoginComponent implements OnInit {
         username: response.username,
         codeTotal: response.codeTotal
       };
-      ConstantsService.saveToken(response.token);
+      //check if ID exists, if so save the local storage token and login
+      ConstantsService.saveToken(response.id);
+      console.log(response.id);
       this.router.navigateByUrl('/shore');
-     // ConstantsService.setUserInfo(user);
+      ConstantsService.setUserInfo(user);
     }, (error) => {
       this.toastr.error('Incorrect Login', '', { timeOut: 3000, positionClass: 'toast-bottom-right' });
     });

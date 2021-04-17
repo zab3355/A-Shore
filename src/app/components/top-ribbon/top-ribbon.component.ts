@@ -17,13 +17,13 @@ export class TopRibbonComponent {
   }
 
     constructor(private router: Router, private constantsService: ConstantsService, private userService: UserService, private resolver: ComponentFactoryResolver) { }
-    name = 'Test!';  
+    name: String = ""; 
 
     @ViewChild(LoginComponent) login: LoginComponent;
 
     ngOnInit() {
-      console.log(this.login.username); 
-      this.name = this.login.username;
+      console.log(ConstantsService.getUsername); 
+      this.name = ConstantsService.getUsername();
       console.log(this.user.username);
     }
     

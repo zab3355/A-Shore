@@ -21,11 +21,11 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent},
   { path: 'signup', component: SignupComponent},
   { path: 'test', component: TestComponent},
-  { path: 'shore', component: ShoreComponent},
-  { path: 'bottle-create', component: BottleCreateComponent},
-  { path: 'bottle-view', component: BottleViewComponent},
+  { path: 'shore', component: ShoreComponent, canActivate: [AuthGuard]},
+  { path: 'bottle-create', component: BottleCreateComponent, canActivate: [AuthGuard]},
+  { path: 'bottle-view', component: BottleViewComponent, canActivate: [AuthGuard]},
   { path: 'tutorial', component: TutorialComponent, canActivate: [AuthGuard]},
-  { path: 'map-view', component: MapViewComponent},
+  { path: 'map-view', component: MapViewComponent, canActivate: [AuthGuard]},
   {path: '**', component: PageNotFoundComponent}
   
 ];

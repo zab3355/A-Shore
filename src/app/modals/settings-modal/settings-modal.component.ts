@@ -1,5 +1,6 @@
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ConstantsService } from 'src/app/services/constants.service';
 
 import { ToastrService } from 'ngx-toastr';
 
@@ -21,6 +22,11 @@ export class SettingsModalComponent implements OnInit {
 
 
   ngOnInit(): void {
+  }
+
+  logout() {
+    ConstantsService.logout();
+    this.router.navigateByUrl('login');
   }
 
   closeModal() {

@@ -15,6 +15,6 @@
             <input class="modal-input" type="text" [(ngModel)]="new_username" value={{new_username}} placeholder="Insert New Username" required/>
           </div>
     <button class="submit-button">Change Username</button>
-    <button class="cancel-button">Logout</button>
+    <button class="cancel-button" (click)="logout()">Logout</button>
   </div>
 </div>

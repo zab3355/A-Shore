@@ -36,7 +36,8 @@ export class ConstantsService {
   }
 
     static logout() {
-        sessionStorage.clear();
+      sessionStorage.removeItem('access_token');
+      sessionStorage.clear();
     }
 
     static getLoginToken() {
@@ -50,7 +51,7 @@ export class ConstantsService {
 
     static setUserInfo(user){
       sessionStorage.setItem(USERNAME, user.username);
-      sessionStorage.setItem(ID, user.User_ID);
+      sessionStorage.setItem(ID, user.codeTotal);
     }
 
     static getUsername() {
@@ -61,6 +62,12 @@ export class ConstantsService {
     }
 
     loggedIn() {
-        return !!sessionStorage.getItem('account');
+      if (sessionStorage.getItem(TOKEN) != null) {
+        console.log(sessionStorage.getItem('access_token'));
+        console.log('yep');
+        return true;
+      }
+      console.log('nah');
     }
+
 }
