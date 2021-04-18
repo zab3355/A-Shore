@@ -3,9 +3,10 @@ import { environment } from '../../environments/environment';
 
 //#region Constants
 const TOKEN = 'token';
-const LOGINTOKEN = 'account';
 const USERNAME = 'username';
-const ID = 'id';
+const CODE = 'code';
+const LOCID = 'locid';
+const ID = '_id';
 //#endregion
 
 @Injectable({
@@ -40,30 +41,31 @@ export class ConstantsService {
       sessionStorage.clear();
     }
 
-    static getLoginToken() {
-        const token = sessionStorage.getItem(LOGINTOKEN);
-        if (token) {
-            return token;
-        } else {
-            return '';
-        }
-    }
-
     static setUserInfo(user){
       sessionStorage.setItem(USERNAME, user.username);
-      sessionStorage.setItem(ID, user.codeTotal);
+      sessionStorage.setItem(CODE, user.codeTotal);
+      sessionStorage.setItem(LOCID, user.locId);
+      sessionStorage.setItem(ID, user._id);
     }
 
     static getUsername() {
       return sessionStorage.getItem(USERNAME);
     }
+    static getCode() {
+      return sessionStorage.getItem(CODE);
+    }
+
+    static getLocId() {
+      return sessionStorage.getItem(LOCID);
+    }
+
     static getID() {
       return sessionStorage.getItem(ID);
     }
-
+    
     loggedIn() {
       if (sessionStorage.getItem(TOKEN) != null) {
-        console.log(sessionStorage.getItem('access_token'));
+        console.log(sessionStorage.getItem(TOKEN));
         console.log('yep');
         return true;
       }

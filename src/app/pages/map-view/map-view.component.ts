@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { ConstantsService } from 'src/app/services/constants.service';
 import { MapInfoWindow, MapMarker, GoogleMap } from '@angular/google-maps'
 
 @Component({
@@ -9,9 +10,12 @@ import { MapInfoWindow, MapMarker, GoogleMap } from '@angular/google-maps'
   styleUrls: ['./map-view.component.scss']
 })
 export class MapViewComponent implements OnInit {
-  constructor(private router: Router, private toastr: ToastrService) { }
+  constructor(private router: Router, private toastr: ToastrService, private constantsService: ConstantsService) { }
   @ViewChild(GoogleMap, { static: false }) map: GoogleMap
   @ViewChild(MapInfoWindow, { static: false }) info: MapInfoWindow
+
+  locId = '';
+  id= '';
 
   zoom = 12
   center: google.maps.LatLngLiteral
@@ -306,6 +310,8 @@ export class MapViewComponent implements OnInit {
   infoContent = ''
 
   ngOnInit() {
+    this.id = ConstantsService.getLocId();
+    this.locId = ConstantsService.getID();
     navigator.geolocation.getCurrentPosition((position) => {
       this.center = {
         lat: position.coords.latitude,

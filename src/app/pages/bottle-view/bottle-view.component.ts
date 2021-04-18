@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild, ViewContainerRef, ComponentFactoryResolver, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
 
+import { ConstantsService } from 'src/app/services/constants.service';
 import { ShoreService } from 'src/app/services/shore.serice';
 import { ToastrService } from 'ngx-toastr';
 
@@ -25,13 +26,15 @@ export class BottleViewComponent implements OnInit {
   pickRand;
   messageObj;
 
+  commentUsername;
+
   title = '';
   paragraph = '';
   comments = {
     text: '',
     createdDate: '',
     postedBy: '',
-
+    numberofLikes: 0
   }
   viewedBy = {
 
@@ -63,9 +66,6 @@ export class BottleViewComponent implements OnInit {
         })
       }
 
-      this.comments = res.data[this.messagePick].comments;
-      console.log(this.comments);
-
       this.message_id = res.data[this.messagePick]._id;
 
       //still needs work
@@ -85,6 +85,9 @@ export class BottleViewComponent implements OnInit {
       this.paragraph = res.data[this.messagePick].content;
       console.log(this.paragraph);
 
+      this.comments = res.data[this.messagePick].comments;
+      console.log(this.comments);
+      
       this.commentId = res.data[this.messagePick].comments[0]._id;
      })
   }
@@ -110,7 +113,10 @@ export class BottleViewComponent implements OnInit {
   //Adding a comment
   addComment() {
     console.log(this.message_id);
+    this.commentUsername = ConstantsService.getUsername();
     this.shoreService.addComment(this.message_id, this.commentText).subscribe(response => {
+      this.commentUsername = response.postedBy;
+      console.log(this.commentUsername)
       console.log(response);
       this.page--;
       this.loadMessages();
