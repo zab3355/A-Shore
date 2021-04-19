@@ -1,7 +1,8 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, ViewContainerRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { ConstantsService } from 'src/app/services/constants.service';
+import { ShoreService } from 'src/app/services/shore.service';
 import { MapInfoWindow, MapMarker, GoogleMap } from '@angular/google-maps'
 
 @Component({
@@ -10,7 +11,7 @@ import { MapInfoWindow, MapMarker, GoogleMap } from '@angular/google-maps'
   styleUrls: ['./map-view.component.scss']
 })
 export class MapViewComponent implements OnInit {
-  constructor(private router: Router, private toastr: ToastrService, private constantsService: ConstantsService) { }
+  constructor(private router: Router, private toastr: ToastrService, private shoreService: ShoreService, private constantsService: ConstantsService) { }
   @ViewChild(GoogleMap, { static: false }) map: GoogleMap
   @ViewChild(MapInfoWindow, { static: false }) info: MapInfoWindow
 
@@ -307,17 +308,30 @@ export class MapViewComponent implements OnInit {
 
   markers = []
   drawPath = []
-  infoContent = ''
+  infoContent = '';
+  latCoords = 0;
+  lngCoords = 0;
 
   ngOnInit() {
     this.id = ConstantsService.getLocId();
     this.locId = ConstantsService.getID();
+
+    this.shoreService.getLocation(this.id).subscribe(res => {
+      console.log(res.data);
+      this.latCoords = res.data[0].lat;
+      this.lngCoords = res.data[0].lng;
+      this.addMarker();
+    });
+
     navigator.geolocation.getCurrentPosition((position) => {
       this.center = {
         lat: position.coords.latitude,
         lng: position.coords.longitude,
       }
+
     })
+
+
   }
 
   zoomIn() {
@@ -337,15 +351,40 @@ export class MapViewComponent implements OnInit {
   }
 
   addMarker() {
+    console.log(this.latCoords);
+    console.log(this.lngCoords);
+
+    //your user marker
     this.markers.push({
       position: {
-        //change these cause it's just being placed randomly
-        lat: this.center.lat + ((Math.random() - 0.5) * 2) / 10,
-        lng: this.center.lng + ((Math.random() - 0.5) * 2) / 10,
+        
+        //change coords here
+        lat: this.latCoords,
+        lng: this.lngCoords,
       },
       label: {
         color: '#859FF5',
-        text: 'Marker label ' + (this.markers.length + 1),
+        text: 'Your Location',
+      },
+      title: 'Marker title ' + (this.markers.length + 1),
+      info: 'Marker info ' + (this.markers.length + 1),
+      options: {
+        animation: google.maps.Animation.BOUNCE,
+        draggable: false,
+      },
+    }),
+
+    //message marker
+    this.markers.push({
+      position: {
+        
+        //change coords here
+        lat: this.latCoords,
+        lng: this.lngCoords,
+      },
+      label: {
+        color: '#859FF5',
+        text: 'Bottle Location',
       },
       title: 'Marker title ' + (this.markers.length + 1),
       info: 'Marker info ' + (this.markers.length + 1),

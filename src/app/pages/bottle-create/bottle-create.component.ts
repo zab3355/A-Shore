@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild, ViewContainerRef, ComponentFactoryResolve
 import { Router } from '@angular/router';
 
 import { ConstantsService } from 'src/app/services/constants.service';
-import { ShoreService } from 'src/app/services/shore.serice';
+import { ShoreService } from 'src/app/services/shore.service';
 import { ToastrService } from 'ngx-toastr';
 
 

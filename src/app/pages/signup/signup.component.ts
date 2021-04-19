@@ -103,7 +103,7 @@ export class SignupComponent implements OnInit {
       });
     } else if(this.checkValue == "useCurr") {
       //temp values
-      this.city = "Henrietta";
+      this.city = "West Henrietta, NY";
       this.country = "US";
       this.userService.addRelativeLocationUser(this.username, this.city, this.country).subscribe(res => {
         console.log(res);

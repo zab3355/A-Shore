@@ -2,9 +2,8 @@ import { Component, OnInit, ViewChild, ViewContainerRef, ComponentFactoryResolve
 import { Router } from '@angular/router';
 
 import { ConstantsService } from 'src/app/services/constants.service';
-import { ShoreService } from 'src/app/services/shore.serice';
+import { ShoreService } from 'src/app/services/shore.service';
 import { ToastrService } from 'ngx-toastr';
-
 
 @Component({
   selector: 'app-bottle-view',
@@ -15,7 +14,6 @@ export class BottleViewComponent implements OnInit {
   constructor(private router: Router, private toastr: ToastrService,  private resolver: ComponentFactoryResolver, private shoreService: ShoreService) { 
     this.loadMessages();
   }
-  
   @ViewChild('modalHolder', { read: ViewContainerRef, static: false }) modalHolder;
 
 
@@ -39,6 +37,10 @@ export class BottleViewComponent implements OnInit {
   viewedBy = {
 
   }
+
+  bottleAuthor = 0;
+  bottleViewLat = 0;
+  bottleViewLng = 0;
 
   commentId = '';
   commentText ='';
@@ -68,7 +70,11 @@ export class BottleViewComponent implements OnInit {
 
       this.message_id = res.data[this.messagePick]._id;
 
-      //still needs work
+      this.bottleAuthor = res.data[this.messagePick].postedBy;
+  
+
+      this.getLocationBottle();
+
       if(this.message_id != null) {
         this.shoreService.addViewer(this.message_id, this.message_id).subscribe(res =>{
           console.log(res.data);
@@ -87,7 +93,7 @@ export class BottleViewComponent implements OnInit {
 
       this.comments = res.data[this.messagePick].comments;
       console.log(this.comments);
-      
+
       this.commentId = res.data[this.messagePick].comments[0]._id;
      })
   }
@@ -112,13 +118,12 @@ export class BottleViewComponent implements OnInit {
 
   //Adding a comment
   addComment() {
-    console.log(this.message_id);
-    this.commentUsername = ConstantsService.getUsername();
     this.shoreService.addComment(this.message_id, this.commentText).subscribe(response => {
-      this.commentUsername = response.postedBy;
-      console.log(this.commentUsername)
+      this.comments.postedBy = ConstantsService.getID();
+      this.commentUsername = ConstantsService.getUsername();
       console.log(response);
       this.page--;
+      this.toastr.success('Reply to this bottle was successful!', '', { timeOut: 3000, positionClass: 'toast-bottom-right' });
       this.loadMessages();
     }, (error) => {
         this.toastr.error('An error occured in your reply, please check your reply or try again later.', '', { timeOut: 3000, positionClass: 'toast-bottom-right' });
@@ -134,6 +139,19 @@ export class BottleViewComponent implements OnInit {
       console.log(response);
       this.loadMessages();
     })
+  }
+
+  getLocationBottle() {
+    console.log(this.bottleAuthor);
+          //Location for bottle
+          this.shoreService.getLocation(this.bottleAuthor).subscribe(res => {
+            console.log("Bottle Location: " + res.data);
+            this.bottleViewLat = res.data[0].lat;
+            this.bottleViewLng = res.data[0].lng;
+            console.log("Bottle Location: " + this.bottleViewLng);
+            console.log("Bottle Location: " + this.bottleViewLat);
+          })
+    
   }
   
 }

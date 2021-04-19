@@ -40,6 +40,11 @@ export class ShoreService {
         return this.networkService.httpPost(url, payload);
     }
 
+    getLocation(id){
+        const url = `${this.api_url}/getLocation?id=${id}`;
+        return this.networkService.httpGet(url);
+    }
+
     addComment(id, commentText) {
         const url = this.api_url + '/addComment';
         const payload = new HttpParams()

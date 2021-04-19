@@ -24,6 +24,7 @@ body{
   .bottle {
     animation: MoveUpDown 1s linear infinite;
     cursor: pointer;
+    display: block;
   }
 
   @keyframes MoveUpDown {
