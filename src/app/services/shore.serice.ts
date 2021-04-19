@@ -30,8 +30,14 @@ export class ShoreService {
         return this.networkService.httpGet(url);
     }
 
-    addMessage() {
-
+    addMessage(content, postedBy, title) {
+        const url = this.api_url + '/addMessage';
+        const payload = new HttpParams()
+        .set('content', content)
+        .set('postedBy', postedBy)
+        .set('title', title);
+        
+        return this.networkService.httpPost(url, payload);
     }
 
     addComment(id, commentText) {
