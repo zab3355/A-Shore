@@ -11,7 +11,7 @@ const getAllLocations = (req, res) => Location.LocationModel.getAllLocations((er
         console.log(err)
       return res.status(404).json({ error: 'No Locations Found' });
     }
-  
+
     return res.json({data: docs});
 });
 
@@ -36,7 +36,7 @@ const addLocation = (req, res) => {
     const newLocation = new Location.LocationModel(locationData);
     return newLocation.save()
         .then(() => {res.json({success:'Location Successfully Created', location: newLocation})})
-        .catch((err) => {res.status(400).json({error: err.message})})       
+        .catch((err) => {res.status(400).json({error: err.message})})
 }
 
 const populateLocations = async (req, res) => {
@@ -63,13 +63,26 @@ const populateLocations = async (req, res) => {
             console.log(err)
         })
     });
-   
+
    // return res.json({test: 'hi'})
    return res.redirect('/api/getLocations')
+};
+
+const getLocation = (req, res) => {
+  if (!req.query.id) {
+    return res.status(400).json({ error: 'id is required' });
+  }
+  return Location.LocationModel.getLocation(req.query.id, (err,doc) => {
+    if (err || !doc) {
+      return res.status(404).json({ error: `Could Not Find Location with id ${req.query.id}` });
+    }
+    return res.json({ data: doc });
+  });
 };
 
 module.exports = {
     getAllLocations,
     addLocation,
-    populateLocations
+    populateLocations,
+    getLocation
 }

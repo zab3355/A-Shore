@@ -20,6 +20,7 @@ const router = (app) => {
 
     app.get('/api/populateLocations',controllers.Location.populateLocations);
     app.get('/api/getLocations', controllers.Location.getAllLocations);
+    app.get('/api/getLocation', controllers.Location.getLocation);
     app.post('/api/addLocation', controllers.Location.addLocation);
 
     //POST Requests
@@ -28,6 +29,7 @@ const router = (app) => {
     app.post('/api/signup',  controllers.Users.signup);
     app.post('/api/addRelativeLocationUser',  controllers.Users.addRelativeLocationUser);
     app.get('/api/getUsers',controllers.Users.getAllUsers);
+    app.post('/api/updateUsername', controllers.Users.changeUsername)
 
 
         // The "catchall" handler: for any request that doesn't

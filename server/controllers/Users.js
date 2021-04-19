@@ -152,6 +152,26 @@ const addUser  = (data, req, res) => {
   });
 }
 
+const changeUsername = async (req, res) => {
+  if (!req.body.id) {
+    return res.status(400).json({ error: 'User ID is required' });
+  }
+  if (!req.body.newUsername) {
+    return res.status(400).json({ error: 'New username is required' });
+  }
+
+  const idObj = {_id: req.body.id}
+  const newUserObj = {username: req.body.newUsername}
+
+  let doc = await Users.UserModel.findOneAndUpdate(idObj, newUserObj, {new: true});
+
+  if (doc) {
+    return res.json({data: doc})
+  } else {
+    return res.status(400).json({error: 'Unable to update username'})
+  }
+
+}
 
 
 module.exports = {
@@ -159,5 +179,6 @@ module.exports = {
   logout,
   signup,
   getAllUsers,
-  addRelativeLocationUser
+  addRelativeLocationUser,
+  changeUsername
 };
