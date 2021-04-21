@@ -167,6 +167,10 @@ body{
     cursor: pointer;
   }
 
+  .comment-text {
+    margin-left: 5px;
+  }
+
   .comment-page:hover {
     filter: contrast(0%);
   }
@@ -288,6 +292,8 @@ body{
 
   .comment-postedBy {
     font-weight: bolder;
+    margin-left: 5px;
+    margin-top: -45px;
   }
 
   .map-btn {

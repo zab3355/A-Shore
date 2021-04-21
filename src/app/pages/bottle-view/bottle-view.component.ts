@@ -26,6 +26,8 @@ export class BottleViewComponent implements OnInit {
   messagePick;
   pickRand;
   messageObj;
+  bottles: number;
+  bottleData;
 
   commentUsername;
 
@@ -38,7 +40,6 @@ export class BottleViewComponent implements OnInit {
     numberofLikes: 0
   }
   viewedBy = {
-
   }
 
   bottleId = '';
@@ -52,27 +53,26 @@ export class BottleViewComponent implements OnInit {
   commentText3 ='';
 
   ngOnInit() {
-    //let pickRand = Math.floor((Math.random() * 50) + 1);
-
-    //Hardcode select a bottle
-    let pickRand = 0;
-    this.messagePick = pickRand;
-    console.log(this.message_id);
+      //Hardcode select a bottle
+      //let pickRand = 0;
+      //this.messagePick = pickRand;
   }
 
   loadMessages() {
-    console.log(this.messagePick);
-
      this.shoreService.getMessages().subscribe(res => {
-       console.log(res.data);
-       
        // If messages do not exist yet
       if(res.data == undefined) {
         this.shoreService.populateMessages().subscribe(res => {
           console.log(res.data);
         })
       }
-
+      this.bottles = res.data.length;
+      let pickRand = Math.floor((Math.random() * this.bottles) + 1);
+  
+      //Hardcode select a bottle
+      //let pickRand = 0;
+      this.messagePick = pickRand;
+      this.bottleData = res.data[this.messagePick];
       this.message_id = res.data[this.messagePick]._id;
 
 
@@ -84,21 +84,20 @@ export class BottleViewComponent implements OnInit {
       }
 
       this.viewedBy = res.data[this.messagePick].viewedBy;
-      console.log(this.viewedBy);
       
       this.title = res.data[this.messagePick].title;
-      console.log(this.title);
 
       this.paragraph = res.data[this.messagePick].content;
-      console.log(this.paragraph);
 
       this.comments = res.data[this.messagePick].comments;
       console.log(this.comments);
 
-      this.commentId = res.data[this.messagePick].comments[0]._id;
-
       this.bottleAuthor = res.data[this.messagePick].postedBy.locId;
       console.log(this.bottleAuthor);
+      
+      this.comments.postedBy = res.data[this.messagePick].comments[0].postedBy;
+      console.log(this.comments.postedBy);
+
       this.getLocationBottle();
      })
   }
@@ -126,7 +125,6 @@ export class BottleViewComponent implements OnInit {
     this.shoreService.addComment(this.message_id, this.commentText).subscribe(response => {
       this.comments.postedBy = ConstantsService.getID();
       this.commentUsername = ConstantsService.getUsername();
-      console.log(response);
       this.page--;
       this.toastr.success('Reply to this bottle was successful!', '', { timeOut: 3000, positionClass: 'toast-bottom-right' });
       this.loadMessages();
@@ -137,8 +135,9 @@ export class BottleViewComponent implements OnInit {
   }
 
   //Liking a comment
-  likeComment() {
+  likeComment(index) {
     console.log(this.message_id);
+    this.commentId = this.bottleData.comments[index]._id;
     console.log(this.commentId);
     this.shoreService.addLikeToComment(this.message_id, this.commentId).subscribe(response => {
       console.log(response);

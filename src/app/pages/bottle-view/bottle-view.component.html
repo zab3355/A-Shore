@@ -16,7 +16,7 @@
             <h2 class="title-comment-message" name="title">Comments</h2>
             <div *ngFor="let comment of comments; let i = index;" [attr.data-index]="i" >
               <ui class="border-comment"> 
-               <li><span class="comment-heart" name="comments">{{comment.numberOfLikes}}</span><a class="comment-heart-img" (click)="likeComment()"><img src="assets/img/heart.png"></a></li>
+               <li><span class="comment-heart" name="comments">{{comment.numberOfLikes}}</span><a class="comment-heart-img" (click)="likeComment(i)"><img src="assets/img/heart.png"></a></li>
                <li><p class="comment-createdDate" name="comments" >{{comment.createdDate| date: 'shortDate'}}</p></li>
                <li><p class="comment-postedBy" name="comments" >{{comment.postedBy}}</p></li>
                 <li><p class="comment-text" name="comments" >{{comment.text}}</p>
