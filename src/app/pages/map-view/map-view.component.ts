@@ -1,5 +1,7 @@
-import { Component, OnInit, ViewChild, ElementRef, ViewContainerRef } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, OnInit, ViewChild, Output, ElementRef, ViewContainerRef } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
+
+import { BottleViewComponent } from 'src/app/pages/bottle-view/bottle-view.component'; 
 import { ToastrService } from 'ngx-toastr';
 import { ConstantsService } from 'src/app/services/constants.service';
 import { ShoreService } from 'src/app/services/shore.service';
@@ -11,9 +13,10 @@ import { MapInfoWindow, MapMarker, GoogleMap } from '@angular/google-maps'
   styleUrls: ['./map-view.component.scss']
 })
 export class MapViewComponent implements OnInit {
-  constructor(private router: Router, private toastr: ToastrService, private shoreService: ShoreService, private constantsService: ConstantsService) { }
+  constructor(private router: Router, private route: ActivatedRoute, private toastr: ToastrService, private shoreService: ShoreService, private constantsService: ConstantsService) { }
   @ViewChild(GoogleMap, { static: false }) map: GoogleMap
   @ViewChild(MapInfoWindow, { static: false }) info: MapInfoWindow
+
 
   locId = '';
   id= '';
@@ -311,15 +314,32 @@ export class MapViewComponent implements OnInit {
   infoContent = '';
   latCoords = 0;
   lngCoords = 0;
+  
+  bottleViewLat:string = '';
+  bottleViewLng:string = '';
+  bottleLatNum = 0;
+  bottleLngNum = 0;
+
+
+  message_id: number;
 
   ngOnInit() {
     this.id = ConstantsService.getLocId();
     this.locId = ConstantsService.getID();
 
+    this.route.queryParams.subscribe(queryParams => {
+      this.bottleViewLat = queryParams['bottleViewLat'];
+      this.bottleViewLng = queryParams['bottleViewLng'];
+      this.bottleLngNum = parseFloat(this.bottleViewLng);
+      this.bottleLatNum = parseFloat(this.bottleViewLat);
+      console.log(this.bottleLatNum + this.bottleLngNum);
+    });
+
     this.shoreService.getLocation(this.id).subscribe(res => {
       console.log(res.data);
       this.latCoords = res.data[0].lat;
       this.lngCoords = res.data[0].lng;
+      this.addBottleMarker();
       this.addMarker();
     });
 
@@ -328,10 +348,17 @@ export class MapViewComponent implements OnInit {
         lat: position.coords.latitude,
         lng: position.coords.longitude,
       }
-
     })
+  }
 
-
+  convertToNumber(numVal) {
+  
+    if (isNaN(+numVal)) {
+      console.log("Number is NaN")
+      
+    } else  {
+      console.log(+numVal)
+    }
   }
 
   zoomIn() {
@@ -370,30 +397,34 @@ export class MapViewComponent implements OnInit {
       info: 'Marker info ' + (this.markers.length + 1),
       options: {
         animation: google.maps.Animation.BOUNCE,
-        draggable: false,
+        draggable: true,
       },
-    }),
-
-    //message marker
-    this.markers.push({
-      position: {
-        
-        //change coords here
-        lat: this.latCoords,
-        lng: this.lngCoords,
-      },
-      label: {
-        color: '#859FF5',
-        text: 'Bottle Location',
-      },
-      title: 'Marker title ' + (this.markers.length + 1),
-      info: 'Marker info ' + (this.markers.length + 1),
-      options: {
-        animation: google.maps.Animation.BOUNCE,
-        draggable: false,
-      },
-    })
+    });
   }
+
+  addBottleMarker(){
+    console.log(this.bottleLatNum);
+    console.log(this.bottleLngNum);
+
+        //message marker
+        this.markers.push({
+          position: {
+            //change coords here
+            lat: this.bottleLatNum,
+            lng: this.bottleLngNum,
+          },
+          label: {
+            color: '#859FF5',
+            text: 'Bottle Location',
+          },
+          title: 'Marker title ' + (this.markers.length + 1),
+          info: 'Marker info ' + (this.markers.length + 1),
+          options: {
+            animation: google.maps.Animation.BOUNCE,
+            draggable: false,
+          },
+        });
+    }
 
   serverAddMarker() {
     //TODO: call the database to fill markers[]

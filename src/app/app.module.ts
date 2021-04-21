@@ -25,7 +25,7 @@ import { AuthGuard } from './services/auth.guard';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 import { BottleViewComponent } from './pages/bottle-view/bottle-view.component';
 import { BottleCreateComponent } from './pages/bottle-create/bottle-create.component';
-import { SettingsModalComponent } from './modals/settings-modal/settings-modal.component';
+import { SettingsComponent } from './pages/settings/settings.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +42,7 @@ import { SettingsModalComponent } from './modals/settings-modal/settings-modal.c
     MapViewComponent,
     BottleViewComponent,
     BottleCreateComponent,
-    SettingsModalComponent,
+    SettingsComponent,
   ],
   imports: [
     BrowserModule,

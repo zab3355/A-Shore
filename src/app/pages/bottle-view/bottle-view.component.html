@@ -1,6 +1,6 @@
 <div class="bottle-view-page">
     <img class="back-btn pulse-grow-on-hover" routerLinkActive="active" [routerLink]="['/shore']" src="assets/img/arrowbackward.png">
-    <img class="map-btn pulse-grow-on-hover" routerLinkActive="active" [routerLink]="['/map-view']" src="assets/img/mapicon.png">
+    <img class="map-btn pulse-grow-on-hover" routerLinkActive="active" (click)="mapAccess(bottleViewLat,bottleViewLng)" src="assets/img/mapicon.png">
         <a class="box-page"><img src="assets/img/bottleviewpage.png"></a>
         <div *ngIf="page == 1" class="content-box">
             <h2 class="title-message" name="title" [(ngModel)]="title">{{title}}</h2>

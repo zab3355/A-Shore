@@ -1,7 +1,6 @@
 import { Component, OnInit, ViewChild, ViewContainerRef, ComponentFactoryResolver, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { ConstantsService } from 'src/app/services/constants.service';
-import { SettingsModalComponent } from 'src/app/modals/settings-modal/settings-modal.component';
 import { ToastrService } from 'ngx-toastr';
 
 @Component({
@@ -28,12 +27,6 @@ export class ShoreComponent implements OnInit {
   }
 
   settingsEvent() {
-    const modal = this.modalHolder.createComponent(this.resolver.resolveComponentFactory(SettingsModalComponent));
-    modal.instance.close.subscribe((response) => {
-      if (response) {
-        console.log(response);
-      }
-      this.modalHolder.clear();
-    })
+    this.router.navigateByUrl('/settings');
   }
 }

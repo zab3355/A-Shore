@@ -38,4 +38,13 @@ export class UserService {
     
     return this.networkService.httpPost(url, payload);
   }
+
+  changeUsername(id, newUsername){
+    const url = this.api_url + '/updateUsername';
+    const payload = new HttpParams()
+    .set('id', id)
+    .set('newUsername', newUsername)
+    
+    return this.networkService.httpPost(url, payload);
+  }
 }

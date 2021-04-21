@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ViewContainerRef, ComponentFactoryResolver, ElementRef } from '@angular/core';
+import { Component, OnInit, ViewChild, ViewContainerRef, Input, Output, EventEmitter, ComponentFactoryResolver, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { ConstantsService } from 'src/app/services/constants.service';
@@ -16,7 +16,10 @@ export class BottleViewComponent implements OnInit {
   }
   @ViewChild('modalHolder', { read: ViewContainerRef, static: false }) modalHolder;
 
-
+  bottleViewLat:number;
+  bottleViewLng:number;
+  @Output() bottleViewLatEvent = new EventEmitter<number>();
+  @Output() bottleViewLngEvent = new EventEmitter<number>();
   page = 1;
 
   message_id: number;
@@ -38,9 +41,8 @@ export class BottleViewComponent implements OnInit {
 
   }
 
+  bottleId = '';
   bottleAuthor = 0;
-  bottleViewLat = 0;
-  bottleViewLng = 0;
 
   commentId = '';
   commentText ='';
@@ -50,7 +52,10 @@ export class BottleViewComponent implements OnInit {
   commentText3 ='';
 
   ngOnInit() {
-    let pickRand = Math.floor((Math.random() * 50) + 1);
+    //let pickRand = Math.floor((Math.random() * 50) + 1);
+
+    //Hardcode select a bottle
+    let pickRand = 0;
     this.messagePick = pickRand;
     console.log(this.message_id);
   }
@@ -70,15 +75,11 @@ export class BottleViewComponent implements OnInit {
 
       this.message_id = res.data[this.messagePick]._id;
 
-      this.bottleAuthor = res.data[this.messagePick].postedBy;
-  
 
-      this.getLocationBottle();
-
+      this.bottleId = ConstantsService.getID();
       if(this.message_id != null) {
-        this.shoreService.addViewer(this.message_id, this.message_id).subscribe(res =>{
+        this.shoreService.addViewer(this.bottleId, this.message_id).subscribe(res =>{
           console.log(res.data);
-    
         });
       }
 
@@ -95,6 +96,10 @@ export class BottleViewComponent implements OnInit {
       console.log(this.comments);
 
       this.commentId = res.data[this.messagePick].comments[0]._id;
+
+      this.bottleAuthor = res.data[this.messagePick].postedBy.locId;
+      console.log(this.bottleAuthor);
+      this.getLocationBottle();
      })
   }
 
@@ -148,10 +153,14 @@ export class BottleViewComponent implements OnInit {
             console.log("Bottle Location: " + res.data);
             this.bottleViewLat = res.data[0].lat;
             this.bottleViewLng = res.data[0].lng;
-            console.log("Bottle Location: " + this.bottleViewLng);
-            console.log("Bottle Location: " + this.bottleViewLat);
+            console.log("Bottle Long: " + this.bottleViewLng);
+            console.log("Bottle Lat: " + this.bottleViewLat);
           })
     
+  }
+
+  mapAccess(bottleViewLat, bottleViewLng){
+    this.router.navigate(['/map-view'], { queryParams: { bottleViewLng: bottleViewLng, bottleViewLat: bottleViewLat } });
   }
   
 }

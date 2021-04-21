@@ -10,7 +10,9 @@ import { MapViewComponent } from './pages/map-view/map-view.component';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 import { BottleViewComponent } from './pages/bottle-view/bottle-view.component';
 import { BottleCreateComponent } from './pages/bottle-create/bottle-create.component';
+import { SettingsComponent } from './pages/settings/settings.component';
 import { AuthGuard } from './services/auth.guard';
+
 
 const routes: Routes = [
   //change this route to login later once we setup auth
@@ -22,6 +24,7 @@ const routes: Routes = [
   { path: 'signup', component: SignupComponent},
   { path: 'test', component: TestComponent},
   { path: 'shore', component: ShoreComponent, canActivate: [AuthGuard]},
+  { path: 'settings', component: SettingsComponent, canActivate: [AuthGuard]},
   { path: 'bottle-create', component: BottleCreateComponent, canActivate: [AuthGuard]},
   { path: 'bottle-view', component: BottleViewComponent, canActivate: [AuthGuard]},
   { path: 'tutorial', component: TutorialComponent, canActivate: [AuthGuard]},

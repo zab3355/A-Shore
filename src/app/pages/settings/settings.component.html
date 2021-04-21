@@ -1,0 +1,20 @@
+<div class="login-signup-page">
+    <img class="back-btn pulse-grow-on-hover" routerLinkActive="active" [routerLink]="['/shore']" src="assets/img/arrowbackward.png">
+    <div class="box">
+        <div>
+            <h1 class="header-welcome-highup">SETTINGS</h1>
+        </div>
+    </div>
+
+    <div class="enter-num" *ngIf="page == 1">
+        <h3 class="user-text">Username</h3>
+        <input type="text" class="username-input" name="username" [(ngModel)]="username" placeholder=""> 
+        <div class="code-btn-rand">
+            <button (click)="updateUsername()">EDIT</button>
+        </div>
+        
+    <div type="submit" class="code-btn-go">
+        <button (click)="logout()">logout</button>
+     </div>
+</div>
+
