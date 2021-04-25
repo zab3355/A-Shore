@@ -54,7 +54,7 @@ export class BottleViewComponent implements OnInit {
 
   ngOnInit() {
       //Hardcode select a bottle
-      //let pickRand = 0;
+      //let pickRand = 50;
       //this.messagePick = pickRand;
   }
 
@@ -159,19 +159,25 @@ export class BottleViewComponent implements OnInit {
   }
 
   getLocationBottle() {
-    console.log(this.bottleAuthor);
-          //Location for bottle
-          this.shoreService.getLocation(this.bottleAuthor).subscribe(res => {
-            console.log("Bottle Location: " + res.data);
-            this.bottleViewLat = res.data[0].lat;
-            this.bottleViewLng = res.data[0].lng;
-            console.log("Bottle Long: " + this.bottleViewLng);
-            console.log("Bottle Lat: " + this.bottleViewLat);
-          })
+    //Location for bottle
+    this.shoreService.getLocation(this.bottleAuthor).subscribe(res => {
+        this.bottleViewLat = res.data[0].lat;
+        this.bottleViewLng = res.data[0].lng;
+      })
   }
 
   mapAccess(bottleViewLat, bottleViewLng){
-    this.router.navigate(['/map-view'], { queryParams: { bottleViewLng: bottleViewLng, bottleViewLat: bottleViewLat } });
+    if(this.bottleAuthor != null || this.bottleAuthor != undefined){
+      if(this.bottleViewLat != null || this.bottleViewLat != undefined ) {
+        this.router.navigate(['/map-view'], { queryParams: { bottleViewLng: bottleViewLng, bottleViewLat: bottleViewLat } });
+      } 
+      else {
+        this.toastr.error('The user did not share their location for this bottle.', '', { timeOut: 3000, positionClass: 'toast-bottom-right' });
+      }
+    }
+    else {
+      this.toastr.error('The user did not share their location for this bottle.', '', { timeOut: 3000, positionClass: 'toast-bottom-right' });
+    }
   }
   
 }
