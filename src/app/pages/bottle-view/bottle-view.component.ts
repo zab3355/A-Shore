@@ -11,7 +11,7 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./bottle-view.component.scss']
 })
 export class BottleViewComponent implements OnInit {
-  constructor(private router: Router, private toastr: ToastrService,  private resolver: ComponentFactoryResolver, private shoreService: ShoreService) { 
+  constructor(private router: Router, private toastr: ToastrService, private resolver: ComponentFactoryResolver, private shoreService: ShoreService) { 
     this.loadMessages();
   }
   @ViewChild('modalHolder', { read: ViewContainerRef, static: false }) modalHolder;
@@ -98,6 +98,9 @@ export class BottleViewComponent implements OnInit {
       this.comments.postedBy = res.data[this.messagePick].comments[0].postedBy;
       console.log(this.comments.postedBy);
 
+      //For getting bottle locatiom
+      this.bottleAuthor = res.data[this.messagePick].postedBy.locId;
+
       this.getLocationBottle();
      })
   }
@@ -123,11 +126,16 @@ export class BottleViewComponent implements OnInit {
   //Adding a comment
   addComment() {
     this.shoreService.addComment(this.message_id, this.commentText).subscribe(response => {
-      this.comments.postedBy = ConstantsService.getID();
-      this.commentUsername = ConstantsService.getUsername();
-      this.page--;
-      this.toastr.success('Reply to this bottle was successful!', '', { timeOut: 3000, positionClass: 'toast-bottom-right' });
-      this.loadMessages();
+      if (response.success) {
+        this.comments.postedBy = ConstantsService.getID();
+        this.commentUsername = ConstantsService.getUsername();
+        this.page--;
+        this.toastr.success('Reply to this bottle was successful!', '', { timeOut: 3000, positionClass: 'toast-bottom-right' });
+        this.loadMessages();
+      }
+      else {
+        this.toastr.error('An error occured in your reply, please check your reply or try again later.', '', { timeOut: 3000, positionClass: 'toast-bottom-right' });
+      }
     }, (error) => {
         this.toastr.error('An error occured in your reply, please check your reply or try again later.', '', { timeOut: 3000, positionClass: 'toast-bottom-right' });
       });
@@ -140,8 +148,13 @@ export class BottleViewComponent implements OnInit {
     this.commentId = this.bottleData.comments[index]._id;
     console.log(this.commentId);
     this.shoreService.addLikeToComment(this.message_id, this.commentId).subscribe(response => {
-      console.log(response);
-      this.loadMessages();
+      if (response.success) {
+        console.log(response);
+        this.loadMessages();
+      }  
+      else {
+        this.toastr.error('Cannot like this comment, try again later.', '', { timeOut: 3000, positionClass: 'toast-bottom-right' });
+      }
     })
   }
 
@@ -155,7 +168,6 @@ export class BottleViewComponent implements OnInit {
             console.log("Bottle Long: " + this.bottleViewLng);
             console.log("Bottle Lat: " + this.bottleViewLat);
           })
-    
   }
 
   mapAccess(bottleViewLat, bottleViewLng){
