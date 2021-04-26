@@ -570,7 +570,12 @@ html{
     
     @media screen and (max-width: 1250px) {
     .box{
-      padding-left: 215px;
+       padding-left: 15px;
+    }
+    .code-btn-rand {
+      margin-top: -70px;
+      margin-left: 735px;
+      outline: none;
     }
     }
     // responsive stuff - Hide Section when 850px or Below
