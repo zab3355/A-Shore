@@ -64,7 +64,7 @@ html{
     .header-welcome-highup {
       width: 100%;
       /* height: 0px; */
-      margin-top: -125px;
+      margin-top: -205px;
       margin-bottom: 30px;
       font-family: Fredoka One;
       font-style: normal;
@@ -335,7 +335,18 @@ html{
     
     @media screen and (max-width: 1250px) {
     .box{
-      padding-left: 215px;
+      padding-left: 15px;
+    }
+      
+    .code-text{
+      padding-right: 810px;
+    }
+
+    input {
+      width: 125px;
+      height: 175px;
+      left: 618px;
+      top: 540px;
     }
     }
     // responsive stuff - Hide Section when 850px or Below
