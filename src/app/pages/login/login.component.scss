@@ -370,16 +370,11 @@ html{
       }
   
       .home-page {
-        background-image: url("/assets/img/TheShore_BKG.png") no-repeat center center fixed;
-        -webkit-background-size: cover;
-        -moz-background-size: cover;
-        -o-background-size: cover;
+        background-image: url("/assets/img/TheShore_BKG.png");
         background-size: cover;
-        height: 100%;
         overflow: hidden;
+        height: 100vh;
       }
-        
-        // grid-template-columns: 3fr 1fr;
       }
     
     

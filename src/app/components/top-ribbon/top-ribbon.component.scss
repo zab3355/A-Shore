@@ -14,6 +14,7 @@
 // styling for the logo
 .logo {
   padding: 15px 15px;
+  cursor: pointer;
 }
 
 .header-text{
@@ -48,63 +49,6 @@
   font-size: 18px;
   line-height: 25px;
   color: #FFFFFF;
-}
-
-// styling for the notification section (contains the bell icon)
-.notification-section {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  //text-align: right;
-  //margin: 25px 20px;
-  margin-left: 20px;
-  margin-right: 20px;
-}
-
-// styling for the div holding the bell icon
-.bell-holder {
-  display: inline-block;
-  //margin-left: 10px;
-  //margin-top: -2px;
-  cursor: pointer;
-
-  // the menu stays hidden at this point
-  .menu-holder {
-    display: none;
-  }
-}
-
-// displays a notification menu when hovering over the bell icon
-.bell-holder:hover {
-  -ms-transform: rotate(20deg); /* IE 9 */
-  transform: rotate(20deg);
-  .menu-holder {
-    margin-top: 55px;
-    -ms-transform: rotate(-20deg); /* IE 9 */
-    transform: rotate(-20deg);
-    display: block;
-    position: absolute;
-    background: lightgrey;
-    padding: 10px 10px;
-    box-shadow: #585858 1px 1px 4px;
-    border-radius: 4px;
-    margin-left: -280px;
-    width: 300px;
-    text-align: center;
-    z-index:1;
-    // border: 1px solid #b3b3b3;
-  }
-
-  // styling for notifications in the notification menu
-  .notif {
-    padding: 10px 5px;
-    font-size: 12px;
-  }
-
-  // styling for notifications that aren't the first notification
-  .notif:not(:first-child) {
-    border-top: 1px solid #b3b3b3;
-  }
 }
 
 // styling for the settings-container section (contains the settings section which contains the settings gear)
@@ -146,46 +90,5 @@
   }
   to {
     transform: rotate(359deg);
-  }
-}
-
-// removes the outline when the settings section is in focus
-.settings:focus {
-  outline: none;
-}
-
-
-.read-notifs {
-  text-transform: uppercase;
-  color: white;
-  background: gray;
-  border: none;
-  border-radius: 4px;
-}
-
-// styling for the notification number section (located on/above the bell icon)
-.notif-number {
-  //margin-top: -43px;
-  //margin-left: -25px;
-  margin-top: -42px;
-  margin-left: -19px;
-  position: absolute;
-  text-align: center;
-  color: white;
-
-  // styling for the notification image (a red dot)
-  img {
-    width: 23%;
-    padding: 15px;
-    z-index: 1;
-  }
-
-  // styling for the notification number
-  .number {
-    font-size: 8px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
   }
 }

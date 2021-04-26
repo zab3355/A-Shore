@@ -30,12 +30,19 @@ html{
   .home-start {
     background-image: url("/assets/img/theshore-Header.gif");
     background-size: cover;
+    cursor:pointer;
     display: block;
     overflow: hidden;
     height: 100vh;
-    transition: opacity 1s ease-in-out;
-    -webkit-transition: opacity 1s ease-in-out;
-    -moz-transition:opacity 1s ease-in-out;
+    opacity: 1;
+  }
+
+  .home-start:active {
+    animation: fadeOut ease 15s;
+    -webkit-animation: fadeOut ease 15s;
+    -moz-animation: fadeOut ease 15s;
+    -o-animation: fadeOut ease 15s;
+    -ms-animation: fadeOut ease 15s;
   }
   
   .home-start ~ .animated {
@@ -44,6 +51,102 @@ html{
   .home-start ~ .animated {
      opacity: 1;
   }
+  .fadeIn{
+    animation: fadeIn ease 5s;
+    -webkit-animation: fadeIn ease 5s;
+    -moz-animation: fadeIn ease 5s;
+    -o-animation: fadeIn ease 5s;
+    -ms-animation: fadeIn ease 5s;
+  }
+
+  @keyframes fadeIn {
+    0% {
+      opacity:0;
+    }
+    100% {
+      opacity:1;
+    }
+  }
+  
+  @-moz-keyframes fadeIn {
+    0% {
+      opacity:0;
+    }
+    100% {
+      opacity:1;
+    }
+  }
+  
+  @-webkit-keyframes fadeIn {
+    0% {
+      opacity:0;
+    }
+    100% {
+      opacity:1;
+    }
+  }
+  
+  @-o-keyframes fadeIn {
+    0% {
+      opacity:0;
+    }
+    100% {
+      opacity:1;
+    }
+  }
+  
+  @-ms-keyframes fadeIn {
+    0% {
+      opacity:0;
+    }
+    100% {
+      opacity:1;
+  }
+}
+  @keyframes fadeOut {
+    0% {
+      opacity:1;
+    }
+    100% {
+      opacity:0;
+    }
+  }
+  
+  @-moz-keyframes fadeOut {
+    0% {
+      opacity:1;
+    }
+    100% {
+      opacity:0;
+    }
+  }
+  
+  @-webkit-keyframes fadeOut {
+    0% {
+      opacity:1;
+    }
+    100% {
+      opacity:0;
+    }
+  }
+  
+  @-o-keyframes fadeOut {
+    0% {
+      opacity:1;
+    }
+    100% {
+      opacity:0;
+    }
+  }
+  
+  @-ms-keyframes fadeOut {
+    0% {
+      opacity:1;
+    }
+    100% {
+      opacity:0;
+  }
+}
 
   .header-welcome {
       width: 100%;
@@ -260,10 +363,27 @@ box-shadow: 2px 2px 8px 0 rgba(0, 0, 0, 0.4) inset;
     background: #A4B1DF;
     border-radius: 5px;
   }
+
+
+
+
   
   @media screen and (max-width: 1250px) {
   .box{
     padding-left: 215px;
+  }
+
+  }
+
+  @media only screen and (min-width: 768px) {
+    .login-btn-mobile {
+      display: none;      
+    }
+  
+      
+  .login-btn-mobile>button {
+    display: none;      
+  
   }
   }
   // responsive stuff - Hide Section when 850px or Below
@@ -271,18 +391,16 @@ box-shadow: 2px 2px 8px 0 rgba(0, 0, 0, 0.4) inset;
   @media screen and (max-width: 850px){
     
     div, .box {
-      display: contents;
-      text-align: center;
-      
+      padding-left:0px;
   
     .logo {
       width: 50%;    
     }
   
     .header-welcome {
-      padding-top: 150px;
       font-size: 60px;
-      padding-right: 10px;
+      text-align: center !important;
+      
     }
 
     .forgot-pass {
@@ -297,21 +415,52 @@ box-shadow: 2px 2px 8px 0 rgba(0, 0, 0, 0.4) inset;
       margin-top: 20px;
     }
 
-    .home-page {
-      background-image: url("/assets/img/TheShore_BKG.png") no-repeat center center fixed;
-      -webkit-background-size: cover;
-      -moz-background-size: cover;
-      -o-background-size: cover;
-      background-size: cover;
-      height: 100%;
-      overflow: hidden;
+    .login-btn-mobile {
+      text-align: center;
+      margin-top: 10px;
+      margin-bottom: 20px;
+      margin-right:100px;
+      margin-left: 70px;      
     }
+
       
-      // grid-template-columns: 3fr 1fr;
-    }
-  
-  
-  
-  
-  }
+  .login-btn-mobile>button {
+    width: 218.29px;
+    background-color: transparent;
+    height: 100px;
+    border: 5px solid #696969;
+    border-radius: 5px;
+    left: 616.27px;
+    top: 647px;
+    font-family: "Nunito", sans-serif;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 28px;
+    line-height: 49px;
+    align-items: center;
+    text-align: center;
+    color: #696969;
+
+}
+
+.login-bt-mobilen>button:hover {
+  border-color: #b8c8e7;
+  cursor: pointer;
+  color: #b9c4d1;
+}
+
+.login-btn-mobile>button:focus {
+  outline: none;
+  box-shadow: 2px 2px 8px 0 rgba(0, 0, 0, 0.4) inset;
+}
+
+.login-btn {
+  display: none;    
+}
+
+.login-btn>button {
+  display: none;  
+}
+}
+}
   

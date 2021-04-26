@@ -20,19 +20,19 @@ export class ConstantsService {
     }
     //#endregion
 
-// Token for calls (Get/Set/Clear)
-  static getToken() {
-    const token = sessionStorage.getItem(TOKEN);
-    if (token) {
-      return token;
-    } else {
-      return '';
+    // Token for calls (Get/Set/Clear)
+    static getToken() {
+      const token = sessionStorage.getItem(TOKEN);
+      if (token) {
+        return token;
+      } else {
+        return '';
+      }
     }
-  }
-  static saveToken(token: string) {
-    sessionStorage.setItem(TOKEN, token);
-  }
-  static deleteToken() {
+    static saveToken(token: string) {
+      sessionStorage.setItem(TOKEN, token);
+    }
+    static deleteToken() {
     sessionStorage.removeItem(TOKEN);
   }
 
@@ -66,10 +66,7 @@ export class ConstantsService {
     loggedIn() {
       if (sessionStorage.getItem(TOKEN) != null) {
         console.log(sessionStorage.getItem(TOKEN));
-        console.log('yep');
         return true;
       }
-      console.log('nah');
     }
-
 }

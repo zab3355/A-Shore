@@ -1,10 +1,13 @@
 <div class="home-page">
   <div *ngIf="page == 1" class="home-start" (click)="next()"></div>
     <div class="box">
-        <div *ngIf="page == 2">
+        <div *ngIf="page == 2" class="fadeIn">
             <h1 class="header-welcome">THE SHORE</h1>
             <div class="login-btn">
               <button (click)="next()">enter</button>
+            </div>
+            <div class="login-btn-mobile">
+              <button>Mobile Version not Available</button>
             </div>
         </div>
 

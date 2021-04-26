@@ -14,7 +14,6 @@ import { LoginSideSectionComponent } from './components/login-side-section/login
 import { TutorialComponent } from './pages/tutorial/tutorial.component';
 import { MapViewComponent } from './pages/map-view/map-view.component';
 import { HomeComponent } from './pages/home/home.component';
-import { TestComponent } from './pages/test/test.component';
 import { ShoreComponent } from './pages/shore/shore.component';
 import { LoginComponent } from './pages/login/login.component';
 import { SignupComponent } from './pages/signup/signup.component';
@@ -31,7 +30,6 @@ import { SettingsComponent } from './pages/settings/settings.component';
   declarations: [
     AppComponent,
     HomeComponent,
-    TestComponent,
     LoginComponent,
     SignupComponent,
     PageNotFoundComponent,

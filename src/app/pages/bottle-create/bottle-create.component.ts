@@ -48,7 +48,4 @@ export class BottleCreateComponent implements OnInit {
     }
   }
 
-  settingsEvent() {
-    
-  }
 }

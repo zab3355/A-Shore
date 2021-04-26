@@ -87,15 +87,5 @@ export class LoginComponent implements OnInit {
 
   isUsernameValid() {
     this.usernameTaken = true;
-
-   /* if (this.userService.isUsernameTaken(this.username)) {
-      document.getElementById("usernameEnter").classList.remove("error");
-        this.usernameTaken = true;
-        return true;
-      }
-      else {
-        this.usernameTaken = false;
-        return false;
-      }*/
     }
 }

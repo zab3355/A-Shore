@@ -1,6 +1,5 @@
 import { Injectable, isDevMode } from '@angular/core';
-//import { Http, RequestOptions, Headers, Response } from '@angular/http'; // yucky deprecated stuff
-import { HttpClient, HttpHeaders, HttpResponse, HttpParams } from '@angular/common/http'; // yummy not-deprecated stuff
+import { HttpClient, HttpHeaders, HttpResponse, HttpParams } from '@angular/common/http';
 import { Observable, Subject, throwError } from 'rxjs';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';

@@ -1,7 +1,7 @@
 import { Injectable, EventEmitter } from '@angular/core';
 import { NetworkService } from './network.service';
 import { ConstantsService } from './constants.service';
-import { HttpParams } from '@angular/common/http'; // yummy not-deprecated stuff
+import { HttpParams } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -19,7 +19,6 @@ export class UserService {
     .set('code', code);
     return this.networkService.httpPost(url, payload);
   }
-
 
   signup(username) {
     const url = this.api_url + '/signup';

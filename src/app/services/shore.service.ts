@@ -2,8 +2,7 @@ import { Injectable, EventEmitter } from '@angular/core';
 import { NetworkService } from './network.service';
 import { ConstantsService } from './constants.service';
 import { Router } from '@angular/router';
-import { HttpParams } from '@angular/common/http'; // yummy not-deprecated stuff
-
+import { HttpParams } from '@angular/common/http';
 
 @Injectable({
     providedIn: 'root'
@@ -13,7 +12,6 @@ export class ShoreService {
     constructor(private networkService: NetworkService, router:Router) {
         this.api_url = ConstantsService.getApiUrl();
     } 
-
 
     getMessages() {
         const url = `${this.api_url}/getMessages`;
