@@ -18,7 +18,7 @@
               <ui class="border-comment"> 
                <li><span class="comment-heart" name="comments">{{comment.numberOfLikes}}</span><a class="comment-heart-img" (click)="likeComment(i)"><img src="assets/img/heart.png"></a></li>
                <li><p class="comment-createdDate" name="comments" >{{comment.createdDate| date: 'shortDate'}}</p></li>
-               <li><p class="comment-postedBy" name="comments" >{{comment.postedBy | json}}</p></li>
+               <li><p class="comment-postedBy" name="comments" >{{comment.postedBy.username | json}}</p></li>
                 <li><p class="comment-text" name="comments" >{{comment.text}}</p>
             </li>
         </ui>
