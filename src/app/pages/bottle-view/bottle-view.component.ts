@@ -63,7 +63,6 @@ export class BottleViewComponent implements OnInit {
        // If messages do not exist yet
       if(res.data == undefined) {
         this.shoreService.populateMessages().subscribe(res => {
-          console.log(res.data);
         })
       }
       this.bottles = res.data.length;
@@ -79,7 +78,6 @@ export class BottleViewComponent implements OnInit {
       this.bottleId = ConstantsService.getID();
       if(this.message_id != null) {
         this.shoreService.addViewer(this.bottleId, this.message_id).subscribe(res =>{
-          console.log(res.data);
         });
       }
 
@@ -90,10 +88,8 @@ export class BottleViewComponent implements OnInit {
       this.paragraph = res.data[this.messagePick].content;
 
       this.comments = res.data[this.messagePick].comments;
-      console.log(this.comments);
 
       this.bottleAuthor = res.data[this.messagePick].postedBy.locId;
-      console.log(this.bottleAuthor);
       
       this.comments.postedBy = res.data[this.messagePick].comments[0].postedBy;
       console.log(this.comments.postedBy);
@@ -114,11 +110,8 @@ export class BottleViewComponent implements OnInit {
   prev() {
     this.page--;
   }
-
-  seeViewers() {
-    this.page == 3;
-  }
-
+  
+  //View comments page
   viewComments() {
     this.page++;
   }
@@ -126,7 +119,7 @@ export class BottleViewComponent implements OnInit {
   //Adding a comment
   addComment() {
     this.shoreService.addComment(this.message_id, this.commentText).subscribe(response => {
-      if (response.success) {
+      if (response) {
         this.comments.postedBy = ConstantsService.getID();
         this.commentUsername = ConstantsService.getUsername();
         this.page--;
@@ -144,11 +137,9 @@ export class BottleViewComponent implements OnInit {
 
   //Liking a comment
   likeComment(index) {
-    console.log(this.message_id);
     this.commentId = this.bottleData.comments[index]._id;
-    console.log(this.commentId);
     this.shoreService.addLikeToComment(this.message_id, this.commentId).subscribe(response => {
-      if (response.success) {
+      if (response) {
         console.log(response);
         this.loadMessages();
       }  
@@ -158,14 +149,15 @@ export class BottleViewComponent implements OnInit {
     })
   }
 
+  //Get bottle location
   getLocationBottle() {
-    //Location for bottle
     this.shoreService.getLocation(this.bottleAuthor).subscribe(res => {
         this.bottleViewLat = res.data[0].lat;
         this.bottleViewLng = res.data[0].lng;
       })
   }
 
+  //Access the map and use query params for map coords
   mapAccess(bottleViewLat, bottleViewLng){
     if(this.bottleAuthor != null || this.bottleAuthor != undefined){
       if(this.bottleViewLat != null || this.bottleViewLat != undefined ) {
