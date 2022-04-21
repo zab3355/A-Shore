@@ -6,16 +6,16 @@
         </div>
     </div>
 
-    <div class="enter-num" *ngIf="page == 1">
+    <div class="enter-num" *ngIf="!signOnCodePage">
         <h3 class="user-text">Username</h3>
         <input type="text" class="username-input" name="username" [(ngModel)]="username" placeholder=""> 
         <div class="code-btn-rand">
             <button (click)="createRandomName()">create random</button>
         </div>
 
-      <h3 class="user-text" *ngIf="page == 1">Location</h3>
+      <h3 class="user-text" *ngIf="!signOnCodePage">Location</h3>
 
-      <div class="form-group" *ngIf="page == 1">
+      <div class="form-group" *ngIf="!signOnCodePage">
         <ng-container>
           <ui>
           <div class="radio-btn">
@@ -36,12 +36,12 @@
         </ng-container>
       </div>
 
-      <div type="submit" class="code-btn-go" *ngIf="page == 1">
+      <div type="submit" class="code-btn-go" *ngIf="!signOnCodePage">
         <button (click)="signup()">next</button>
     </div>
 </div>
 
-    <form class="enter-num" *ngIf="page == 2">
+    <form class="enter-num" *ngIf="signOnCodePage">
         <h5 class="code-text">This is your unique 6-digit log-in code.</h5>
         <h5 class="code-text">Please write this down or save for future use.</h5>
         <h1 class="code-style">{{code[0]}}</h1>

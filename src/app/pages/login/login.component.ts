@@ -44,11 +44,6 @@ export class LoginComponent implements OnInit {
       this.page--;
     }
   
-    toEnterCode() {
-      this.page++;
-      this.page++;
-    }
-  
     //For code input 
     onDigitInput(event){
       let element;
