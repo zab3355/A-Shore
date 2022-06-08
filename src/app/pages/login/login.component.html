@@ -2,26 +2,26 @@
     <img class="back-btn pulse-grow-on-hover" routerLinkActive="active" [routerLink]="['/home']" src="assets/img/arrowbackward.png">
     <div class="box">
         <div>
-            <h1 *ngIf="page == 1" class="header-welcome-highup">LOG IN</h1>
+            <h1 *ngIf="!loginChecked" class="header-welcome-highup">LOG IN</h1>
         </div>
     </div>
 
     <a ></a>
 
-    <form action="#" (ngSubmit)="login()" class="enter-num" *ngIf="page == 1">
+    <form action="#" (ngSubmit)="login()" class="enter-num" *ngIf="!loginChecked">
         <div class="form-group">
             <h3 class="code-text">Username</h3>
-            <input [ccUsername]="username" type="text" class="username-input" id="usernameEnter" name="username" [(ngModel)]="username" placeholder="">
+            <input [ccUsername]="username" type="text" class="username-input" id="usernameEnter" name="username" [(ngModel)]="username">
           </div>
 
         <h3 class="code-text">Log-In Code</h3>
 
-        <input class="code-style" type="text" maxlength="1" placeholder="-" id="codeEnter" [ngModelOptions]="{ standalone: true }" [(ngModel)]="code.input1" (keyup)="onDigitInput($event)" />
-        <input class="code-style" type="text" maxlength="1" placeholder="-" id="codeEnter" [ngModelOptions]="{ standalone: true }"[(ngModel)]="code.input2" (keyup)="onDigitInput($event)" />
-        <input class="code-style" type="text" maxlength="1" placeholder="-" id="codeEnter" [ngModelOptions]="{ standalone: true }"[(ngModel)]="code.input3" (keyup)="onDigitInput($event)" />
-        <input class="code-style" type="text" maxlength="1" placeholder="-" id="codeEnter" [ngModelOptions]="{ standalone: true }"[(ngModel)]="code.input4" (keyup)="onDigitInput($event)" />
-        <input class="code-style" type="text" maxlength="1" placeholder="-" id="codeEnter" [ngModelOptions]="{ standalone: true }"[(ngModel)]="code.input5" (keyup)="onDigitInput($event)" />
-        <input class="code-style" type="text" maxlength="1" placeholder="-" id="codeEnter"[ngModelOptions]="{ standalone: true }" [(ngModel)]="code.input6" (keyup)="onDigitInput($event)" />
+        <input class="code-style" type="text" maxlength="1" placeholder="-" id="codeEnter" [ngModelOptions]="{ standalone: true }" [(ngModel)]="code[0]" (keyup)="onDigitInput($event)" />
+        <input class="code-style" type="text" maxlength="1" placeholder="-" id="codeEnter" [ngModelOptions]="{ standalone: true }"[(ngModel)]="code[1]" (keyup)="onDigitInput($event)" />
+        <input class="code-style" type="text" maxlength="1" placeholder="-" id="codeEnter" [ngModelOptions]="{ standalone: true }"[(ngModel)]="code[2]" (keyup)="onDigitInput($event)" />
+        <input class="code-style" type="text" maxlength="1" placeholder="-" id="codeEnter" [ngModelOptions]="{ standalone: true }"[(ngModel)]="code[3]" (keyup)="onDigitInput($event)" />
+        <input class="code-style" type="text" maxlength="1" placeholder="-" id="codeEnter" [ngModelOptions]="{ standalone: true }"[(ngModel)]="code[4]" (keyup)="onDigitInput($event)" />
+        <input class="code-style" type="text" maxlength="1" placeholder="-" id="codeEnter"[ngModelOptions]="{ standalone: true }" [(ngModel)]="code[5]" (keyup)="onDigitInput($event)" />
 
         <div type="submit" class="code-btn-go">
             <button>login</button>

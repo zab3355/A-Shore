@@ -18,16 +18,56 @@ const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
 
   //if creating a new component put your routes here
-  { path: 'home', component: HomeComponent},
-  { path: 'login', component: LoginComponent},
-  { path: 'signup', component: SignupComponent},
-  { path: 'shore', component: ShoreComponent, canActivate: [AuthGuard]},
-  { path: 'settings', component: SettingsComponent, canActivate: [AuthGuard]},
-  { path: 'bottle-create', component: BottleCreateComponent, canActivate: [AuthGuard]},
-  { path: 'bottle-view', component: BottleViewComponent, canActivate: [AuthGuard]},
-  { path: 'tutorial', component: TutorialComponent, canActivate: [AuthGuard]},
-  { path: 'map-view', component: MapViewComponent, canActivate: [AuthGuard]},
-  {path: '**', component: PageNotFoundComponent}
+  { path: 'home', component: HomeComponent,
+  data: {
+    pageName: 'home',
+    needsLogin: false
+  }},
+  { path: 'login', component: LoginComponent,
+  data: {
+    pageName: 'login',
+    needsLogin: false
+  }},
+  { path: 'signup', component: SignupComponent,
+  data: {
+    pageName: 'home',
+    needsLogin: false
+  }},
+  { path: 'shore', component: ShoreComponent, canActivate: [AuthGuard],
+  data: {
+    pageName: 'home',
+    needsLogin: true
+  }},
+  { path: 'settings', component: SettingsComponent, canActivate: [AuthGuard],
+  data: {
+    pageName: 'settings',
+    needsLogin: true
+  }},
+  { path: 'bottle-create', component: BottleCreateComponent, canActivate: [AuthGuard],
+  data: {
+    pageName: 'bottle-create',
+    needsLogin: true
+  }},
+  { path: 'bottle-view', component: BottleViewComponent, canActivate: [AuthGuard],
+  data: {
+    pageName: 'bottle-view',
+    needsLogin: true
+  }},
+  { path: 'tutorial', component: TutorialComponent, canActivate: [AuthGuard],
+  data: {
+    pageName: 'tutorial',
+    needsLogin: true
+  }},
+  { path: 'map-view', component: MapViewComponent, canActivate: [AuthGuard],
+  data: {
+    pageName: 'map-view',
+    needsLogin: true
+  }},
+  {path: '**', component: PageNotFoundComponent,
+  data: {
+    pageName: 'not-found',
+    needsLogin: false
+  }}
   
 ];
   @NgModule({

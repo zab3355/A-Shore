@@ -14,6 +14,20 @@ const getAllUsers = (req, res) => Users.UserModel.getAllUsers((err, docs) => {
   return res.json({data: docs});
 });
 
+const getUser = (req, res) => Users.UserModel.getUser((err, docs) => {
+  if (!req.query.id) {
+    return res.status(400).json({ error: 'id is required' });
+  }
+  return Users.UserModel.getUser(req.query.id, (err,doc) => {
+    if (err || !docs) {
+      console.log(err)
+    return res.status(404).json({ error: `Could Not Find User with id ${req.query.id}` });
+  }
+  return res.json({data: docs});
+});
+});
+
+
 
 const logout = (req, res) => {
   req.session.destroy();
@@ -179,6 +193,7 @@ module.exports = {
   logout,
   signup,
   getAllUsers,
+  getUser,
   addRelativeLocationUser,
   changeUsername
 };

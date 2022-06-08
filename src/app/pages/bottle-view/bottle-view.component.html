@@ -1,10 +1,10 @@
 <div class="bottle-view-page">
     <img class="back-btn pulse-grow-on-hover" routerLinkActive="active" [routerLink]="['/shore']" src="assets/img/arrowbackward.png">
-    <img class="map-btn pulse-grow-on-hover" routerLinkActive="active" (click)="mapAccess(bottleViewLat,bottleViewLng)" src="assets/img/mapicon.png">
+    <img class="map-btn pulse-grow-on-hover" routerLinkActive="active" (click)="mapAccess(bottleData.bottleViewLat,bottleData.bottleViewLng)" src="assets/img/mapicon.png">
         <a class="box-page"><img src="assets/img/bottleviewpage.png"></a>
         <div *ngIf="page == 1" class="content-box">
-            <h2 class="title-message" name="title" [(ngModel)]="title">{{title}}</h2>
-            <p class="paragraph-message" name="paragraph" [(ngModel)]="paragraph" >{{paragraph}}</p>
+            <h2 class="title-message"[(ngModel)]="bottleData.title">{{bottleData.title}}</h2>
+            <p class="paragraph-message" [(ngModel)]="bottleData.content" >{{bottleData.content}}</p>
             <a class="eye-page" (click)="seeViewers()"><img src="assets/img/seeicon.png"></a>
             <p class="eye-page-text" (click)="seeViewers()">{{viewedBy.length}}</p>
 
@@ -14,11 +14,13 @@
 
         <div *ngIf="page == 2" class="content-box-comments">
             <h2 class="title-comment-message" name="title">Comments</h2>
-            <div *ngFor="let comment of comments; let i = index;">
+            <div *ngFor="let comment of bottleData.comments; let i = index;">
               <ui class="border-comment"> 
                <li><span class="comment-heart" name="comments">{{comment.numberOfLikes}}</span><a class="comment-heart-img" (click)="likeComment(i)"><img src="assets/img/heart.png"></a></li>
                <li><p class="comment-createdDate" name="comments" >{{comment.createdDate| date: 'shortDate'}}</p></li>
-               <li><p class="comment-postedBy" name="comments" >{{comment.postedBy.username | json}}</p></li>
+ <!--            <div *ngIf="comment.postedBy.username">
+               <li><p class="comment-postedBy" name="comments" >{{comment.postedBy.username}}</p></li>
+            </div>-->
                 <li><p class="comment-text" name="comments" >{{comment.text}}</p>
             </li>
         </ui>

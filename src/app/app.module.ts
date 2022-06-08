@@ -25,6 +25,7 @@ import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.com
 import { BottleViewComponent } from './pages/bottle-view/bottle-view.component';
 import { BottleCreateComponent } from './pages/bottle-create/bottle-create.component';
 import { SettingsComponent } from './pages/settings/settings.component';
+import { AgmCoreModule } from '@agm/core';
 
 @NgModule({
   declarations: [
@@ -48,6 +49,7 @@ import { SettingsComponent } from './pages/settings/settings.component';
     FormsModule,
     GoogleMapsModule,
     HttpClientModule,
+    AgmCoreModule,
     ToastrModule.forRoot(),
     BrowserAnimationsModule,
   ],

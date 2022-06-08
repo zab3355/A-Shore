@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 import { ConstantsService } from 'src/app/services/constants.service';
 import { ShoreService } from 'src/app/services/shore.service';
 import { ToastrService } from 'ngx-toastr';
+import { Bottle, Comments } from 'src/app/types/bottle';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-bottle-view',
@@ -11,48 +13,39 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./bottle-view.component.scss']
 })
 export class BottleViewComponent implements OnInit {
-  constructor(private router: Router, private toastr: ToastrService, private resolver: ComponentFactoryResolver, private shoreService: ShoreService) { 
-    this.loadMessages();
+  constructor(private router: Router, 
+    private toastr: ToastrService, 
+    private resolver: ComponentFactoryResolver, 
+    private shoreService: ShoreService,
+    private userService: UserService) { 
   }
-  @ViewChild('modalHolder', { read: ViewContainerRef, static: false }) modalHolder;
-
-  bottleViewLat:number;
-  bottleViewLng:number;
   @Output() bottleViewLatEvent = new EventEmitter<number>();
   @Output() bottleViewLngEvent = new EventEmitter<number>();
   page = 1;
 
-  message_id: number;
-  messagePick;
-  pickRand;
   messageObj;
   bottles: number;
-  bottleData;
-
   commentUsername;
 
-  title = '';
-  paragraph = '';
-  comments = {
-    text: '',
-    createdDate: '',
-    postedBy: '',
-    numberofLikes: 0
-  }
-  viewedBy = {
-  }
+  comments: Comments;
+  viewedBy = {}
 
   bottleId = '';
-  bottleAuthor = 0;
-
-  commentId = '';
+  messagePick: number = 0
+  commentId: String = '';
   commentText ='';
-
-  commentText1 ='';
-  commentText2 ='';
-  commentText3 ='';
+  bottleData: Bottle ={
+    title: '',
+    postedBy: { _id: ''},
+    comments: {},
+    content: '',
+    bottleViewLat: 0,
+    bottleViewLng: 0
+  };
 
   ngOnInit() {
+    this.loadMessages();
+    
       //Hardcode select a bottle
       //let pickRand = 50;
       //this.messagePick = pickRand;
@@ -62,41 +55,32 @@ export class BottleViewComponent implements OnInit {
      this.shoreService.getMessages().subscribe(res => {
        // If messages do not exist yet
       if(res.data == undefined) {
-        this.shoreService.populateMessages().subscribe(res => {
-        })
+        this.shoreService.populateMessages().subscribe();
       }
+      if(this.messagePick === 0){
       this.bottles = res.data.length;
       let pickRand = Math.floor((Math.random() * this.bottles) + 1);
   
       //Hardcode select a bottle
       //let pickRand = 0;
       this.messagePick = pickRand;
+      } 
       this.bottleData = res.data[this.messagePick];
-      this.message_id = res.data[this.messagePick]._id;
+      console.log(this.bottleData);
 
+      this.getCommentUsername(this.bottleData.comments);
 
       this.bottleId = ConstantsService.getID();
-      if(this.message_id != null) {
-        this.shoreService.addViewer(this.bottleId, this.message_id).subscribe(res =>{
+      if(this.bottleData._id != null) {
+        this.shoreService.addViewer(this.bottleId, this.bottleData._id).subscribe(res =>{
         });
       }
 
       this.viewedBy = res.data[this.messagePick].viewedBy;
-      
-      this.title = res.data[this.messagePick].title;
+      this.comments = this.bottleData.comments;
+      console.log(this.comments);
 
-      this.paragraph = res.data[this.messagePick].content;
-
-      this.comments = res.data[this.messagePick].comments;
-
-      this.bottleAuthor = res.data[this.messagePick].postedBy.locId;
-      
-      this.comments.postedBy = res.data[this.messagePick].comments[0].postedBy;
-      console.log(this.comments.postedBy);
-
-      //For getting bottle locatiom
-      this.bottleAuthor = res.data[this.messagePick].postedBy.locId;
-
+      if(!this.bottleData.bottleViewLng && !this.bottleData.bottleViewLat)
       this.getLocationBottle();
      })
   }
@@ -116,12 +100,20 @@ export class BottleViewComponent implements OnInit {
     this.page++;
   }
 
+  getCommentUsername(commentObj: Comments) {
+    
+  }
+
   //Adding a comment
   addComment() {
-    this.shoreService.addComment(this.message_id, this.commentText).subscribe(response => {
+    console.log(this.bottleData._id, this.commentText);
+    this.shoreService.addComment(this.bottleData._id, this.commentText).subscribe(response => {
       if (response) {
-        this.comments.postedBy = ConstantsService.getID();
-        this.commentUsername = ConstantsService.getUsername();
+        this.bottleData.comments.postedBy = ConstantsService.getID();
+        this.userService.getAllUsers().subscribe(res => {
+          console.log(res);
+        });
+        this.bottleData.comments.postedBy = ConstantsService.getUsername();
         this.page--;
         this.toastr.success('Reply to this bottle was successful!', '', { timeOut: 3000, positionClass: 'toast-bottom-right' });
         this.loadMessages();
@@ -138,7 +130,8 @@ export class BottleViewComponent implements OnInit {
   //Liking a comment
   likeComment(index) {
     this.commentId = this.bottleData.comments[index]._id;
-    this.shoreService.addLikeToComment(this.message_id, this.commentId).subscribe(response => {
+    console.log(this.commentId, this.bottleData._id);
+    this.shoreService.addLikeToComment(this.bottleData._id, this.commentId).subscribe(response => {
       if (response) {
         console.log(response);
         this.loadMessages();
@@ -151,16 +144,28 @@ export class BottleViewComponent implements OnInit {
 
   //Get bottle location
   getLocationBottle() {
-    this.shoreService.getLocation(this.bottleAuthor).subscribe(res => {
-        this.bottleViewLat = res.data[0].lat;
-        this.bottleViewLng = res.data[0].lng;
+    this.userService.getAllUsers().subscribe(res => {
+      if(res.data) {
+       
+        console.log(res.data);
+
+      }
+    });
+    console.log("loc", this.bottleData.postedBy._id);
+    this.shoreService.getLocation(this.bottleData.postedBy._id).subscribe(res => {
+      if(res.data.length > 0){
+        this.bottleData.bottleViewLat = res.data[0].lat;
+        this.bottleData.bottleViewLng = res.data[0].lng;
+        console.log(this.bottleData, "locupdate")
+      }
       })
   }
 
   //Access the map and use query params for map coords
   mapAccess(bottleViewLat, bottleViewLng){
-    if(this.bottleAuthor != null || this.bottleAuthor != undefined){
-      if(this.bottleViewLat != null || this.bottleViewLat != undefined ) {
+    console.log(this.bottleData)
+    if(this.bottleData.locId != null || this.bottleData.locId != undefined){
+      if(this.bottleData.bottleViewLat != null || this.bottleData.bottleViewLat != undefined ) {
         this.router.navigate(['/map-view'], { queryParams: { bottleViewLng: bottleViewLng, bottleViewLat: bottleViewLat } });
       } 
       else {
