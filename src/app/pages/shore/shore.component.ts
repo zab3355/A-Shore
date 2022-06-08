@@ -10,7 +10,9 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class ShoreComponent implements OnInit {
 
-  constructor(private router: Router, private toastr: ToastrService,  private resolver: ComponentFactoryResolver) { }
+  constructor(private router: Router, 
+    private toastr: ToastrService,  
+    private resolver: ComponentFactoryResolver) { }
   
   @ViewChild('modalHolder', { read: ViewContainerRef, static: false }) modalHolder;
 

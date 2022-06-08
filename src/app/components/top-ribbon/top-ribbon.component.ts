@@ -22,9 +22,7 @@ export class TopRibbonComponent {
     @ViewChild(LoginComponent) login: LoginComponent;
 
     ngOnInit() {
-      console.log(ConstantsService.getUsername); 
       this.name = ConstantsService.getUsername();
-      console.log(this.user.username);
     }
     
     editSettings(){

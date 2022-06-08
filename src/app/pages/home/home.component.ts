@@ -11,43 +11,28 @@ export class HomeComponent implements OnInit {
 
   constructor(private router: Router, private toastr: ToastrService) { }
  
-  page = 1;
+  onStartScreen: boolean = false;
+  onEnterPage: boolean = false;
+  onSelectPage: boolean = false;
 
+  // Onload, lifecycle hook puts user onto start screen
   ngOnInit(): void {
+    this.onStartScreen = true;
+    this.onEnterPage = false;
+    this.onSelectPage = false;
   }
 
-  //Go to next page
-  next() {
-    this.page++;
+  //When screen is clicked on start, go to enter page
+  startClick() {
+    this.onEnterPage = true;
+    this.onStartScreen = false;
+    this.onSelectPage = false;
   }
 
-  //Go to previous page
-  prev() {
-    this.page--;
-  }
-
-  toEnterCode() {
-    this.page++;
-    this.page++;
-  }
-
-  //For code input 
-  onDigitInput(event){
-    let element;
-    if (event.code !== 'Backspace')
-         element = event.srcElement.nextElementSibling;
- 
-     if (event.code === 'Backspace')
-         element = event.srcElement.previousElementSibling;
- 
-     if(element == null)
-         return;
-     else
-         element.focus();
- }
-
- //Insert service call here for login
-  login() {
-
+  //If enter is clicked, able to select login or signup page
+  enterClick() {
+    this.onSelectPage = true;
+    this.onEnterPage = false;
+    this.onStartScreen = false;
   }
 }

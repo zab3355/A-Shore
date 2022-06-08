@@ -3,13 +3,13 @@ import { NetworkService } from './network.service';
 import { ConstantsService } from './constants.service';
 import { Router } from '@angular/router';
 import { HttpParams } from '@angular/common/http';
-
+import { Bottle } from 'src/app/types/bottle';
 @Injectable({
     providedIn: 'root'
 })
 export class ShoreService {
     private api_url;
-    constructor(private networkService: NetworkService, router:Router) {
+    constructor(private networkService: NetworkService, router: Router) {
         this.api_url = ConstantsService.getApiUrl();
     } 
 
@@ -28,12 +28,12 @@ export class ShoreService {
         return this.networkService.httpGet(url);
     }
 
-    addMessage(content, postedBy, title) {
+    addMessage(bottleObj: Bottle) {
         const url = this.api_url + '/addMessage';
         const payload = new HttpParams()
-        .set('content', content)
-        .set('postedBy', postedBy)
-        .set('title', title);
+        .set('content', bottleObj.content)
+        .set('postedBy', bottleObj._id)
+        .set('title', bottleObj.title);
         
         return this.networkService.httpPost(url, payload);
     }

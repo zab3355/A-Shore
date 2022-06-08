@@ -27,6 +27,15 @@ export class UserService {
     
     return this.networkService.httpPost(url, payload);
   }
+  getAllUsers(){
+    const url = `${this.api_url}/getAllUsers`;
+    return this.networkService.httpGet(url);
+  }
+
+  getUser(id){
+    const url = `${this.api_url}/getUser?id=${id}`;
+    return this.networkService.httpGet(url);
+  }
 
   addRelativeLocationUser(username, display_name, country){
     const url = this.api_url + '/addRelativeLocationUser';

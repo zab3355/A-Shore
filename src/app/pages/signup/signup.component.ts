@@ -14,20 +14,15 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class SignupComponent implements OnInit {
 
-  constructor(private router: Router, private toastr: ToastrService, private userService: UserService) { }
+  constructor(private router: Router, 
+    private toastr: ToastrService, 
+    private userService: UserService) { }
  
   username:string = '';
   code: string = '';
-
   checkValue:string = '';
   city:string = '';
   country:string = '';
-
-  checkboxFields = {
-    dontShare: '',
-    useLoc: '',
-    autoShare: ''
-  }
   
   signOnCodePage = false;
 
@@ -37,19 +32,10 @@ export class SignupComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
-  //Go to next page
-  next() {
-    this.signOnCodePage = true;
-  }
-
-  //Go to previous page
-  prev() {
-    this.signOnCodePage = false;
-  }
-
+  
   //For code input 
   onDigitInput(event){
+
     let element;
      if (event.code === 'Backspace') {
       element = event.srcElement.previousElementSibling;
@@ -57,7 +43,7 @@ export class SignupComponent implements OnInit {
       element = event.srcElement.nextElementSibling;
 
      }
-     if(element == null) {
+     if(element == null || event.shiftKey) {
       return;
      }
 
@@ -66,18 +52,20 @@ export class SignupComponent implements OnInit {
      }
  }
 
- //create random name button
+ // Sets a random name
  createRandomName() {
   let r = Math.random().toString(36).substring(7);
   this.username = r;
  }
 
- changeLocation(e){
-  this.checkValue = e.target.value;
- }
+ // Change location check
+  changeLocation(e){
+    this.checkValue = e.target.value;
+  }
 
+
+  //Signup functionality
   signup() {
-    console.log(this.username, this.checkValue)
     if(this.username !== '' && this.checkValue !== null && this.checkValue !== ''){
     if(this.checkValue == "dontShare"){
       this.userService.signup(this.username).subscribe(res => {

@@ -3,7 +3,6 @@ import { FormGroup, FormControl, Validators} from '@angular/forms';
 
 import { ConstantsService } from 'src/app/services/constants.service';
 import { UserService } from 'src/app/services/user.service';
-
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 
@@ -12,9 +11,11 @@ import { ToastrService } from 'ngx-toastr';
   templateUrl: './settings.component.html',
   styleUrls: ['./settings.component.scss']
 })
-export class SettingsComponent implements OnInit {
+export class SettingsComponent {
 
-  constructor(private router: Router, private toastr: ToastrService, private userService: UserService) { }
+  constructor(private router: Router, 
+  private toastr: ToastrService, 
+  private userService: UserService) { }
  
   username:string = '';
   code: string = '';
@@ -24,32 +25,11 @@ export class SettingsComponent implements OnInit {
   city:string = '';
   country:string = '';
 
-  checkboxFields = {
-    dontShare: '',
-    useLoc: '',
-    autoShare: ''
-  }
-
   submitted = false;
-  
-  page = 1;
 
   form = new FormGroup({
     location: new FormControl('', Validators.required)
   });
-
-  ngOnInit(): void {
-  }
-
-  //Go to next page
-  next() {
-    this.page++;
-  }
-
-  //Go to previous page
-  prev() {
-    this.page--;
-  }
 
   updateUsername(){
     this.id = ConstantsService.getID();
