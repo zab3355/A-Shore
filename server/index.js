@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const cors = require('cors'); 
 const path = require('path');
@@ -30,12 +31,10 @@ mongoose.connect(dbURL, mongooseOptions, (err) => {
 
 // REDIS
 let redisURL = {
-    // settings
-    hostname: 'redis-10084.c232.us-east-1-2.ec2.cloud.redislabs.com',
-    port: '10084',
+    hostname: process.env.REDIS_HOSTNAME,
+    port: process.env.REDIS_PORT,
 };
-
-let redisPASS = 'tZuCwc3EyeEiDO3GUV6YDuvvDBzVhMqL';
+let redisPASS = process.env.REDIS_PASSWORD;
 
 // for heroku
 const passIndex = 1;
@@ -64,7 +63,7 @@ app.use(session({
     store: new RedisStore({
       client: redisClient,
     }),
-    secret: 'Are You Shore About This',
+    secret: process.env.SESSION_SECRET,
     resave: true,
     secure: false,
     saveUninitialized: true,
