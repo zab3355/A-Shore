@@ -1,0 +1,59 @@
+<div class="login-signup-page">
+    <img class="back-btn pulse-grow-on-hover" routerLinkActive="active" [routerLink]="['/home']" src="assets/img/arrowbackward.png">
+    <div class="box">
+        <div>
+            <h1 class="header-welcome-highup">SIGN UP</h1>
+        </div>
+    </div>
+
+    <div class="enter-num" *ngIf="!signOnCodePage">
+        <h3 class="user-text">Username</h3>
+        <input type="text" class="username-input" name="username" [(ngModel)]="username"> 
+        <div class="code-btn-rand">
+            <button (click)="createRandomName()">create random</button>
+        </div>
+
+      <h3 class="user-text" *ngIf="!signOnCodePage">Location</h3>
+
+      <div class="form-group" *ngIf="!signOnCodePage">
+        <ng-container>
+          <ui>
+          <div class="radio-btn">
+              <input id="dontShare" type="radio" class="form-control-check" value="dontShare" name="location" (change)="changeLocation($event)" [(ngModel)]="dontShare">
+              <label class="radio-label" for="dontShare">Don't Share my Location</label>
+            </div>
+           <!-- <div class="radio-btn">
+              <input id="useCurr" type="radio" class="form-control-check" value="useCurr" name="location" (change)="changeLocation($event)"  [(ngModel)]="userCurr">
+              <label class="radio-label" for="useCurr">Use my Current Location</label>
+            </div>-->
+            <div class="radio-btn">
+              <input id="manualEnter" type="radio" class="form-control-check" value="manualEnter" name="location" (change)="changeLocation($event)" [(ngModel)]="manualEnter">
+              <label  class="radio-label" for="manualEnter">Manually Enter my Location:</label>
+              <input type="text" class="location-input" name="city" [(ngModel)]="city" placeholder="Enter City"> 
+              <input type="text" class="location-input" name="country" [(ngModel)]="country" placeholder="Enter Country"> 
+            </div>
+          </ui>
+        </ng-container>
+      </div>
+
+      <div type="submit" class="code-btn-go" *ngIf="!signOnCodePage">
+        <button (click)="signup()">next</button>
+    </div>
+</div>
+
+    <form class="enter-num" *ngIf="signOnCodePage">
+        <h5 class="code-text">This is your unique 6-digit log-in code.</h5>
+        <h5 class="code-text">Please write this down or save for future use.</h5>
+        <h1 class="code-style">{{code[0]}}</h1>
+        <h1 class="code-style">{{code[1]}}</h1>
+        <h1 class="code-style">{{code[2]}}</h1>
+        <h1 class="code-style">{{code[3]}}</h1>
+        <h1 class="code-style">{{code[4]}}</h1>
+        <h1 class="code-style">{{code[5]}}</h1>
+        
+        <div type="submit" class="code-btn-go">
+            <button [routerLink]="['/login']" >done</button>
+        </div>
+    </form>
+</div>
+

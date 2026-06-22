@@ -1,0 +1,13 @@
+<div class="bottle-view-page">
+    <img class="back-btn pulse-grow-on-hover" routerLinkActive="active" [routerLink]="['/shore']" src="assets/img/arrowbackward.png">
+
+        <a class="box-page"><img src="assets/img/bottleviewpage.png"></a>
+        <div class="content-box">
+            <input type="text" class="title-message" [(ngModel)]="bottleObj.title" placeholder="Bottle Title">
+            <textarea class="paragraph-message" [(ngModel)]="bottleObj.content" placeholder="Type in your message here..."></textarea>
+            <div *ngIf="!bottleObj.content"><a class="ok-message"><img src="assets/img/OK.png"></a></div>
+            <div *ngIf="bottleObj.content" (click)="createBottle()"><a class="ok-message-content pulse-grow-on-hover"><img src="assets/img/OKcolored.png"></a></div>
+        </div>
+</div>
+
+<ng-template #modalHolder></ng-template>

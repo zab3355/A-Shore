@@ -1,0 +1,9 @@
+<div class="home-page">
+    <div *ngIf="page == 1" class="home-start"></div>
+
+    <div class="arrow-style"></div>
+
+    <a *ngIf="page == 2" (click)="prev()" class="previous">&laquo; Previous</a>
+    <a *ngIf="page == 3" (click)="prev()" class="previous">&laquo; Previous</a>
+    <a *ngIf="page == 4" (click)="prev()" class="previous">&laquo; Previous</a>
+</div>

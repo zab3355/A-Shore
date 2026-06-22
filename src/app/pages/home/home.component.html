@@ -1,0 +1,28 @@
+<div class="home-page">
+  <div *ngIf="onStartScreen" class="home-start" (click)="startClick()"></div>
+  <div class="box">
+    <div *ngIf="onEnterPage" class="fadeIn">
+        <h1 class="header-welcome">THE SHORE</h1>
+        <div class="login-btn">
+          <button (click)="enterClick()">enter</button>
+        </div>
+        <div class="login-btn-mobile">
+          <button>Mobile Version not Available</button>
+        </div>
+    </div>
+        <div *ngIf="onSelectPage">
+               <h1 class="header-welcome">THE SHORE</h1>
+               <div class="code-btn-head">
+                <div type="submit" class="code-btn">
+                  <button [routerLink]="['/login']">login</button>
+                </div>
+  
+              <div type="submit" class="code-btn">
+                <button [routerLink]="['/signup']">signup</button>
+              </div>
+            </div>
+      </div>
+  </div>
+ </div>
+  
+  
