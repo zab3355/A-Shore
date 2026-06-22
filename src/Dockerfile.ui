@@ -1,0 +1,16 @@
+FROM node:14
+
+WORKDIR /app
+
+# Copy package.json and package-lock.json, then install dependencies
+COPY package*.json ./
+RUN npm install --legacy-peer-deps
+
+# Copy the entire Angular project into the container
+COPY . .
+
+# Expose Angular's default dev server port
+EXPOSE 4200
+
+# Start the Angular application
+CMD ["npm", "start"]

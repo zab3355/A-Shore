@@ -1,0 +1,39 @@
+services:
+  mongo:
+    image: mongo:latest
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+
+  redis:
+    image: redis:latest
+    ports:
+      - "6379:6379"
+
+  server:
+    build:
+      context: ./  # Project root
+      dockerfile: server/Dockerfile.server
+    ports:
+      - "5000:5000"
+    environment:
+      - MONGODB_URI=mongodb://mongo:27017/your-database-name
+      - REDIS_HOSTNAME=redis
+      - REDIS_PORT=6379
+      - SESSION_SECRET=YourSessionSecret
+    depends_on:
+      - mongo
+      - redis
+
+  ui:
+    build:
+      context: ./  # Project root
+      dockerfile: src/Dockerfile.ui
+    ports:
+      - "4200:4200"
+    depends_on:
+      - server
+      
+volumes:
+  mongo-data:

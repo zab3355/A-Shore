@@ -1,0 +1,14 @@
+FROM node:14
+
+WORKDIR /app
+
+# Copy the entire project but focus on server dependencies
+COPY package*.json ./
+COPY ./server ./server
+RUN npm install --legacy-peer-deps
+
+# Expose the server's port
+EXPOSE 3000
+
+# Start the server
+CMD ["npm", "run", "nodemon"]
