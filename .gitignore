@@ -46,3 +46,9 @@ testem.log
 .DS_Store
 Thumbs.db
 *.json
+.env
+.env.*
+*.key
+*.pem
+deploy_key*
+secrets/

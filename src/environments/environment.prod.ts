@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  url: 'https://a-shore.herokuapp.com/api'
+  url: 'https://ashore.zabrown.com/api'
 };

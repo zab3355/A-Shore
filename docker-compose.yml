@@ -1,9 +1,6 @@
-version: '3.8'
-
 services:
   mongo:
     image: mongo:latest
-    container_name: mongo
     ports:
       - "27017:27017"
     volumes:
@@ -11,7 +8,6 @@ services:
 
   redis:
     image: redis:latest
-    container_name: redis
     ports:
       - "6379:6379"
 
@@ -19,12 +15,12 @@ services:
     build:
       context: ./  # Project root
       dockerfile: server/Dockerfile.server
-    container_name: server
     ports:
-      - "3000:3000"
+      - "5000:5000"
     environment:
-      - MONGO_URI=mongodb://mongo:27017/your-database-name
-      - REDIS_URL=redis://redis:6379
+      - MONGODB_URI=mongodb://mongo:27017/your-database-name
+      - REDIS_HOSTNAME=redis
+      - REDIS_PORT=6379
       - SESSION_SECRET=YourSessionSecret
     depends_on:
       - mongo
@@ -34,11 +30,10 @@ services:
     build:
       context: ./  # Project root
       dockerfile: src/Dockerfile.ui
-    container_name: ui
     ports:
       - "4200:4200"
     depends_on:
       - server
-
+      
 volumes:
   mongo-data:
