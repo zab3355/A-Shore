@@ -9,28 +9,28 @@ import { UserService } from 'src/app/services/user.service';
     templateUrl: './top-ribbon.component.html',
     styleUrls: ['./top-ribbon.component.scss']
   })
-export class TopRibbonComponent {
+export class TopRibbonComponent implements OnInit {
 
   user = {
     id: '',
     username: ''
-  }
+  };
 
     constructor(private router: Router, private constantsService: ConstantsService, private userService: UserService, private resolver: ComponentFactoryResolver) { }
-    name: String = ""; 
+    name = '';
 
     @ViewChild(LoginComponent) login: LoginComponent;
 
     ngOnInit() {
       this.name = ConstantsService.getUsername();
     }
-    
+
     editSettings(){
-      
+
     }
 
     readNotifs(){
-      
+
     }
 }
 

@@ -4,12 +4,12 @@ export interface Bottle {
     postedBy: PostedByDetails;
     content: string;
     comments: Comments;
-    //Location ID from endpoint
+    // Location ID from endpoint
     locId?: string;
 
-    //Location parameters
-    bottleViewLat?:number;
-    bottleViewLng?:number;
+    // Location parameters
+    bottleViewLat?: number;
+    bottleViewLng?: number;
 }
 
 export interface Comments {

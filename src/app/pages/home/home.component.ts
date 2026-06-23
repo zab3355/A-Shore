@@ -10,10 +10,10 @@ import { ToastrService } from 'ngx-toastr';
 export class HomeComponent implements OnInit {
 
   constructor(private router: Router, private toastr: ToastrService) { }
- 
-  onStartScreen: boolean = false;
-  onEnterPage: boolean = false;
-  onSelectPage: boolean = false;
+
+  onStartScreen = false;
+  onEnterPage = false;
+  onSelectPage = false;
 
   // Onload, lifecycle hook puts user onto start screen
   ngOnInit(): void {
@@ -22,14 +22,14 @@ export class HomeComponent implements OnInit {
     this.onSelectPage = false;
   }
 
-  //When screen is clicked on start, go to enter page
+  // When screen is clicked on start, go to enter page
   startClick() {
     this.onEnterPage = true;
     this.onStartScreen = false;
     this.onSelectPage = false;
   }
 
-  //If enter is clicked, able to select login or signup page
+  // If enter is clicked, able to select login or signup page
   enterClick() {
     this.onSelectPage = true;
     this.onEnterPage = false;

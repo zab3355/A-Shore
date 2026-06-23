@@ -1,7 +1,7 @@
 export interface SignupCheckbox {
-    dontShare: string,
-    useLoc: string,
-    autoShare: string
+    dontShare: string;
+    useLoc: string;
+    autoShare: string;
 }
 
 export interface CodeInput {

@@ -16,12 +16,12 @@ export class TutorialComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  //Go to next page
+  // Go to next page
   next() {
     this.page++;
   }
 
-  //Go to previous page
+  // Go to previous page
   prev() {
     this.page--;
   }

@@ -13,11 +13,11 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class BottleCreateComponent implements OnInit {
 
-  constructor(private router: Router, 
-    private toastr: ToastrService, 
-    private shoreService: ShoreService, 
-    private resolver: ComponentFactoryResolver) { }
-  
+  constructor(private router: Router,
+              private toastr: ToastrService,
+              private shoreService: ShoreService,
+              private resolver: ComponentFactoryResolver) { }
+
   @ViewChild('modalHolder', { read: ViewContainerRef, static: false }) modalHolder;
 
   bottleObj: Bottle = {
@@ -25,7 +25,7 @@ export class BottleCreateComponent implements OnInit {
     title: '',
     content: '',
     postedBy: {
-       _id: ConstantsService.getID(), 
+       _id: ConstantsService.getID(),
         username: ''
       },
     locId: ConstantsService.getLocId(),
@@ -35,19 +35,19 @@ export class BottleCreateComponent implements OnInit {
   ngOnInit(): void {
 
   }
-  
+
   createBottle(){
     this.bottleObj._id = ConstantsService.getID();
     this.bottleObj.postedBy.username = ConstantsService.getUsername();
     this.bottleObj.locId = ConstantsService.getLocId();
     console.log(this.bottleObj);
-    if(this.bottleObj._id !== null){
+    if (this.bottleObj._id !== null){
     this.shoreService.addMessage(this.bottleObj).subscribe(response => {
       this.toastr.success('Message sent out!', '', { timeOut: 3000, positionClass: 'toast-bottom-right' });
     }, (error) => {
         this.toastr.error('An error occured in your reply, please check your reply or try again later.', '', { timeOut: 3000, positionClass: 'toast-bottom-right' });
       });
-    } else if(this.bottleObj.locId !== null) {
+    } else if (this.bottleObj.locId !== null) {
       this.shoreService.addMessage(this.bottleObj).subscribe(response => {
         this.toastr.success('Message sent out!', '', { timeOut: 3000, positionClass: 'toast-bottom-right' });
       }, (error) => {

@@ -14,16 +14,16 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class SignupComponent implements OnInit {
 
-  constructor(private router: Router, 
-    private toastr: ToastrService, 
-    private userService: UserService) { }
- 
-  username:string = '';
-  code: string = '';
-  checkValue:string = '';
-  city:string = '';
-  country:string = '';
-  
+  constructor(private router: Router,
+              private toastr: ToastrService,
+              private userService: UserService) { }
+
+  username = '';
+  code = '';
+  checkValue = '';
+  city = '';
+  country = '';
+
   signOnCodePage = false;
 
   form = new FormGroup({
@@ -32,18 +32,18 @@ export class SignupComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  
-  //For code input 
+
+  // For code input
   onDigitInput(event){
 
     let element;
-     if (event.code === 'Backspace') {
+    if (event.code === 'Backspace') {
       element = event.srcElement.previousElementSibling;
      } else {
       element = event.srcElement.nextElementSibling;
 
      }
-     if(element == null || event.shiftKey) {
+    if (element == null || event.shiftKey) {
       return;
      }
 
@@ -54,7 +54,7 @@ export class SignupComponent implements OnInit {
 
  // Sets a random name
  createRandomName() {
-  let r = Math.random().toString(36).substring(7);
+  const r = Math.random().toString(36).substring(7);
   this.username = r;
  }
 
@@ -64,12 +64,12 @@ export class SignupComponent implements OnInit {
   }
 
 
-  //Signup functionality
+  // Signup functionality
   signup() {
-    if(this.username !== '' && this.checkValue !== null && this.checkValue !== ''){
-    if(this.checkValue == "dontShare"){
+    if (this.username !== '' && this.checkValue !== null && this.checkValue !== ''){
+    if (this.checkValue === 'dontShare'){
       this.userService.signup(this.username).subscribe(res => {
-        if(res) {
+        if (res) {
           this.code = res.loginCode;
           this.signOnCodePage = true;
           this.toastr.success('Signup successful. Copy this code for later.',  '', { timeOut: 3000, positionClass: 'toast-bottom-right' });
@@ -77,14 +77,14 @@ export class SignupComponent implements OnInit {
         else {
           this.toastr.error('Cannot signup. Please check your credentials and try again.', '', { timeOut: 3000, positionClass: 'toast-bottom-right' });
         }
-  
+
       });
-    } else if(this.checkValue == "useCurr") {
-      //temp values
-      this.city = "West Henrietta, NY";
-      this.country = "US";
+    } else if (this.checkValue === 'useCurr') {
+      // temp values
+      this.city = 'West Henrietta, NY';
+      this.country = 'US';
       this.userService.addRelativeLocationUser(this.username, this.city, this.country).subscribe(res => {
-        if(res) {
+        if (res) {
           this.code = res.loginCode;
           this.signOnCodePage = true;
           this.toastr.success('Signup successful. Copy this code for later.',  '', { timeOut: 3000, positionClass: 'toast-bottom-right' });
@@ -92,9 +92,9 @@ export class SignupComponent implements OnInit {
             this.toastr.error('Cannot signup. Please check your credentials and try again.', '', { timeOut: 3000, positionClass: 'toast-bottom-right' });
         }
       });
-    } else if(this.checkValue == "manualEnter") {
+    } else if (this.checkValue === 'manualEnter') {
         this.userService.addRelativeLocationUser(this.username, this.city, this.country).subscribe(res => {
-          if(res) {
+          if (res) {
             this.code = res.loginCode;
             this.signOnCodePage = true;
             this.toastr.success('Signup successful. Copy this code for later.',  '', { timeOut: 3000, positionClass: 'toast-bottom-right' });
@@ -108,5 +108,5 @@ export class SignupComponent implements OnInit {
         this.toastr.error('Please fill out all fields including location input to continue.', '', { timeOut: 3000, positionClass: 'toast-bottom-right' });
     }
   }
-    
+
 }

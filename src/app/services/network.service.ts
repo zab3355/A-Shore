@@ -14,7 +14,7 @@ export class NetworkService {
     getRequestHeader() {
       return new HttpHeaders({
         'Content-Type': 'application/x-www-form-urlencoded'
-      })
+      });
     }
 
   /**
@@ -29,19 +29,19 @@ export class NetworkService {
       })
       .catch((error: HttpResponse<any>) => {
         // Error in response - Response status code other than 200
-        const error_json = error;
+        const errorJson = error;
 
         // If the response has message property, just return it
         // Else return a generic error message and log the actual error if the app is running in dev mode
-        if (error_json.hasOwnProperty('message')) {
-          return throwError(error_json['message']);
+        if (errorJson.hasOwnProperty('message')) {
+          return throwError(errorJson.message);
         } else {
           if (isDevMode()) {
             console.error({
               request_url: url,
               request_headers: this.getRequestHeader(),
               request_method: 'GET',
-              error: error_json
+              error: errorJson
             });
           }
           return throwError('Something went wrong. Kindly contact Admin.');
@@ -53,28 +53,28 @@ export class NetworkService {
    * @description POST Request - Returns a response json object if status code is 200. Else returns a message
    * @param url Request URL
    */
-  httpPost(url: string, request_body: any) {
-    return this.http.post(url, request_body, { headers: this.getRequestHeader() })
+  httpPost(url: string, requestBody: any) {
+    return this.http.post(url, requestBody, { headers: this.getRequestHeader() })
       .map((response: HttpResponse<any>) => {
         // Response without any issues.. return as it is
         return response as any;
       })
       .catch((error: HttpResponse<any>) => {
         // Error in response - Response status code other than 200
-        const error_json = error;
+        const errorJson = error;
 
         // If the response has message property, just return it
         // Else return a generic error message and log the actual error if the app is running in dev mode
-        if (error_json.hasOwnProperty('message')) {
-          return throwError(error_json['message']);
+        if (errorJson.hasOwnProperty('message')) {
+          return throwError(errorJson.message);
         } else {
           if (isDevMode()) {
             console.error({
               request_url: url,
               request_headers: this.getRequestHeader(),
               request_method: 'POST',
-              request_body: request_body,
-              error: error_json
+              requestBody,
+              error: errorJson
             });
           }
           return throwError('Something went wrong. Kindly contact Admin.');
@@ -86,28 +86,28 @@ export class NetworkService {
    * @description PUT Request - Returns a response json object if status code is 200. Else returns a message
    * @param url Request URL
    */
-  httpPut(url: string, request_body: any) {
-    return this.http.put(url, request_body, { headers: this.getRequestHeader() })
+  httpPut(url: string, requestBody: any) {
+    return this.http.put(url, requestBody, { headers: this.getRequestHeader() })
       .map((response: HttpResponse<any>) => {
         // Response without any issues.. return as it is
         return response as any;
       })
       .catch((error: HttpResponse<any>) => {
         // Error in response - Response status code other than 200
-        const error_json = error;
+        const errorJson = error;
 
         // If the response has message property, just return it
         // Else return a generic error message and log the actual error if the app is running in dev mode
-        if (error_json.hasOwnProperty('message')) {
-          return throwError(error_json['message']);
+        if (errorJson.hasOwnProperty('message')) {
+          return throwError(errorJson.message);
         } else {
           if (isDevMode()) {
             console.error({
               request_url: url,
               request_headers: this.getRequestHeader(),
               request_method: 'PUT',
-              request_body: request_body,
-              error: error_json
+              requestBody,
+              error: errorJson
             });
           }
           return throwError('Something went wrong. Kindly contact Admin.');
@@ -119,28 +119,28 @@ export class NetworkService {
    * @description DELETE Request - Returns a response json object if status code is 200. Else returns a message
    * @param url Request URL
    */
-  httpDelete(url: string, request_body: any) {
-    return this.http.request('delete', url, { headers: this.getRequestHeader(), body: request_body })
+  httpDelete(url: string, requestBody: any) {
+    return this.http.request('delete', url, { headers: this.getRequestHeader(), body: requestBody })
       .map((response: HttpResponse<any>) => {
         // Response without any issues.. return as it is
         return response as any;
       })
       .catch((error: HttpResponse<any>) => {
         // Error in response - Response status code other than 200
-        const error_json = error;
+        const errorJson = error;
 
         // If the response has message property, just return it
         // Else return a generic error message and log the actual error if the app is running in dev mode
-        if (error_json.hasOwnProperty('message')) {
-          return throwError(error_json['message']);
+        if (errorJson.hasOwnProperty('message')) {
+          return throwError(errorJson.message);
         } else {
           if (isDevMode()) {
             console.error({
               request_url: url,
               request_headers: this.getRequestHeader(),
               request_method: 'DELETE',
-              request_body: request_body,
-              error: error_json
+              requestBody,
+              error: errorJson
             });
           }
           return throwError('Something went wrong. Kindly contact Admin.');
@@ -149,9 +149,9 @@ export class NetworkService {
   }
 
   /**
-    * @description GET Request without a header - Returns a response json object if status code is 200. Else returns a message
-    * @param url Request URL
-    */
+   * @description GET Request without a header - Returns a response json object if status code is 200. Else returns a message
+   * @param url Request URL
+   */
   httpHeaderlessGet(url) {
     return this.http.get(url)
       .map((response: HttpResponse<any>) => {
@@ -160,19 +160,19 @@ export class NetworkService {
       })
       .catch((error: HttpResponse<any>) => {
         // Error in response - Response status code other than 200
-        const error_json = error;
+        const errorJson = error;
 
         // If the response has message property, just return it
         // Else return a generic error message and log the actual error if the app is running in dev mode
-        if (error_json.hasOwnProperty('message')) {
-          return throwError(error_json['message']);
+        if (errorJson.hasOwnProperty('message')) {
+          return throwError(errorJson.message);
         } else {
           if (isDevMode()) {
             console.error({
               request_url: url,
               request_headers: this.getRequestHeader(),
               request_method: 'GET',
-              error: error_json
+              error: errorJson
             });
           }
           return throwError('Something went wrong. Kindly contact Admin.');

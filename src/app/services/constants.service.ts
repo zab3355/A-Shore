@@ -62,7 +62,7 @@ export class ConstantsService {
     static getID() {
       return sessionStorage.getItem(ID);
     }
-    
+
     loggedIn() {
       if (sessionStorage.getItem(TOKEN) != null) {
         console.log(sessionStorage.getItem(TOKEN));

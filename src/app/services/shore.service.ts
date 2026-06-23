@@ -8,43 +8,43 @@ import { Bottle } from 'src/app/types/bottle';
     providedIn: 'root'
 })
 export class ShoreService {
-    private api_url;
+    private apiUrl;
     constructor(private networkService: NetworkService, router: Router) {
-        this.api_url = ConstantsService.getApiUrl();
-    } 
+        this.apiUrl = ConstantsService.getApiUrl();
+    }
 
     getMessages() {
-        const url = `${this.api_url}/getMessages`;
+        const url = `${this.apiUrl}/getMessages`;
         return this.networkService.httpGet(url);
     }
 
     getMessage(id){
-        const url = `${this.api_url}/getMessage?id=${id}`;
+        const url = `${this.apiUrl}/getMessage?id=${id}`;
         return this.networkService.httpGet(url);
     }
 
     populateMessages() {
-        const url = `${this.api_url}/populate`;
+        const url = `${this.apiUrl}/populate`;
         return this.networkService.httpGet(url);
     }
 
     addMessage(bottleObj: Bottle) {
-        const url = this.api_url + '/addMessage';
+        const url = this.apiUrl + '/addMessage';
         const payload = new HttpParams()
         .set('content', bottleObj.content)
         .set('postedBy', bottleObj._id)
         .set('title', bottleObj.title);
-        
+
         return this.networkService.httpPost(url, payload);
     }
 
     getLocation(id){
-        const url = `${this.api_url}/getLocation?id=${id}`;
+        const url = `${this.apiUrl}/getLocation?id=${id}`;
         return this.networkService.httpGet(url);
     }
 
     addComment(id, commentText) {
-        const url = this.api_url + '/addComment';
+        const url = this.apiUrl + '/addComment';
         const payload = new HttpParams()
         .set('id', id)
         .set('commentText', commentText);
@@ -53,7 +53,7 @@ export class ShoreService {
     }
 
     addViewer(id, viewerId){
-        const url = this.api_url + '/addViewer';
+        const url = this.apiUrl + '/addViewer';
         const payload = new HttpParams()
         .set('id', id)
         .set('viewerId', viewerId);
@@ -62,7 +62,7 @@ export class ShoreService {
     }
 
     addLikeToComment(id, commentId) {
-        const url = this.api_url + '/addLikeToComment';
+        const url = this.apiUrl + '/addLikeToComment';
         const payload = new HttpParams()
         .set('id', id)
         .set('commentId', commentId);

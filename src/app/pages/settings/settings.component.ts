@@ -13,17 +13,17 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class SettingsComponent {
 
-  constructor(private router: Router, 
-  private toastr: ToastrService, 
-  private userService: UserService) { }
- 
-  username:string = '';
-  code: string = '';
+  constructor(private router: Router,
+              private toastr: ToastrService,
+              private userService: UserService) { }
+
+  username = '';
+  code = '';
   id = '';
 
-  checkValue:string = '';
-  city:string = '';
-  country:string = '';
+  checkValue = '';
+  city = '';
+  country = '';
 
   submitted = false;
 
@@ -33,7 +33,7 @@ export class SettingsComponent {
 
   updateUsername(){
     this.id = ConstantsService.getID();
-    if(this.username != null){
+    if (this.username != null){
     this.userService.changeUsername(this.id, this.username).subscribe(res => {
       console.log(res);
       this.toastr.success('Username changed!', '', { timeOut: 3000, positionClass: 'toast-bottom-right' });
@@ -49,5 +49,5 @@ export class SettingsComponent {
     ConstantsService.logout();
     this.router.navigateByUrl('login');
   }
-    
+
 }

@@ -7,13 +7,13 @@ import { HttpParams } from '@angular/common/http';
   providedIn: 'root'
 })
 export class UserService {
-  private api_url;
+  private apiUrl;
   constructor(private networkService: NetworkService) {
-    this.api_url = ConstantsService.getApiUrl();
+    this.apiUrl = ConstantsService.getApiUrl();
   }
 
   login(username, code) {
-    const url = this.api_url + '/login';
+    const url = this.apiUrl + '/login';
     const payload = new HttpParams()
     .set('username', username)
     .set('code', code);
@@ -21,38 +21,38 @@ export class UserService {
   }
 
   signup(username) {
-    const url = this.api_url + '/signup';
+    const url = this.apiUrl + '/signup';
     const payload = new HttpParams()
-    .set('username', username)
-    
+    .set('username', username);
+
     return this.networkService.httpPost(url, payload);
   }
   getAllUsers(){
-    const url = `${this.api_url}/getAllUsers`;
+    const url = `${this.apiUrl}/getAllUsers`;
     return this.networkService.httpGet(url);
   }
 
   getUser(id){
-    const url = `${this.api_url}/getUser?id=${id}`;
+    const url = `${this.apiUrl}/getUser?id=${id}`;
     return this.networkService.httpGet(url);
   }
 
-  addRelativeLocationUser(username, display_name, country){
-    const url = this.api_url + '/addRelativeLocationUser';
+  addRelativeLocationUser(username, displayName, country){
+    const url = this.apiUrl + '/addRelativeLocationUser';
     const payload = new HttpParams()
     .set('username', username)
-    .set('display_name', display_name)
+    .set('display_name', displayName)
     .set('country', country);
-    
+
     return this.networkService.httpPost(url, payload);
   }
 
   changeUsername(id, newUsername){
-    const url = this.api_url + '/updateUsername';
+    const url = this.apiUrl + '/updateUsername';
     const payload = new HttpParams()
     .set('id', id)
-    .set('newUsername', newUsername)
-    
+    .set('newUsername', newUsername);
+
     return this.networkService.httpPost(url, payload);
   }
 }

@@ -14,10 +14,10 @@ import { AuthGuard } from './services/auth.guard';
 
 
 const routes: Routes = [
-  //change this route to login later once we setup auth
+  // change this route to login later once we setup auth
   { path: '', redirectTo: 'home', pathMatch: 'full' },
 
-  //if creating a new component put your routes here
+  // if creating a new component put your routes here
   { path: 'home', component: HomeComponent,
   data: {
     pageName: 'home',
@@ -68,9 +68,9 @@ const routes: Routes = [
     pageName: 'not-found',
     needsLogin: false
   }}
-  
+
 ];
-  @NgModule({
+@NgModule({
     imports: [RouterModule.forRoot(routes, { useHash: true, relativeLinkResolution: 'legacy', scrollPositionRestoration: 'enabled'  })],
     exports: [RouterModule]
   })

@@ -1,11 +1,11 @@
 import { Component, OnInit, ViewChild, Output, ElementRef, ViewContainerRef } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
-import { BottleViewComponent } from 'src/app/pages/bottle-view/bottle-view.component'; 
+import { BottleViewComponent } from 'src/app/pages/bottle-view/bottle-view.component';
 import { ToastrService } from 'ngx-toastr';
 import { ConstantsService } from 'src/app/services/constants.service';
 import { ShoreService } from 'src/app/services/shore.service';
-import { MapInfoWindow, MapMarker, GoogleMap } from '@angular/google-maps'
+import { MapInfoWindow, MapMarker, GoogleMap } from '@angular/google-maps';
 
 @Component({
   selector: 'app-map-view',
@@ -14,17 +14,17 @@ import { MapInfoWindow, MapMarker, GoogleMap } from '@angular/google-maps'
 })
 export class MapViewComponent implements OnInit {
   constructor(private router: Router, private route: ActivatedRoute, private toastr: ToastrService, private shoreService: ShoreService, private constantsService: ConstantsService) { }
-  @ViewChild(GoogleMap, { static: false }) map: GoogleMap
-  @ViewChild(MapInfoWindow, { static: false }) info: MapInfoWindow
+  @ViewChild(GoogleMap, { static: false }) map: GoogleMap;
+  @ViewChild(MapInfoWindow, { static: false }) info: MapInfoWindow;
 
 
   locId = '';
-  id= '';
+  id = '';
 
-  zoom = 12
-  center: google.maps.LatLngLiteral
+  zoom = 12;
+  center: google.maps.LatLngLiteral;
 
-  
+
   options: google.maps.MapOptions = {
     zoomControl: false,
     scrollwheel: true,
@@ -34,302 +34,302 @@ export class MapViewComponent implements OnInit {
     minZoom: 8,
     styles: [
       {
-        "elementType": "geometry",
-        "stylers": [
+        elementType: 'geometry',
+        stylers: [
           {
-            "color": "#ebe3cd"
+            color: '#ebe3cd'
           }
         ]
       },
       {
-        "elementType": "labels.text.fill",
-        "stylers": [
+        elementType: 'labels.text.fill',
+        stylers: [
           {
-            "color": "#523735"
+            color: '#523735'
           }
         ]
       },
       {
-        "elementType": "labels.text.stroke",
-        "stylers": [
+        elementType: 'labels.text.stroke',
+        stylers: [
           {
-            "color": "#f5f1e6"
+            color: '#f5f1e6'
           }
         ]
       },
       {
-        "featureType": "administrative",
-        "elementType": "geometry.stroke",
-        "stylers": [
+        featureType: 'administrative',
+        elementType: 'geometry.stroke',
+        stylers: [
           {
-            "color": "#c9b2a6"
+            color: '#c9b2a6'
           }
         ]
       },
       {
-        "featureType": "administrative.land_parcel",
-        "elementType": "geometry.stroke",
-        "stylers": [
+        featureType: 'administrative.land_parcel',
+        elementType: 'geometry.stroke',
+        stylers: [
           {
-            "color": "#dcd2be"
+            color: '#dcd2be'
           }
         ]
       },
       {
-        "featureType": "administrative.land_parcel",
-        "elementType": "labels",
-        "stylers": [
+        featureType: 'administrative.land_parcel',
+        elementType: 'labels',
+        stylers: [
           {
-            "visibility": "off"
+            visibility: 'off'
           }
         ]
       },
       {
-        "featureType": "administrative.land_parcel",
-        "elementType": "labels.text.fill",
-        "stylers": [
+        featureType: 'administrative.land_parcel',
+        elementType: 'labels.text.fill',
+        stylers: [
           {
-            "color": "#ae9e90"
+            color: '#ae9e90'
           }
         ]
       },
       {
-        "featureType": "landscape.natural",
-        "elementType": "geometry",
-        "stylers": [
+        featureType: 'landscape.natural',
+        elementType: 'geometry',
+        stylers: [
           {
-            "color": "#dfd2ae"
+            color: '#dfd2ae'
           }
         ]
       },
       {
-        "featureType": "poi",
-        "elementType": "geometry",
-        "stylers": [
+        featureType: 'poi',
+        elementType: 'geometry',
+        stylers: [
           {
-            "color": "#dfd2ae"
+            color: '#dfd2ae'
           }
         ]
       },
       {
-        "featureType": "poi",
-        "elementType": "labels.text",
-        "stylers": [
+        featureType: 'poi',
+        elementType: 'labels.text',
+        stylers: [
           {
-            "visibility": "off"
+            visibility: 'off'
           }
         ]
       },
       {
-        "featureType": "poi",
-        "elementType": "labels.text.fill",
-        "stylers": [
+        featureType: 'poi',
+        elementType: 'labels.text.fill',
+        stylers: [
           {
-            "color": "#93817c"
+            color: '#93817c'
           }
         ]
       },
       {
-        "featureType": "poi.business",
-        "stylers": [
+        featureType: 'poi.business',
+        stylers: [
           {
-            "visibility": "off"
+            visibility: 'off'
           }
         ]
       },
       {
-        "featureType": "poi.park",
-        "elementType": "geometry.fill",
-        "stylers": [
+        featureType: 'poi.park',
+        elementType: 'geometry.fill',
+        stylers: [
           {
-            "color": "#a5b076"
+            color: '#a5b076'
           }
         ]
       },
       {
-        "featureType": "poi.park",
-        "elementType": "labels.text.fill",
-        "stylers": [
+        featureType: 'poi.park',
+        elementType: 'labels.text.fill',
+        stylers: [
           {
-            "color": "#447530"
+            color: '#447530'
           }
         ]
       },
       {
-        "featureType": "road",
-        "stylers": [
+        featureType: 'road',
+        stylers: [
           {
-            "visibility": "off"
+            visibility: 'off'
           }
         ]
       },
       {
-        "featureType": "road",
-        "elementType": "geometry",
-        "stylers": [
+        featureType: 'road',
+        elementType: 'geometry',
+        stylers: [
           {
-            "color": "#f5f1e6"
+            color: '#f5f1e6'
           }
         ]
       },
       {
-        "featureType": "road",
-        "elementType": "labels.icon",
-        "stylers": [
+        featureType: 'road',
+        elementType: 'labels.icon',
+        stylers: [
           {
-            "visibility": "off"
+            visibility: 'off'
           }
         ]
       },
       {
-        "featureType": "road.arterial",
-        "elementType": "geometry",
-        "stylers": [
+        featureType: 'road.arterial',
+        elementType: 'geometry',
+        stylers: [
           {
-            "color": "#fdfcf8"
+            color: '#fdfcf8'
           }
         ]
       },
       {
-        "featureType": "road.highway",
-        "elementType": "geometry",
-        "stylers": [
+        featureType: 'road.highway',
+        elementType: 'geometry',
+        stylers: [
           {
-            "color": "#f8c967"
+            color: '#f8c967'
           }
         ]
       },
       {
-        "featureType": "road.highway",
-        "elementType": "geometry.stroke",
-        "stylers": [
+        featureType: 'road.highway',
+        elementType: 'geometry.stroke',
+        stylers: [
           {
-            "color": "#e9bc62"
+            color: '#e9bc62'
           }
         ]
       },
       {
-        "featureType": "road.highway.controlled_access",
-        "elementType": "geometry",
-        "stylers": [
+        featureType: 'road.highway.controlled_access',
+        elementType: 'geometry',
+        stylers: [
           {
-            "color": "#e98d58"
+            color: '#e98d58'
           }
         ]
       },
       {
-        "featureType": "road.highway.controlled_access",
-        "elementType": "geometry.stroke",
-        "stylers": [
+        featureType: 'road.highway.controlled_access',
+        elementType: 'geometry.stroke',
+        stylers: [
           {
-            "color": "#db8555"
+            color: '#db8555'
           }
         ]
       },
       {
-        "featureType": "road.local",
-        "elementType": "labels",
-        "stylers": [
+        featureType: 'road.local',
+        elementType: 'labels',
+        stylers: [
           {
-            "visibility": "off"
+            visibility: 'off'
           }
         ]
       },
       {
-        "featureType": "road.local",
-        "elementType": "labels.text.fill",
-        "stylers": [
+        featureType: 'road.local',
+        elementType: 'labels.text.fill',
+        stylers: [
           {
-            "color": "#806b63"
+            color: '#806b63'
           }
         ]
       },
       {
-        "featureType": "transit",
-        "stylers": [
+        featureType: 'transit',
+        stylers: [
           {
-            "visibility": "off"
+            visibility: 'off'
           }
         ]
       },
       {
-        "featureType": "transit.line",
-        "elementType": "geometry",
-        "stylers": [
+        featureType: 'transit.line',
+        elementType: 'geometry',
+        stylers: [
           {
-            "color": "#dfd2ae"
+            color: '#dfd2ae'
           }
         ]
       },
       {
-        "featureType": "transit.line",
-        "elementType": "labels.text.fill",
-        "stylers": [
+        featureType: 'transit.line',
+        elementType: 'labels.text.fill',
+        stylers: [
           {
-            "color": "#8f7d77"
+            color: '#8f7d77'
           }
         ]
       },
       {
-        "featureType": "transit.line",
-        "elementType": "labels.text.stroke",
-        "stylers": [
+        featureType: 'transit.line',
+        elementType: 'labels.text.stroke',
+        stylers: [
           {
-            "color": "#ebe3cd"
+            color: '#ebe3cd'
           }
         ]
       },
       {
-        "featureType": "transit.station",
-        "elementType": "geometry",
-        "stylers": [
+        featureType: 'transit.station',
+        elementType: 'geometry',
+        stylers: [
           {
-            "color": "#dfd2ae"
+            color: '#dfd2ae'
           }
         ]
       },
       {
-        "featureType": "water",
-        "elementType": "geometry.fill",
-        "stylers": [
+        featureType: 'water',
+        elementType: 'geometry.fill',
+        stylers: [
           {
-            "color": "#b9d3c2"
+            color: '#b9d3c2'
           }
         ]
       },
       {
-        "featureType": "water",
-        "elementType": "labels.text.fill",
-        "stylers": [
+        featureType: 'water',
+        elementType: 'labels.text.fill',
+        stylers: [
           {
-            "color": "#92998d"
+            color: '#92998d'
           }
         ]
       }
     ]
-  }
+  };
 
-  markers = []
-  drawPath = []
+  markers = [];
+  drawPath = [];
   infoContent = '';
   latCoords = 0;
   lngCoords = 0;
-  
-  bottleViewLat:string = '';
-  bottleViewLng:string = '';
+
+  bottleViewLat = '';
+  bottleViewLng = '';
   bottleLatNum = 0;
   bottleLngNum = 0;
 
 
-  message_id: number;
+  messageId: number;
 
   ngOnInit() {
     this.id = ConstantsService.getLocId();
     this.locId = ConstantsService.getID();
 
     this.route.queryParams.subscribe(queryParams => {
-      this.bottleViewLat = queryParams['bottleViewLat'];
-      this.bottleViewLng = queryParams['bottleViewLng'];
+      this.bottleViewLat = queryParams.bottleViewLat;
+      this.bottleViewLng = queryParams.bottleViewLng;
       this.bottleLngNum = parseFloat(this.bottleViewLng);
       this.bottleLatNum = parseFloat(this.bottleViewLat);
       console.log(this.bottleLatNum + this.bottleLngNum);
@@ -347,45 +347,45 @@ export class MapViewComponent implements OnInit {
       this.center = {
         lat: position.coords.latitude,
         lng: position.coords.longitude,
-      }
-    })
+      };
+    });
   }
 
   convertToNumber(numVal) {
-  
+
     if (isNaN(+numVal)) {
-      console.log("Number is NaN")
-      
+      console.log('Number is NaN');
+
     } else  {
-      console.log(+numVal)
+      console.log(+numVal);
     }
   }
 
   zoomIn() {
-    if (this.zoom < this.options.maxZoom) this.zoom++
+    if (this.zoom < this.options.maxZoom) { this.zoom++; }
   }
 
   zoomOut() {
-    if (this.zoom > this.options.minZoom) this.zoom--
+    if (this.zoom > this.options.minZoom) { this.zoom--; }
   }
 
   click(event: google.maps.MouseEvent) {
-    console.log(event)
+    console.log(event);
   }
 
   logCenter() {
-    console.log(JSON.stringify(this.map.getCenter()))
+    console.log(JSON.stringify(this.map.getCenter()));
   }
 
   addMarker() {
     console.log(this.latCoords);
     console.log(this.lngCoords);
 
-    //your user marker
+    // your user marker
     this.markers.push({
       position: {
-        
-        //change coords here
+
+        // change coords here
         lat: this.latCoords,
         lng: this.lngCoords,
       },
@@ -406,10 +406,10 @@ export class MapViewComponent implements OnInit {
     console.log(this.bottleLatNum);
     console.log(this.bottleLngNum);
 
-        //message marker
-        this.markers.push({
+        // message marker
+    this.markers.push({
           position: {
-            //change coords here
+            // change coords here
             lat: this.bottleLatNum,
             lng: this.bottleLngNum,
           },
@@ -427,13 +427,13 @@ export class MapViewComponent implements OnInit {
     }
 
   serverAddMarker() {
-    //TODO: call the database to fill markers[]
-      var markerData = []
-    //loops through markers and sets a marker on the point
+    // TODO: call the database to fill markers[]
+      const markerData = [];
+    // loops through markers and sets a marker on the point
 
-      for(var i =0; i < markerData.length; i++)
+      for (let i = 0; i < markerData.length; i++)
       {this.markers.push({
-        //change all instances of markers below this line to what ever we set the array name of the data from the database
+        // change all instances of markers below this line to what ever we set the array name of the data from the database
         position: {
           lat: markerData[i].lat,
           lng: markerData[i].lng,
@@ -444,19 +444,19 @@ export class MapViewComponent implements OnInit {
         },
         title: String(i),
         options: { animation: google.maps.Animation.DROP},
-      })
+      });
     }
 
-    markerData.forEach(element =>{
+      markerData.forEach(element => {
       this.drawPath.push({
         lat: element.lat,
         lng: element.lng
-      })
-    })
+      });
+    });
   }
 
   openInfo(marker: MapMarker, content) {
-    this.infoContent = content
-    this.info.open(marker)
+    this.infoContent = content;
+    this.info.open(marker);
   }
 }
