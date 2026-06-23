@@ -12,9 +12,7 @@ services:
       - "6379:6379"
 
   server:
-    build:
-      context: ./  # Project root
-      dockerfile: server/Dockerfile.server
+    image: ghcr.io/zab3355/a-shore-server:latest
     ports:
       - "5000:5000"
     environment:
@@ -27,9 +25,7 @@ services:
       - redis
 
   ui:
-    build:
-      context: ./  # Project root
-      dockerfile: src/Dockerfile.ui
+    image: ghcr.io/zab3355/a-shore-ui:latest
     ports:
       - "4200:4200"
     depends_on:
