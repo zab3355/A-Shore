@@ -41,6 +41,8 @@ jobs:
           sudo apt-get install -y chromium-browser || sudo apt-get install -y chromium
 
       - name: Build frontend
+        env:
+          NODE_OPTIONS: --openssl-legacy-provider
         run: npm run build
 
       - name: Lint frontend
