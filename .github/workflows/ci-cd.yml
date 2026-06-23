@@ -51,6 +51,7 @@ jobs:
       - name: Test frontend
         env:
           CHROME_BIN: /usr/bin/chromium-browser
+          NODE_OPTIONS: --openssl-legacy-provider
         run: |
           if [[ ! -x "$CHROME_BIN" ]]; then
             export CHROME_BIN=/usr/bin/chromium
