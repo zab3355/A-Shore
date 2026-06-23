@@ -27,7 +27,7 @@ export class NetworkService {
         // Response without any issues.. return as it is
         return response as any;
       })
-      .catch((error: HttpResponse<any>) => {
+      .catch((error: any) => {
         // Error in response - Response status code other than 200
         const errorJson = error;
 
@@ -59,7 +59,7 @@ export class NetworkService {
         // Response without any issues.. return as it is
         return response as any;
       })
-      .catch((error: HttpResponse<any>) => {
+      .catch((error: any) => {
         // Error in response - Response status code other than 200
         const errorJson = error;
 
@@ -92,7 +92,7 @@ export class NetworkService {
         // Response without any issues.. return as it is
         return response as any;
       })
-      .catch((error: HttpResponse<any>) => {
+      .catch((error: any) => {
         // Error in response - Response status code other than 200
         const errorJson = error;
 
@@ -125,7 +125,7 @@ export class NetworkService {
         // Response without any issues.. return as it is
         return response as any;
       })
-      .catch((error: HttpResponse<any>) => {
+      .catch((error: any) => {
         // Error in response - Response status code other than 200
         const errorJson = error;
 
@@ -158,7 +158,7 @@ export class NetworkService {
         // Response without any issues.. return as it is
         return response as any;
       })
-      .catch((error: HttpResponse<any>) => {
+      .catch((error: any) => {
         // Error in response - Response status code other than 200
         const errorJson = error;
 
