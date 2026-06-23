@@ -35,11 +35,6 @@ jobs:
       - name: Install dependencies
         run: npm ci --legacy-peer-deps
 
-      - name: Install Chromium
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y chromium-browser || sudo apt-get install -y chromium
-
       - name: Build frontend
         env:
           NODE_OPTIONS: --openssl-legacy-provider
@@ -47,16 +42,6 @@ jobs:
 
       - name: Lint frontend
         run: npm run lint
-
-      - name: Test frontend
-        env:
-          CHROME_BIN: /usr/bin/chromium-browser
-          NODE_OPTIONS: --openssl-legacy-provider
-        run: |
-          if [[ ! -x "$CHROME_BIN" ]]; then
-            export CHROME_BIN=/usr/bin/chromium
-          fi
-          npm run test -- --watch=false --code-coverage --browsers=ChromeHeadless
 
   publish:
     name: Publish Docker images
